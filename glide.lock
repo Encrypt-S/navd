@@ -1,10 +1,19 @@
-hash: d74068b4218716346d9ed6c2bd10439e7c599216dd7b63ef37e9ff0f56632898
-updated: 2017-11-17T15:59:49.625897724-08:00
+hash: 9718d070e4efd59f71721ffe97a2dc8a23794344fae5e30c52147fb370f8cb7a
+updated: 2018-03-01T00:08:47.8856284+01:00
 imports:
 - name: github.com/aead/siphash
   version: e404fcfc888570cadd1610538e2dbc89f66af814
 - name: github.com/aguycalled/navlog
-  version: 84c8d2346e9fc8c7b947e243b9c24e6df9fd206a
+  version: cfa49852bf48bce91103ce544067e17c9d3d381e
+- name: github.com/aguycalled/navutil
+  version: c71db6de60fa1c7fc6b41c8e9a9bcc8eec530dab
+  subpackages:
+  - base58
+  - bech32
+  - bloom
+  - gcs
+  - gcs/builder
+  - hdkeychain
 - name: github.com/btcsuite/fastsha256
   version: 637e656429416087660c84436a2a035d69d54e2e
 - name: github.com/btcsuite/go-flags
@@ -45,7 +54,7 @@ imports:
   - svc
   - winapi
 - name: github.com/davecgh/go-spew
-  version: ecdeabc65495df2dec95d7c4a4c3e021903035e5
+  version: 8991bc29aa16c548c550c7ff78260e27b9ab7c73
   subpackages:
   - spew
 - name: github.com/jessevdk/go-flags
@@ -55,18 +64,9 @@ imports:
   subpackages:
   - rotator
 - name: github.com/kkdai/bstream
-  version: f391b8402d23024e7c0f624b31267a89998fca95
-- name: github.com/aguycalled/navutil
-  version: c3ff179366044979fb9856c2feb79bd4c2184c7a
-  subpackages:
-  - base58
-  - bech32
-  - bloom
-  - gcs
-  - gcs/builder
-  - hdkeychain
+  version: f71540b9dfdcfe64dbf2818e9b66423c6aafcacd
 - name: golang.org/x/crypto
-  version: 9419663f5a44be8b34ca85f08abc5fe1be11f8a3
+  version: 91a49db82a88618983a78a06c1cbd4e00ab749ab
   subpackages:
   - ripemd160
 testImports: []
