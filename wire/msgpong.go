@@ -9,9 +9,9 @@ import (
 	"io"
 )
 
-// MsgPong implements the Message interface and represents a bitcoin pong
+// MsgPong implements the Message interface and represents a navcoin pong
 // message which is used primarily to confirm that a connection is still valid
-// in response to a bitcoin ping message (MsgPing).
+// in response to a navcoin ping message (MsgPing).
 //
 // This message was not added until protocol versions AFTER BIP0031Version.
 type MsgPong struct {
@@ -20,7 +20,7 @@ type MsgPong struct {
 	Nonce uint64
 }
 
-// BtcDecode decodes r using the bitcoin protocol encoding into the receiver.
+// BtcDecode decodes r using the navcoin protocol encoding into the receiver.
 // This is part of the Message interface implementation.
 func (msg *MsgPong) BtcDecode(r io.Reader, pver uint32, enc MessageEncoding) error {
 	// NOTE: <= is not a mistake here.  The BIP0031 was defined as AFTER
@@ -34,7 +34,7 @@ func (msg *MsgPong) BtcDecode(r io.Reader, pver uint32, enc MessageEncoding) err
 	return readElement(r, &msg.Nonce)
 }
 
-// BtcEncode encodes the receiver to w using the bitcoin protocol encoding.
+// BtcEncode encodes the receiver to w using the navcoin protocol encoding.
 // This is part of the Message interface implementation.
 func (msg *MsgPong) BtcEncode(w io.Writer, pver uint32, enc MessageEncoding) error {
 	// NOTE: <= is not a mistake here.  The BIP0031 was defined as AFTER
@@ -69,7 +69,7 @@ func (msg *MsgPong) MaxPayloadLength(pver uint32) uint32 {
 	return plen
 }
 
-// NewMsgPong returns a new bitcoin pong message that conforms to the Message
+// NewMsgPong returns a new navcoin pong message that conforms to the Message
 // interface.  See MsgPong for details.
 func NewMsgPong(nonce uint64) *MsgPong {
 	return &MsgPong{

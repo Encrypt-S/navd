@@ -22,7 +22,7 @@ import (
 )
 
 // TODO incorporate Alex Morcos' modifications to Gavin's initial model
-// https://lists.linuxfoundation.org/pipermail/bitcoin-dev/2014-October/006824.html
+// https://lists.linuxfoundation.org/pipermail/navcoin-dev/2014-October/006824.html
 
 const (
 	// estimateFeeDepth is the maximum number of blocks before a transaction
@@ -59,7 +59,7 @@ var (
 // SatoshiPerByte is number with units of satoshis per byte.
 type SatoshiPerByte float64
 
-// BtcPerKilobyte is number with units of bitcoins per kilobyte.
+// BtcPerKilobyte is number with units of navcoins per kilobyte.
 type BtcPerKilobyte float64
 
 // ToBtcPerKb returns a float value that represents the given

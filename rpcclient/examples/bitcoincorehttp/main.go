@@ -11,7 +11,7 @@ import (
 )
 
 func main() {
-	// Connect to local bitcoin core RPC server using HTTP POST mode.
+	// Connect to local navcoin core RPC server using HTTP POST mode.
 	connCfg := &rpcclient.ConnConfig{
 		Host:         "localhost:8332",
 		User:         "yourrpcuser",

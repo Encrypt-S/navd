@@ -887,7 +887,7 @@ var scriptClassTests = []struct {
 		class: PubKeyHashTy,
 	},
 	// part of tx 6d36bc17e947ce00bb6f12f8e7a56a1585c5a36188ffa2b05e10b4743273a74b
-	// codeseparator parts have been elided. (bitcoin core's checks for
+	// codeseparator parts have been elided. (navcoin core's checks for
 	// multisig type doesn't have codesep either).
 	{
 		name: "multisig",

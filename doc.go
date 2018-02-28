@@ -3,7 +3,7 @@
 // license that can be found in the LICENSE file.
 
 /*
-navd is a full-node bitcoin implementation written in Go.
+navd is a full-node navcoin implementation written in Go.
 
 The default options are sane for most users.  This means navd will work 'out of
 the box' for most users.  However, there are also a wide variety of flags that
@@ -100,7 +100,7 @@ Application Options:
                             high priority for relaying
       --maxorphantx=        Max number of orphan transactions to keep in memory
                             (100)
-      --generate            Generate (mine) bitcoins using the CPU
+      --generate            Generate (mine) navcoins using the CPU
       --miningaddr=         Add the specified payment address to the list of
                             addresses to use for generated blocks -- At least
                             one address is required if the generate option is

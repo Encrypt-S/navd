@@ -35,7 +35,7 @@ func TestServiceFlagStringer(t *testing.T) {
 	}
 }
 
-// TestBitcoinNetStringer tests the stringized output for bitcoin net types.
+// TestBitcoinNetStringer tests the stringized output for navcoin net types.
 func TestBitcoinNetStringer(t *testing.T) {
 	tests := []struct {
 		in   BitcoinNet

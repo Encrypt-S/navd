@@ -426,7 +426,7 @@ func calcHashOutputs(tx *wire.MsgTx) chainhash.Hash {
 
 // calcWitnessSignatureHash computes the sighash digest of a transaction's
 // segwit input using the new, optimized digest calculation algorithm defined
-// in BIP0143: https://github.com/bitcoin/bips/blob/master/bip-0143.mediawiki.
+// in BIP0143: https://github.com/navcoin/bips/blob/master/bip-0143.mediawiki.
 // This function makes use of pre-calculated sighash fragments stored within
 // the passed HashCache to eliminate duplicate hashing computations when
 // calculating the final digest, reducing the complexity from O(N^2) to O(N).

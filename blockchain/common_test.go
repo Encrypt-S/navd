@@ -57,8 +57,8 @@ func isSupportedDbType(dbType string) bool {
 	return false
 }
 
-// loadBlocks reads files containing bitcoin block data (gzipped but otherwise
-// in the format bitcoind writes) from disk and returns them as an array of
+// loadBlocks reads files containing navcoin block data (gzipped but otherwise
+// in the format navcoind writes) from disk and returns them as an array of
 // navutil.Block.  This is largely borrowed from the test code in navdb.
 func loadBlocks(filename string) (blocks []*navutil.Block, err error) {
 	filename = filepath.Join("testdata/", filename)

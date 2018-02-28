@@ -17,7 +17,7 @@ const (
 	MaxCFilterDataSize = 256 * 1024
 )
 
-// MsgCFilter implements the Message interface and represents a bitcoin cfilter
+// MsgCFilter implements the Message interface and represents a navcoin cfilter
 // message. It is used to deliver a committed filter in response to a
 // getcfilter (MsgGetCFilter) message.
 type MsgCFilter struct {
@@ -26,7 +26,7 @@ type MsgCFilter struct {
 	Data       []byte
 }
 
-// BtcDecode decodes r using the bitcoin protocol encoding into the receiver.
+// BtcDecode decodes r using the navcoin protocol encoding into the receiver.
 // This is part of the Message interface implementation.
 func (msg *MsgCFilter) BtcDecode(r io.Reader, pver uint32, _ MessageEncoding) error {
 	// Read the hash of the filter's block
@@ -45,7 +45,7 @@ func (msg *MsgCFilter) BtcDecode(r io.Reader, pver uint32, _ MessageEncoding) er
 	return err
 }
 
-// BtcEncode encodes the receiver to w using the bitcoin protocol encoding.
+// BtcEncode encodes the receiver to w using the navcoin protocol encoding.
 // This is part of the Message interface implementation.
 func (msg *MsgCFilter) BtcEncode(w io.Writer, pver uint32, _ MessageEncoding) error {
 	size := len(msg.Data)
@@ -70,7 +70,7 @@ func (msg *MsgCFilter) BtcEncode(w io.Writer, pver uint32, _ MessageEncoding) er
 
 // Deserialize decodes a filter from r into the receiver using a format that is
 // suitable for long-term storage such as a database. This function differs
-// from BtcDecode in that BtcDecode decodes from the bitcoin wire protocol as
+// from BtcDecode in that BtcDecode decodes from the navcoin wire protocol as
 // it was sent across the network.  The wire encoding can technically differ
 // depending on the protocol version and doesn't even really need to match the
 // format of a stored filter at all. As of the time this comment was written,
@@ -97,7 +97,7 @@ func (msg *MsgCFilter) MaxPayloadLength(pver uint32) uint32 {
 		MaxCFilterDataSize + chainhash.HashSize + 1
 }
 
-// NewMsgCFilter returns a new bitcoin cfilter message that conforms to the
+// NewMsgCFilter returns a new navcoin cfilter message that conforms to the
 // Message interface. See MsgCFilter for details.
 func NewMsgCFilter(blockHash *chainhash.Hash, filterType FilterType,
 	data []byte) *MsgCFilter {

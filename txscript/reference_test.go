@@ -816,7 +816,7 @@ testloop:
 
 // TestCalcSignatureHash runs the Bitcoin Core signature hash calculation tests
 // in sighash.json.
-// https://github.com/bitcoin/bitcoin/blob/master/src/test/data/sighash.json
+// https://github.com/navcoin/navcoin/blob/master/src/test/data/sighash.json
 func TestCalcSignatureHash(t *testing.T) {
 	file, err := ioutil.ReadFile("data/sighash.json")
 	if err != nil {

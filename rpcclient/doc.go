@@ -8,10 +8,10 @@ Package rpcclient implements a websocket-enabled Bitcoin JSON-RPC client.
 Overview
 
 This client provides a robust and easy to use client for interfacing with a
-Bitcoin RPC server that uses a navd/bitcoin core compatible Bitcoin JSON-RPC
+Bitcoin RPC server that uses a navd/navcoin core compatible Bitcoin JSON-RPC
 API.  This client has been tested with navd (https://github.com/aguycalled/navd),
 btcwallet (https://github.com/btcsuite/btcwallet), and
-bitcoin core (https://github.com/bitcoin).
+navcoin core (https://github.com/navcoin).
 
 In addition to the compatible standard HTTP POST JSON-RPC API, navd and
 btcwallet provide a websocket interface that is more efficient than the standard
@@ -21,7 +21,7 @@ between HTTP POST and websockets.
 By default, this client assumes the RPC server supports websockets and has
 TLS enabled.  In practice, this currently means it assumes you are talking to
 navd or btcwallet by default.  However, configuration options are provided to
-fall back to HTTP POST and disable TLS to support talking with inferior bitcoin
+fall back to HTTP POST and disable TLS to support talking with inferior navcoin
 core style RPC servers.
 
 Websockets vs HTTP POST
@@ -163,8 +163,8 @@ Example Usage
 
 The following full-blown client examples are in the examples directory:
 
- - bitcoincorehttp
-   Connects to a bitcoin core RPC server using HTTP POST mode with TLS disabled
+ - navcoincorehttp
+   Connects to a navcoin core RPC server using HTTP POST mode with TLS disabled
    and gets the current block count
  - navdwebsockets
    Connects to a navd RPC server using TLS-secured websockets, registers for

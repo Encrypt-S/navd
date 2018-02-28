@@ -9,12 +9,12 @@
 
 ### 1. What is bootstrap.dat?
 
-It is a flat, binary file containing bitcoin blockchain data starting from the
+It is a flat, binary file containing navcoin blockchain data starting from the
 genesis block and continuing through a relatively recent block height depending
 on the last time it was updated.
 
-See [this](https://bitcointalk.org/index.php?topic=145386.0) thread on
-bitcointalk for more details.
+See [this](https://navcointalk.org/index.php?topic=145386.0) thread on
+navcointalk for more details.
 
 **NOTE:** Using bootstrap.dat is entirely optional.  Btcd will download the
 block chain from other peers through the Bitcoin protocol with no extra
@@ -42,7 +42,7 @@ Cons:
 ### 3. Where do I get bootstrap.dat?
 
 The bootstrap.dat file is made available via a torrent.  See
-[this](https://bitcointalk.org/index.php?topic=145386.0) thread on bitcointalk
+[this](https://navcointalk.org/index.php?topic=145386.0) thread on navcointalk
 for the torrent download details.
 
 <a name="Trust" />

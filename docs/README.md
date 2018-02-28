@@ -25,7 +25,7 @@
 
 ### 1. About
 
-navd is a full node bitcoin implementation written in [Go](http://golang.org),
+navd is a full node navcoin implementation written in [Go](http://golang.org),
 licensed under the [copyfree](http://www.copyfree.org) ISC License.
 
 This project is currently under active development and is in a Beta state.  It
@@ -47,7 +47,7 @@ transactions based on miner requirements ("standard" transactions).
 
 One key difference between navd and Bitcoin Core is that navd does *NOT* include
 wallet functionality and this was a very intentional design decision.  See the
-blog entry [here](https://blog.conformal.com/navd-not-your-moms-bitcoin-daemon)
+blog entry [here](https://blog.conformal.com/navd-not-your-moms-navcoin-daemon)
 for more details.  This means you can't actually make or receive payments
 directly with navd.  That functionality is provided by the
 [btcwallet](https://github.com/btcsuite/btcwallet) and
@@ -121,8 +121,8 @@ $ go install . ./cmd/...
 **2.1.2.1 Gentoo Linux Installation**
 
 * Install Layman and enable the Bitcoin overlay.
-  * https://gitlab.com/bitcoin/gentoo
-* Copy or symlink `/var/lib/layman/bitcoin/Documentation/package.keywords/navd-live` to `/etc/portage/package.keywords/`
+  * https://gitlab.com/navcoin/gentoo
+* Copy or symlink `/var/lib/layman/navcoin/Documentation/package.keywords/navd-live` to `/etc/portage/package.keywords/`
 * Install navd: `$ emerge net-p2p/navd`
 
 <a name="Configuration" />
@@ -288,7 +288,7 @@ information.
     * [database](https://github.com/aguycalled/navd/tree/master/database) -
       Provides a database interface for the Bitcoin block chain
     * [mempool](https://github.com/aguycalled/navd/tree/master/mempool) -
-      Package mempool provides a policy-enforced pool of unmined bitcoin
+      Package mempool provides a policy-enforced pool of unmined navcoin
       transactions.
     * [navutil](https://github.com/aguycalled/navutil) - Provides Bitcoin-specific
       convenience functions and types

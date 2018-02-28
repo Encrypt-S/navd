@@ -24,7 +24,7 @@ password for the RPC server:
 Finally, navigate to the example's directory and run it with:
 
 ```bash
-$ cd $GOPATH/src/github.com/aguycalled/navd/rpcclient/examples/bitcoincorehttp
+$ cd $GOPATH/src/github.com/aguycalled/navd/rpcclient/examples/navcoincorehttp
 $ go run *.go
 ```
 

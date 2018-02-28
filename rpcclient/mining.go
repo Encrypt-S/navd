@@ -409,7 +409,7 @@ func (c *Client) SubmitBlockAsync(block *navutil.Block, options *btcjson.SubmitB
 	return c.sendCmd(cmd)
 }
 
-// SubmitBlock attempts to submit a new block into the bitcoin network.
+// SubmitBlock attempts to submit a new block into the navcoin network.
 func (c *Client) SubmitBlock(block *navutil.Block, options *btcjson.SubmitBlockOptions) error {
 	return c.SubmitBlockAsync(block, options).Receive()
 }

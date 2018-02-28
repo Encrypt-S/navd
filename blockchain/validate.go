@@ -227,7 +227,7 @@ func CheckTransactionSanity(tx *navutil.Tx) error {
 	// output must not be negative or more than the max allowed per
 	// transaction.  Also, the total of all outputs must abide by the same
 	// restrictions.  All amounts in a transaction are in a unit value known
-	// as a satoshi.  One bitcoin is a quantity of satoshi as defined by the
+	// as a satoshi.  One navcoin is a quantity of satoshi as defined by the
 	// SatoshiPerBitcoin constant.
 	var totalSatoshi int64
 	for _, txOut := range msgTx.TxOut {
@@ -864,7 +864,7 @@ func (b *BlockChain) checkBIP0030(node *blockNode, block *navutil.Block, view *U
 // requirements are met, detecting double spends, validating all values and fees
 // are in the legal range and the total output amount doesn't exceed the input
 // amount, and verifying the signatures to prove the spender was the owner of
-// the bitcoins and therefore allowed to spend them.  As it checks the inputs,
+// the navcoins and therefore allowed to spend them.  As it checks the inputs,
 // it also calculates the total fees for the transaction and returns that value.
 //
 // NOTE: The transaction MUST have already been sanity checked with the
@@ -911,7 +911,7 @@ func CheckTransactionInputs(tx *navutil.Tx, txHeight int32, utxoView *UtxoViewpo
 		// output values of the input transactions must not be negative
 		// or more than the max allowed per transaction.  All amounts in
 		// a transaction are in a unit value known as a satoshi.  One
-		// bitcoin is a quantity of satoshi as defined by the
+		// navcoin is a quantity of satoshi as defined by the
 		// SatoshiPerBitcoin constant.
 		originTxSatoshi := utxoEntry.AmountByIndex(originTxIndex)
 		if originTxSatoshi < 0 {
@@ -958,7 +958,7 @@ func CheckTransactionInputs(tx *navutil.Tx, txHeight int32, utxoView *UtxoViewpo
 		return 0, ruleError(ErrSpendTooHigh, str)
 	}
 
-	// NOTE: bitcoind checks if the transaction fees are < 0 here, but that
+	// NOTE: navcoind checks if the transaction fees are < 0 here, but that
 	// is an impossible condition because of the check above that ensures
 	// the inputs are >= the outputs.
 	txFeeInSatoshi := totalSatoshiIn - totalSatoshiOut

@@ -312,11 +312,11 @@ func NewAlertFromPayload(serializedPayload []byte, pver uint32) (*Alert, error) 
 	return &alert, nil
 }
 
-// MsgAlert  implements the Message interface and defines a bitcoin alert
+// MsgAlert  implements the Message interface and defines a navcoin alert
 // message.
 //
 // This is a signed message that provides notifications that the client should
-// display if the signature matches the key.  bitcoind/bitcoin-qt only checks
+// display if the signature matches the key.  navcoind/navcoin-qt only checks
 // against a signature from the core developers.
 type MsgAlert struct {
 	// SerializedPayload is the alert payload serialized as a string so that the
@@ -331,7 +331,7 @@ type MsgAlert struct {
 	Payload *Alert
 }
 
-// BtcDecode decodes r using the bitcoin protocol encoding into the receiver.
+// BtcDecode decodes r using the navcoin protocol encoding into the receiver.
 // This is part of the Message interface implementation.
 func (msg *MsgAlert) BtcDecode(r io.Reader, pver uint32, enc MessageEncoding) error {
 	var err error
@@ -352,7 +352,7 @@ func (msg *MsgAlert) BtcDecode(r io.Reader, pver uint32, enc MessageEncoding) er
 	return err
 }
 
-// BtcEncode encodes the receiver to w using the bitcoin protocol encoding.
+// BtcEncode encodes the receiver to w using the navcoin protocol encoding.
 // This is part of the Message interface implementation.
 func (msg *MsgAlert) BtcEncode(w io.Writer, pver uint32, enc MessageEncoding) error {
 	var err error
@@ -396,7 +396,7 @@ func (msg *MsgAlert) MaxPayloadLength(pver uint32) uint32 {
 	return MaxMessagePayload
 }
 
-// NewMsgAlert returns a new bitcoin alert message that conforms to the Message
+// NewMsgAlert returns a new navcoin alert message that conforms to the Message
 // interface.  See MsgAlert for details.
 func NewMsgAlert(serializedPayload []byte, signature []byte) *MsgAlert {
 	return &MsgAlert{

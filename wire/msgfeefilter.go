@@ -9,7 +9,7 @@ import (
 	"io"
 )
 
-// MsgFeeFilter implements the Message interface and represents a bitcoin
+// MsgFeeFilter implements the Message interface and represents a navcoin
 // feefilter message.  It is used to request the receiving peer does not
 // announce any transactions below the specified minimum fee rate.
 //
@@ -19,7 +19,7 @@ type MsgFeeFilter struct {
 	MinFee int64
 }
 
-// BtcDecode decodes r using the bitcoin protocol encoding into the receiver.
+// BtcDecode decodes r using the navcoin protocol encoding into the receiver.
 // This is part of the Message interface implementation.
 func (msg *MsgFeeFilter) BtcDecode(r io.Reader, pver uint32, enc MessageEncoding) error {
 	if pver < FeeFilterVersion {
@@ -31,7 +31,7 @@ func (msg *MsgFeeFilter) BtcDecode(r io.Reader, pver uint32, enc MessageEncoding
 	return readElement(r, &msg.MinFee)
 }
 
-// BtcEncode encodes the receiver to w using the bitcoin protocol encoding.
+// BtcEncode encodes the receiver to w using the navcoin protocol encoding.
 // This is part of the Message interface implementation.
 func (msg *MsgFeeFilter) BtcEncode(w io.Writer, pver uint32, enc MessageEncoding) error {
 	if pver < FeeFilterVersion {
@@ -55,7 +55,7 @@ func (msg *MsgFeeFilter) MaxPayloadLength(pver uint32) uint32 {
 	return 8
 }
 
-// NewMsgFeeFilter returns a new bitcoin feefilter message that conforms to
+// NewMsgFeeFilter returns a new navcoin feefilter message that conforms to
 // the Message interface.  See MsgFeeFilter for details.
 func NewMsgFeeFilter(minfee int64) *MsgFeeFilter {
 	return &MsgFeeFilter{

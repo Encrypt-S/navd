@@ -928,8 +928,8 @@ func initS256() {
 		panic(err)
 	}
 
-	// Next 6 constants are from Hal Finney's bitcointalk.org post:
-	// https://bitcointalk.org/index.php?topic=3238.msg45565#msg45565
+	// Next 6 constants are from Hal Finney's navcointalk.org post:
+	// https://navcointalk.org/index.php?topic=3238.msg45565#msg45565
 	// May he rest in peace.
 	//
 	// They have also been independently derived from the code in the

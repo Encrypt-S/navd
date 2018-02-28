@@ -10,13 +10,13 @@ import "io"
 type MsgGetCFTypes struct {
 }
 
-// BtcDecode decodes the receiver from w using the bitcoin protocol encoding.
+// BtcDecode decodes the receiver from w using the navcoin protocol encoding.
 // This is part of the Message interface implementation.
 func (msg *MsgGetCFTypes) BtcDecode(r io.Reader, pver uint32, _ MessageEncoding) error {
 	return nil
 }
 
-// BtcEncode encodes the receiver to w using the bitcoin protocol encoding.
+// BtcEncode encodes the receiver to w using the navcoin protocol encoding.
 // This is part of the Message interface implementation.
 func (msg *MsgGetCFTypes) BtcEncode(w io.Writer, pver uint32, _ MessageEncoding) error {
 	return nil
@@ -35,7 +35,7 @@ func (msg *MsgGetCFTypes) MaxPayloadLength(pver uint32) uint32 {
 	return 0
 }
 
-// NewMsgGetCFTypes returns a new bitcoin getcftypes message that conforms to
+// NewMsgGetCFTypes returns a new navcoin getcftypes message that conforms to
 // the Message interface.
 func NewMsgGetCFTypes() *MsgGetCFTypes {
 	return &MsgGetCFTypes{}

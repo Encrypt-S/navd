@@ -763,7 +763,7 @@ func createTxRawResult(chainParams *chaincfg.Params, mtx *wire.MsgTx,
 	}
 
 	if blkHeader != nil {
-		// This is not a typo, they are identical in bitcoind as well.
+		// This is not a typo, they are identical in navcoind as well.
 		txReply.Time = blkHeader.Timestamp.Unix()
 		txReply.Blocktime = blkHeader.Timestamp.Unix()
 		txReply.BlockHash = blkHash
@@ -3329,7 +3329,7 @@ func handleSendRawTransaction(s *rpcServer, cmd interface{}, closeChan <-chan st
 		// so log it as such.  Otherwise, something really did go wrong,
 		// so log it as an actual error.  In both cases, a JSON-RPC
 		// error is returned to the client with the deserialization
-		// error code (to match bitcoind behavior).
+		// error code (to match navcoind behavior).
 		if _, ok := err.(mempool.RuleError); ok {
 			rpcsLog.Debugf("Rejected transaction %v: %v", tx.Hash(),
 				err)

@@ -49,7 +49,7 @@ they follow the guidelines set forth on this page.  That said, if you don't have
 the following basic qualifications you will likely find it quite difficult to
 contribute.
 
-- A reasonable understanding of bitcoin at a high level (see the
+- A reasonable understanding of navcoin at a high level (see the
   [Required Reading](#ReqReading) section for the original white paper)
 - Experience in some type of C-like language
 - An understanding of data structures and their performance implications
@@ -71,7 +71,7 @@ security and performance implications.
 - [Effective Go](http://golang.org/doc/effective_go.html) - The entire navd
   suite follows the guidelines in this document.  For your code to be accepted,
   it must follow the guidelines therein.
-- [Original Satoshi Whitepaper](http://www.google.com/url?sa=t&rct=j&q=&esrc=s&source=web&cd=1&cad=rja&ved=0CCkQFjAA&url=http%3A%2F%2Fbitcoin.org%2Fbitcoin.pdf&ei=os3VUuH8G4SlsASV74GoAg&usg=AFQjCNEipPLigou_1MfB7DQjXCNdlylrBg&sig2=FaHDuT5z36GMWDEnybDJLg&bvm=bv.59378465,d.b2I) - This is the white paper that started it all.  Having a solid
+- [Original Satoshi Whitepaper](http://www.google.com/url?sa=t&rct=j&q=&esrc=s&source=web&cd=1&cad=rja&ved=0CCkQFjAA&url=http%3A%2F%2Fnavcoin.org%2Fnavcoin.pdf&ei=os3VUuH8G4SlsASV74GoAg&usg=AFQjCNEipPLigou_1MfB7DQjXCNdlylrBg&sig2=FaHDuT5z36GMWDEnybDJLg&bvm=bv.59378465,d.b2I) - This is the white paper that started it all.  Having a solid
   foundation to build on will make the code much more comprehensible.
 
 <a name="DevelopmentPractices" />
@@ -175,9 +175,9 @@ func CompactToBig(compact uint32) *big.Int {
 // The formula to calculate N is:
 //         N = (-1^sign) * mantissa * 256^(exponent-3)
 //
-// This compact form is only used in bitcoin to encode unsigned 256-bit numbers
+// This compact form is only used in navcoin to encode unsigned 256-bit numbers
 // which represent difficulty targets, thus there really is not a need for a
-// sign bit, but it is implemented here to stay consistent with bitcoind.
+// sign bit, but it is implemented here to stay consistent with navcoind.
 func CompactToBig(compact uint32) *big.Int {
 ```
 - Comments in the body of the code are highly encouraged, but they should

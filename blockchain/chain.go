@@ -84,7 +84,7 @@ func newBestState(node *blockNode, blockSize, blockWeight, numTxns,
 	}
 }
 
-// BlockChain provides functions for working with the bitcoin block chain.
+// BlockChain provides functions for working with the navcoin block chain.
 // It includes functionality such as rejecting duplicate blocks, ensuring blocks
 // follow all rules, orphan handling, checkpoint handling, and best chain
 // selection with reorganization.
@@ -470,7 +470,7 @@ func (b *BlockChain) calcSequenceLock(node *blockNode, tx *navutil.Tx, utxoView 
 
 // LockTimeToSequence converts the passed relative locktime to a sequence
 // number in accordance to BIP-68.
-// See: https://github.com/bitcoin/bips/blob/master/bip-0068.mediawiki
+// See: https://github.com/navcoin/bips/blob/master/bip-0068.mediawiki
 //  * (Compatibility)
 func LockTimeToSequence(isSeconds bool, locktime uint32) uint32 {
 	// If we're expressing the relative lock time in blocks, then the

@@ -53,7 +53,7 @@ const (
 	FeeFilterVersion uint32 = 70013
 )
 
-// ServiceFlag identifies services supported by a bitcoin peer.
+// ServiceFlag identifies services supported by a navcoin peer.
 type ServiceFlag uint64
 
 const (
@@ -138,15 +138,15 @@ func (f ServiceFlag) String() string {
 	return s
 }
 
-// BitcoinNet represents which bitcoin network a message belongs to.
+// BitcoinNet represents which navcoin network a message belongs to.
 type BitcoinNet uint32
 
-// Constants used to indicate the message bitcoin network.  They can also be
+// Constants used to indicate the message navcoin network.  They can also be
 // used to seek to the next message when a stream's state is unknown, but
 // this package does not provide that functionality since it's generally a
 // better idea to simply disconnect clients that are misbehaving over TCP.
 const (
-	// MainNet represents the main bitcoin network.
+	// MainNet represents the main navcoin network.
 	MainNet BitcoinNet = 0xd9b4bef9
 
 	// TestNet represents the regression test network.
@@ -159,7 +159,7 @@ const (
 	SimNet BitcoinNet = 0x12141c16
 )
 
-// bnStrings is a map of bitcoin networks back to their constant names for
+// bnStrings is a map of navcoin networks back to their constant names for
 // pretty printing.
 var bnStrings = map[BitcoinNet]string{
 	MainNet:  "MainNet",

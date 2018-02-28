@@ -36,7 +36,7 @@ func decompressPoint(curve *KoblitzCurve, x *big.Int, ybit bool) (*big.Int, erro
 	// now calculate sqrt mod p of x2 + B
 	// This code used to do a full sqrt based on tonelli/shanks,
 	// but this was replaced by the algorithms referenced in
-	// https://bitcointalk.org/index.php?topic=162805.msg1712294#msg1712294
+	// https://navcointalk.org/index.php?topic=162805.msg1712294#msg1712294
 	y := new(big.Int).Exp(x3, curve.QPlus1Div4(), curve.Params().P)
 
 	if ybit != isOdd(y) {
