@@ -7,13 +7,13 @@ package main
 import (
 	"sync/atomic"
 
-	"github.com/roasbeef/btcd/blockchain"
-	"github.com/roasbeef/btcd/chaincfg/chainhash"
-	"github.com/roasbeef/btcd/mempool"
-	"github.com/roasbeef/btcd/netsync"
-	"github.com/roasbeef/btcd/peer"
-	"github.com/roasbeef/btcd/wire"
-	"github.com/roasbeef/btcutil"
+	"github.com/aguycalled/navd/blockchain"
+	"github.com/aguycalled/navd/chaincfg/chainhash"
+	"github.com/aguycalled/navd/mempool"
+	"github.com/aguycalled/navd/netsync"
+	"github.com/aguycalled/navd/peer"
+	"github.com/aguycalled/navd/wire"
+	"github.com/aguycalled/navutil"
 )
 
 // rpcPeer provides a peer for use with the RPC server and implements the
@@ -247,7 +247,7 @@ func (b *rpcSyncMgr) IsCurrent() bool {
 //
 // This function is safe for concurrent access and is part of the
 // rpcserverSyncManager interface implementation.
-func (b *rpcSyncMgr) SubmitBlock(block *btcutil.Block, flags blockchain.BehaviorFlags) (bool, error) {
+func (b *rpcSyncMgr) SubmitBlock(block *navutil.Block, flags blockchain.BehaviorFlags) (bool, error) {
 	return b.syncMgr.ProcessBlock(block, flags)
 }
 

@@ -25,8 +25,8 @@
 //          "fmt"
 //          "log"
 //
-//          "github.com/roasbeef/btcutil"
-//          "github.com/roasbeef/btcd/chaincfg"
+//          "github.com/aguycalled/navutil"
+//          "github.com/aguycalled/navd/chaincfg"
 //  )
 //
 //  var testnet = flag.Bool("testnet", false, "operate on the testnet Bitcoin network")
@@ -46,7 +46,7 @@
 //
 //          // Create and print new payment address, specific to the active network.
 //          pubKeyHash := make([]byte, 20)
-//          addr, err := btcutil.NewAddressPubKeyHash(pubKeyHash, chainParams)
+//          addr, err := navutil.NewAddressPubKeyHash(pubKeyHash, chainParams)
 //          if err != nil {
 //                  log.Fatal(err)
 //          }

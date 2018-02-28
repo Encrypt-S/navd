@@ -8,7 +8,7 @@ import (
 	"reflect"
 	"testing"
 
-	"github.com/roasbeef/btcd/btcjson"
+	"github.com/aguycalled/navd/btcjson"
 )
 
 // TestHelpers tests the various helper functions which create pointers to

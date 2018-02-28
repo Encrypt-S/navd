@@ -8,7 +8,7 @@ import (
 	"math/big"
 	"time"
 
-	"github.com/roasbeef/btcd/chaincfg/chainhash"
+	"github.com/aguycalled/navd/chaincfg/chainhash"
 )
 
 var (

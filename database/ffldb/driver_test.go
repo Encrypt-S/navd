@@ -12,10 +12,10 @@ import (
 	"runtime"
 	"testing"
 
-	"github.com/roasbeef/btcd/chaincfg"
-	"github.com/roasbeef/btcd/database"
-	"github.com/roasbeef/btcd/database/ffldb"
-	"github.com/roasbeef/btcutil"
+	"github.com/aguycalled/navd/chaincfg"
+	"github.com/aguycalled/navd/database"
+	"github.com/aguycalled/navd/database/ffldb"
+	"github.com/aguycalled/navutil"
 )
 
 // dbType is the database type name for this driver.
@@ -171,7 +171,7 @@ func TestPersistence(t *testing.T) {
 		"b1key2": "foo2",
 		"b1key3": "foo3",
 	}
-	genesisBlock := btcutil.NewBlock(chaincfg.MainNetParams.GenesisBlock)
+	genesisBlock := navutil.NewBlock(chaincfg.MainNetParams.GenesisBlock)
 	genesisHash := chaincfg.MainNetParams.GenesisHash
 	err = db.Update(func(tx database.Tx) error {
 		metadataBucket := tx.Metadata()

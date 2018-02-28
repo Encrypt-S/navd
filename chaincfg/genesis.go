@@ -7,8 +7,8 @@ package chaincfg
 import (
 	"time"
 
-	"github.com/roasbeef/btcd/chaincfg/chainhash"
-	"github.com/roasbeef/btcd/wire"
+	"github.com/aguycalled/navd/chaincfg/chainhash"
+	"github.com/aguycalled/navd/wire"
 )
 
 // genesisCoinbaseTx is the coinbase transaction for the genesis blocks for

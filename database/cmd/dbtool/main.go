@@ -10,13 +10,13 @@ import (
 	"runtime"
 	"strings"
 
-	"github.com/roasbeef/btcd/database"
+	"github.com/aguycalled/navd/database"
 	"github.com/btcsuite/btclog"
 	flags "github.com/jessevdk/go-flags"
 )
 
 const (
-	// blockDbNamePrefix is the prefix for the btcd block database.
+	// blockDbNamePrefix is the prefix for the navd block database.
 	blockDbNamePrefix = "blocks"
 )
 

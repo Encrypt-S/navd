@@ -11,7 +11,7 @@ import (
 	"testing"
 	"time"
 
-	"github.com/roasbeef/btcd/chaincfg/chainhash"
+	"github.com/aguycalled/navd/chaincfg/chainhash"
 	"github.com/davecgh/go-spew/spew"
 )
 
@@ -166,7 +166,7 @@ func TestBlockWire(t *testing.T) {
 			MultipleAddressVersion,
 			BaseEncoding,
 		},
-		// TODO(roasbeef): add case for witnessy block
+		// TODO(aguycalled): add case for witnessy block
 	}
 
 	t.Logf("Running %d tests", len(tests))

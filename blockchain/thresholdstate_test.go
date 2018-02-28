@@ -7,7 +7,7 @@ package blockchain
 import (
 	"testing"
 
-	"github.com/roasbeef/btcd/chaincfg/chainhash"
+	"github.com/aguycalled/navd/chaincfg/chainhash"
 )
 
 // TestThresholdStateStringer tests the stringized output for the
