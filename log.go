@@ -23,7 +23,7 @@ import (
 	"github.com/aguycalled/navd/peer"
 	"github.com/aguycalled/navd/txscript"
 
-	"github.com/btcsuite/navlog"
+	"github.com/aguycalled/navlog"
 	"github.com/jrick/logrotate/rotator"
 )
 

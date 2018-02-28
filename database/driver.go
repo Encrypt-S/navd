@@ -7,7 +7,7 @@ package database
 import (
 	"fmt"
 
-	"github.com/btcsuite/navlog"
+	"github.com/aguycalled/navlog"
 )
 
 // Driver defines a structure for backend drivers to use when they registered

@@ -5,7 +5,7 @@
 package blockchain
 
 import (
-	"github.com/btcsuite/navlog"
+	"github.com/aguycalled/navlog"
 )
 
 // log is a logger that is initialized with no output filters.  This

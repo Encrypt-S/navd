@@ -13,7 +13,7 @@ import (
 	"github.com/aguycalled/navd/blockchain/indexers"
 	"github.com/aguycalled/navd/database"
 	"github.com/aguycalled/navd/limits"
-	"github.com/btcsuite/navlog"
+	"github.com/aguycalled/navlog"
 )
 
 const (

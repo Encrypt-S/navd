@@ -8,7 +8,7 @@ import (
 	"sync"
 	"time"
 
-	"github.com/btcsuite/navlog"
+	"github.com/aguycalled/navlog"
 	"github.com/aguycalled/navutil"
 )
 

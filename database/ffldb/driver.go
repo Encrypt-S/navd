@@ -9,7 +9,7 @@ import (
 
 	"github.com/aguycalled/navd/database"
 	"github.com/aguycalled/navd/wire"
-	"github.com/btcsuite/navlog"
+	"github.com/aguycalled/navlog"
 )
 
 var log = navlog.Disabled
