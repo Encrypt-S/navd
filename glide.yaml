@@ -2,7 +2,6 @@ package: github.com/aguycalled/navd
 import:
 - package: github.com/aguycalled/navlog
 - package: github.com/aguycalled/navutil
-  version: c3ff179366044979fb9856c2feb79bd4c2184c7a
   subpackages:
   - bloom
   - hdkeychain
