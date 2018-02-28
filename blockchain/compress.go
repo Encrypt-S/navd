@@ -5,7 +5,7 @@
 package blockchain
 
 import (
-	"github.com/aguycalled/navd/navec"
+	"github.com/aguycalled/navd/btcec"
 	"github.com/aguycalled/navd/txscript"
 )
 
@@ -218,7 +218,7 @@ func isPubKey(script []byte) (bool, []byte) {
 
 		// Ensure the public key is valid.
 		serializedPubKey := script[1:34]
-		_, err := navec.ParsePubKey(serializedPubKey, navec.S256())
+		_, err := btcec.ParsePubKey(serializedPubKey, btcec.S256())
 		if err == nil {
 			return true, serializedPubKey
 		}
@@ -230,7 +230,7 @@ func isPubKey(script []byte) (bool, []byte) {
 
 		// Ensure the public key is valid.
 		serializedPubKey := script[1:66]
-		_, err := navec.ParsePubKey(serializedPubKey, navec.S256())
+		_, err := btcec.ParsePubKey(serializedPubKey, btcec.S256())
 		if err == nil {
 			return true, serializedPubKey
 		}
@@ -399,7 +399,7 @@ func decompressScript(compressedPkScript []byte, version int32) []byte {
 		compressedKey := make([]byte, 33)
 		compressedKey[0] = byte(encodedScriptSize - 2)
 		copy(compressedKey[1:], compressedPkScript[1:])
-		key, err := navec.ParsePubKey(compressedKey, navec.S256())
+		key, err := btcec.ParsePubKey(compressedKey, btcec.S256())
 		if err != nil {
 			return nil
 		}

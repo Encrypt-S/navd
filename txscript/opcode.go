@@ -14,7 +14,7 @@ import (
 
 	"golang.org/x/crypto/ripemd160"
 
-	"github.com/aguycalled/navd/navec"
+	"github.com/aguycalled/navd/btcec"
 	"github.com/aguycalled/navd/chaincfg/chainhash"
 	"github.com/aguycalled/navd/wire"
 )
@@ -2111,19 +2111,19 @@ func opcodeCheckSig(op *parsedOpcode, vm *Engine) error {
 		hash = calcSignatureHash(subScript, hashType, &vm.tx, vm.txIdx)
 	}
 
-	pubKey, err := navec.ParsePubKey(pkBytes, navec.S256())
+	pubKey, err := btcec.ParsePubKey(pkBytes, btcec.S256())
 	if err != nil {
 		vm.dstack.PushBool(false)
 		return nil
 	}
 
-	var signature *navec.Signature
+	var signature *btcec.Signature
 	if vm.hasFlag(ScriptVerifyStrictEncoding) ||
 		vm.hasFlag(ScriptVerifyDERSignatures) {
 
-		signature, err = navec.ParseDERSignature(sigBytes, navec.S256())
+		signature, err = btcec.ParseDERSignature(sigBytes, btcec.S256())
 	} else {
-		signature, err = navec.ParseSignature(sigBytes, navec.S256())
+		signature, err = btcec.ParseSignature(sigBytes, btcec.S256())
 	}
 	if err != nil {
 		vm.dstack.PushBool(false)
@@ -2171,7 +2171,7 @@ func opcodeCheckSigVerify(op *parsedOpcode, vm *Engine) error {
 // the same signature multiple times when verifying a multisig.
 type parsedSigInfo struct {
 	signature       []byte
-	parsedSignature *navec.Signature
+	parsedSignature *btcec.Signature
 	parsed          bool
 }
 
@@ -2316,7 +2316,7 @@ func opcodeCheckMultiSig(op *parsedOpcode, vm *Engine) error {
 		signature := rawSig[:len(rawSig)-1]
 
 		// Only parse and check the signature encoding once.
-		var parsedSig *navec.Signature
+		var parsedSig *btcec.Signature
 		if !sigInfo.parsed {
 			if err := vm.checkHashTypeEncoding(hashType); err != nil {
 				return err
@@ -2330,11 +2330,11 @@ func opcodeCheckMultiSig(op *parsedOpcode, vm *Engine) error {
 			if vm.hasFlag(ScriptVerifyStrictEncoding) ||
 				vm.hasFlag(ScriptVerifyDERSignatures) {
 
-				parsedSig, err = navec.ParseDERSignature(signature,
-					navec.S256())
+				parsedSig, err = btcec.ParseDERSignature(signature,
+					btcec.S256())
 			} else {
-				parsedSig, err = navec.ParseSignature(signature,
-					navec.S256())
+				parsedSig, err = btcec.ParseSignature(signature,
+					btcec.S256())
 			}
 			sigInfo.parsed = true
 			if err != nil {
@@ -2356,7 +2356,7 @@ func opcodeCheckMultiSig(op *parsedOpcode, vm *Engine) error {
 		}
 
 		// Parse the pubkey.
-		parsedPubKey, err := navec.ParsePubKey(pubKey, navec.S256())
+		parsedPubKey, err := btcec.ParsePubKey(pubKey, btcec.S256())
 		if err != nil {
 			continue
 		}

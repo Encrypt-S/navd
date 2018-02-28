@@ -270,7 +270,7 @@ information.
 * The btcsuite Navcoin-related Go Packages:
     * [navrpcclient](https://github.com/btcsuite/navrpcclient) - Implements a
       robust and easy to use Websocket-enabled Navcoin JSON-RPC client
-    * [navjson](https://github.com/btcsuite/navjson) - Provides an extensive API
+    * [btcjson](https://github.com/btcsuite/btcjson) - Provides an extensive API
       for the underlying JSON-RPC command and return values
     * [wire](https://github.com/aguycalled/navd/tree/master/wire) - Implements the
       Navcoin wire protocol
@@ -282,7 +282,7 @@ information.
       Provides a set of block tests for testing the consensus validation rules
     * [txscript](https://github.com/aguycalled/navd/tree/master/txscript) -
       Implements the Navcoin transaction scripting language
-    * [navec](https://github.com/aguycalled/navd/tree/master/navec) - Implements
+    * [btcec](https://github.com/aguycalled/navd/tree/master/btcec) - Implements
       support for the elliptic curve cryptographic functions needed for the
       Navcoin scripts
     * [database](https://github.com/aguycalled/navd/tree/master/database) -

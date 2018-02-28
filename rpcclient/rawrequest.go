@@ -8,7 +8,7 @@ import (
 	"encoding/json"
 	"errors"
 
-	"github.com/aguycalled/navd/navjson"
+	"github.com/aguycalled/navd/btcjson"
 )
 
 // FutureRawResult is a future promise to deliver the result of a RawRequest RPC
@@ -40,10 +40,10 @@ func (c *Client) RawRequestAsync(method string, params []json.RawMessage) Future
 
 	// Create a raw JSON-RPC request using the provided method and params
 	// and marshal it.  This is done rather than using the sendCmd function
-	// since that relies on marshalling registered navjson commands rather
+	// since that relies on marshalling registered btcjson commands rather
 	// than custom commands.
 	id := c.NextID()
-	rawRequest := &navjson.Request{
+	rawRequest := &btcjson.Request{
 		Jsonrpc: "1.0",
 		ID:      id,
 		Method:  method,

@@ -9,7 +9,7 @@ import (
 	"fmt"
 	"testing"
 
-	"github.com/aguycalled/navd/navec"
+	"github.com/aguycalled/navd/btcec"
 	"github.com/aguycalled/navd/chaincfg"
 	"github.com/aguycalled/navd/chaincfg/chainhash"
 	"github.com/aguycalled/navd/wire"
@@ -17,18 +17,18 @@ import (
 )
 
 type addressToKey struct {
-	key        *navec.PrivateKey
+	key        *btcec.PrivateKey
 	compressed bool
 }
 
 func mkGetKey(keys map[string]addressToKey) KeyDB {
 	if keys == nil {
-		return KeyClosure(func(addr navutil.Address) (*navec.PrivateKey,
+		return KeyClosure(func(addr navutil.Address) (*btcec.PrivateKey,
 			bool, error) {
 			return nil, false, errors.New("nope")
 		})
 	}
-	return KeyClosure(func(addr navutil.Address) (*navec.PrivateKey,
+	return KeyClosure(func(addr navutil.Address) (*btcec.PrivateKey,
 		bool, error) {
 		a2k, ok := keys[addr.EncodeAddress()]
 		if !ok {
@@ -143,14 +143,14 @@ func TestSignTxOutput(t *testing.T) {
 	for _, hashType := range hashTypes {
 		for i := range tx.TxIn {
 			msg := fmt.Sprintf("%d:%d", hashType, i)
-			key, err := navec.NewPrivateKey(navec.S256())
+			key, err := btcec.NewPrivateKey(btcec.S256())
 			if err != nil {
 				t.Errorf("failed to make privKey for %s: %v",
 					msg, err)
 				break
 			}
 
-			pk := (*navec.PublicKey)(&key.PublicKey).
+			pk := (*btcec.PublicKey)(&key.PublicKey).
 				SerializeUncompressed()
 			address, err := navutil.NewAddressPubKeyHash(
 				navutil.Hash160(pk), &chaincfg.TestNet3Params)
@@ -180,14 +180,14 @@ func TestSignTxOutput(t *testing.T) {
 	for _, hashType := range hashTypes {
 		for i := range tx.TxIn {
 			msg := fmt.Sprintf("%d:%d", hashType, i)
-			key, err := navec.NewPrivateKey(navec.S256())
+			key, err := btcec.NewPrivateKey(btcec.S256())
 			if err != nil {
 				t.Errorf("failed to make privKey for %s: %v",
 					msg, err)
 				break
 			}
 
-			pk := (*navec.PublicKey)(&key.PublicKey).
+			pk := (*btcec.PublicKey)(&key.PublicKey).
 				SerializeUncompressed()
 			address, err := navutil.NewAddressPubKeyHash(
 				navutil.Hash160(pk), &chaincfg.TestNet3Params)
@@ -241,14 +241,14 @@ func TestSignTxOutput(t *testing.T) {
 		for i := range tx.TxIn {
 			msg := fmt.Sprintf("%d:%d", hashType, i)
 
-			key, err := navec.NewPrivateKey(navec.S256())
+			key, err := btcec.NewPrivateKey(btcec.S256())
 			if err != nil {
 				t.Errorf("failed to make privKey for %s: %v",
 					msg, err)
 				break
 			}
 
-			pk := (*navec.PublicKey)(&key.PublicKey).
+			pk := (*btcec.PublicKey)(&key.PublicKey).
 				SerializeCompressed()
 			address, err := navutil.NewAddressPubKeyHash(
 				navutil.Hash160(pk), &chaincfg.TestNet3Params)
@@ -280,14 +280,14 @@ func TestSignTxOutput(t *testing.T) {
 		for i := range tx.TxIn {
 			msg := fmt.Sprintf("%d:%d", hashType, i)
 
-			key, err := navec.NewPrivateKey(navec.S256())
+			key, err := btcec.NewPrivateKey(btcec.S256())
 			if err != nil {
 				t.Errorf("failed to make privKey for %s: %v",
 					msg, err)
 				break
 			}
 
-			pk := (*navec.PublicKey)(&key.PublicKey).
+			pk := (*btcec.PublicKey)(&key.PublicKey).
 				SerializeCompressed()
 			address, err := navutil.NewAddressPubKeyHash(
 				navutil.Hash160(pk), &chaincfg.TestNet3Params)
@@ -342,14 +342,14 @@ func TestSignTxOutput(t *testing.T) {
 		for i := range tx.TxIn {
 			msg := fmt.Sprintf("%d:%d", hashType, i)
 
-			key, err := navec.NewPrivateKey(navec.S256())
+			key, err := btcec.NewPrivateKey(btcec.S256())
 			if err != nil {
 				t.Errorf("failed to make privKey for %s: %v",
 					msg, err)
 				break
 			}
 
-			pk := (*navec.PublicKey)(&key.PublicKey).
+			pk := (*btcec.PublicKey)(&key.PublicKey).
 				SerializeUncompressed()
 			address, err := navutil.NewAddressPubKey(pk,
 				&chaincfg.TestNet3Params)
@@ -381,14 +381,14 @@ func TestSignTxOutput(t *testing.T) {
 		for i := range tx.TxIn {
 			msg := fmt.Sprintf("%d:%d", hashType, i)
 
-			key, err := navec.NewPrivateKey(navec.S256())
+			key, err := btcec.NewPrivateKey(btcec.S256())
 			if err != nil {
 				t.Errorf("failed to make privKey for %s: %v",
 					msg, err)
 				break
 			}
 
-			pk := (*navec.PublicKey)(&key.PublicKey).
+			pk := (*btcec.PublicKey)(&key.PublicKey).
 				SerializeUncompressed()
 			address, err := navutil.NewAddressPubKey(pk,
 				&chaincfg.TestNet3Params)
@@ -442,14 +442,14 @@ func TestSignTxOutput(t *testing.T) {
 		for i := range tx.TxIn {
 			msg := fmt.Sprintf("%d:%d", hashType, i)
 
-			key, err := navec.NewPrivateKey(navec.S256())
+			key, err := btcec.NewPrivateKey(btcec.S256())
 			if err != nil {
 				t.Errorf("failed to make privKey for %s: %v",
 					msg, err)
 				break
 			}
 
-			pk := (*navec.PublicKey)(&key.PublicKey).
+			pk := (*btcec.PublicKey)(&key.PublicKey).
 				SerializeCompressed()
 			address, err := navutil.NewAddressPubKey(pk,
 				&chaincfg.TestNet3Params)
@@ -481,14 +481,14 @@ func TestSignTxOutput(t *testing.T) {
 		for i := range tx.TxIn {
 			msg := fmt.Sprintf("%d:%d", hashType, i)
 
-			key, err := navec.NewPrivateKey(navec.S256())
+			key, err := btcec.NewPrivateKey(btcec.S256())
 			if err != nil {
 				t.Errorf("failed to make privKey for %s: %v",
 					msg, err)
 				break
 			}
 
-			pk := (*navec.PublicKey)(&key.PublicKey).
+			pk := (*btcec.PublicKey)(&key.PublicKey).
 				SerializeCompressed()
 			address, err := navutil.NewAddressPubKey(pk,
 				&chaincfg.TestNet3Params)
@@ -543,14 +543,14 @@ func TestSignTxOutput(t *testing.T) {
 	for _, hashType := range hashTypes {
 		for i := range tx.TxIn {
 			msg := fmt.Sprintf("%d:%d", hashType, i)
-			key, err := navec.NewPrivateKey(navec.S256())
+			key, err := btcec.NewPrivateKey(btcec.S256())
 			if err != nil {
 				t.Errorf("failed to make privKey for %s: %v",
 					msg, err)
 				break
 			}
 
-			pk := (*navec.PublicKey)(&key.PublicKey).
+			pk := (*btcec.PublicKey)(&key.PublicKey).
 				SerializeUncompressed()
 			address, err := navutil.NewAddressPubKeyHash(
 				navutil.Hash160(pk), &chaincfg.TestNet3Params)
@@ -600,14 +600,14 @@ func TestSignTxOutput(t *testing.T) {
 	for _, hashType := range hashTypes {
 		for i := range tx.TxIn {
 			msg := fmt.Sprintf("%d:%d", hashType, i)
-			key, err := navec.NewPrivateKey(navec.S256())
+			key, err := btcec.NewPrivateKey(btcec.S256())
 			if err != nil {
 				t.Errorf("failed to make privKey for %s: %v",
 					msg, err)
 				break
 			}
 
-			pk := (*navec.PublicKey)(&key.PublicKey).
+			pk := (*btcec.PublicKey)(&key.PublicKey).
 				SerializeUncompressed()
 			address, err := navutil.NewAddressPubKeyHash(
 				navutil.Hash160(pk), &chaincfg.TestNet3Params)
@@ -683,14 +683,14 @@ func TestSignTxOutput(t *testing.T) {
 		for i := range tx.TxIn {
 			msg := fmt.Sprintf("%d:%d", hashType, i)
 
-			key, err := navec.NewPrivateKey(navec.S256())
+			key, err := btcec.NewPrivateKey(btcec.S256())
 			if err != nil {
 				t.Errorf("failed to make privKey for %s: %v",
 					msg, err)
 				break
 			}
 
-			pk := (*navec.PublicKey)(&key.PublicKey).
+			pk := (*btcec.PublicKey)(&key.PublicKey).
 				SerializeCompressed()
 			address, err := navutil.NewAddressPubKeyHash(
 				navutil.Hash160(pk), &chaincfg.TestNet3Params)
@@ -740,14 +740,14 @@ func TestSignTxOutput(t *testing.T) {
 		for i := range tx.TxIn {
 			msg := fmt.Sprintf("%d:%d", hashType, i)
 
-			key, err := navec.NewPrivateKey(navec.S256())
+			key, err := btcec.NewPrivateKey(btcec.S256())
 			if err != nil {
 				t.Errorf("failed to make privKey for %s: %v",
 					msg, err)
 				break
 			}
 
-			pk := (*navec.PublicKey)(&key.PublicKey).
+			pk := (*btcec.PublicKey)(&key.PublicKey).
 				SerializeCompressed()
 			address, err := navutil.NewAddressPubKeyHash(
 				navutil.Hash160(pk), &chaincfg.TestNet3Params)
@@ -822,14 +822,14 @@ func TestSignTxOutput(t *testing.T) {
 		for i := range tx.TxIn {
 			msg := fmt.Sprintf("%d:%d", hashType, i)
 
-			key, err := navec.NewPrivateKey(navec.S256())
+			key, err := btcec.NewPrivateKey(btcec.S256())
 			if err != nil {
 				t.Errorf("failed to make privKey for %s: %v",
 					msg, err)
 				break
 			}
 
-			pk := (*navec.PublicKey)(&key.PublicKey).
+			pk := (*btcec.PublicKey)(&key.PublicKey).
 				SerializeUncompressed()
 			address, err := navutil.NewAddressPubKey(pk,
 				&chaincfg.TestNet3Params)
@@ -879,14 +879,14 @@ func TestSignTxOutput(t *testing.T) {
 		for i := range tx.TxIn {
 			msg := fmt.Sprintf("%d:%d", hashType, i)
 
-			key, err := navec.NewPrivateKey(navec.S256())
+			key, err := btcec.NewPrivateKey(btcec.S256())
 			if err != nil {
 				t.Errorf("failed to make privKey for %s: %v",
 					msg, err)
 				break
 			}
 
-			pk := (*navec.PublicKey)(&key.PublicKey).
+			pk := (*btcec.PublicKey)(&key.PublicKey).
 				SerializeUncompressed()
 			address, err := navutil.NewAddressPubKey(pk,
 				&chaincfg.TestNet3Params)
@@ -960,14 +960,14 @@ func TestSignTxOutput(t *testing.T) {
 		for i := range tx.TxIn {
 			msg := fmt.Sprintf("%d:%d", hashType, i)
 
-			key, err := navec.NewPrivateKey(navec.S256())
+			key, err := btcec.NewPrivateKey(btcec.S256())
 			if err != nil {
 				t.Errorf("failed to make privKey for %s: %v",
 					msg, err)
 				break
 			}
 
-			pk := (*navec.PublicKey)(&key.PublicKey).
+			pk := (*btcec.PublicKey)(&key.PublicKey).
 				SerializeCompressed()
 			address, err := navutil.NewAddressPubKey(pk,
 				&chaincfg.TestNet3Params)
@@ -1016,14 +1016,14 @@ func TestSignTxOutput(t *testing.T) {
 		for i := range tx.TxIn {
 			msg := fmt.Sprintf("%d:%d", hashType, i)
 
-			key, err := navec.NewPrivateKey(navec.S256())
+			key, err := btcec.NewPrivateKey(btcec.S256())
 			if err != nil {
 				t.Errorf("failed to make privKey for %s: %v",
 					msg, err)
 				break
 			}
 
-			pk := (*navec.PublicKey)(&key.PublicKey).
+			pk := (*btcec.PublicKey)(&key.PublicKey).
 				SerializeCompressed()
 			address, err := navutil.NewAddressPubKey(pk,
 				&chaincfg.TestNet3Params)
@@ -1097,14 +1097,14 @@ func TestSignTxOutput(t *testing.T) {
 		for i := range tx.TxIn {
 			msg := fmt.Sprintf("%d:%d", hashType, i)
 
-			key1, err := navec.NewPrivateKey(navec.S256())
+			key1, err := btcec.NewPrivateKey(btcec.S256())
 			if err != nil {
 				t.Errorf("failed to make privKey for %s: %v",
 					msg, err)
 				break
 			}
 
-			pk1 := (*navec.PublicKey)(&key1.PublicKey).
+			pk1 := (*btcec.PublicKey)(&key1.PublicKey).
 				SerializeCompressed()
 			address1, err := navutil.NewAddressPubKey(pk1,
 				&chaincfg.TestNet3Params)
@@ -1114,14 +1114,14 @@ func TestSignTxOutput(t *testing.T) {
 				break
 			}
 
-			key2, err := navec.NewPrivateKey(navec.S256())
+			key2, err := btcec.NewPrivateKey(btcec.S256())
 			if err != nil {
 				t.Errorf("failed to make privKey 2 for %s: %v",
 					msg, err)
 				break
 			}
 
-			pk2 := (*navec.PublicKey)(&key2.PublicKey).
+			pk2 := (*btcec.PublicKey)(&key2.PublicKey).
 				SerializeCompressed()
 			address2, err := navutil.NewAddressPubKey(pk2,
 				&chaincfg.TestNet3Params)
@@ -1173,14 +1173,14 @@ func TestSignTxOutput(t *testing.T) {
 		for i := range tx.TxIn {
 			msg := fmt.Sprintf("%d:%d", hashType, i)
 
-			key1, err := navec.NewPrivateKey(navec.S256())
+			key1, err := btcec.NewPrivateKey(btcec.S256())
 			if err != nil {
 				t.Errorf("failed to make privKey for %s: %v",
 					msg, err)
 				break
 			}
 
-			pk1 := (*navec.PublicKey)(&key1.PublicKey).
+			pk1 := (*btcec.PublicKey)(&key1.PublicKey).
 				SerializeCompressed()
 			address1, err := navutil.NewAddressPubKey(pk1,
 				&chaincfg.TestNet3Params)
@@ -1190,14 +1190,14 @@ func TestSignTxOutput(t *testing.T) {
 				break
 			}
 
-			key2, err := navec.NewPrivateKey(navec.S256())
+			key2, err := btcec.NewPrivateKey(btcec.S256())
 			if err != nil {
 				t.Errorf("failed to make privKey 2 for %s: %v",
 					msg, err)
 				break
 			}
 
-			pk2 := (*navec.PublicKey)(&key2.PublicKey).
+			pk2 := (*btcec.PublicKey)(&key2.PublicKey).
 				SerializeCompressed()
 			address2, err := navutil.NewAddressPubKey(pk2,
 				&chaincfg.TestNet3Params)
@@ -1279,14 +1279,14 @@ func TestSignTxOutput(t *testing.T) {
 		for i := range tx.TxIn {
 			msg := fmt.Sprintf("%d:%d", hashType, i)
 
-			key1, err := navec.NewPrivateKey(navec.S256())
+			key1, err := btcec.NewPrivateKey(btcec.S256())
 			if err != nil {
 				t.Errorf("failed to make privKey for %s: %v",
 					msg, err)
 				break
 			}
 
-			pk1 := (*navec.PublicKey)(&key1.PublicKey).
+			pk1 := (*btcec.PublicKey)(&key1.PublicKey).
 				SerializeCompressed()
 			address1, err := navutil.NewAddressPubKey(pk1,
 				&chaincfg.TestNet3Params)
@@ -1296,14 +1296,14 @@ func TestSignTxOutput(t *testing.T) {
 				break
 			}
 
-			key2, err := navec.NewPrivateKey(navec.S256())
+			key2, err := btcec.NewPrivateKey(btcec.S256())
 			if err != nil {
 				t.Errorf("failed to make privKey 2 for %s: %v",
 					msg, err)
 				break
 			}
 
-			pk2 := (*navec.PublicKey)(&key2.PublicKey).
+			pk2 := (*btcec.PublicKey)(&key2.PublicKey).
 				SerializeCompressed()
 			address2, err := navutil.NewAddressPubKey(pk2,
 				&chaincfg.TestNet3Params)
@@ -1635,7 +1635,7 @@ var sigScriptTests = []tstSigScript{
 func TestSignatureScript(t *testing.T) {
 	t.Parallel()
 
-	privKey, _ := navec.PrivKeyFromBytes(navec.S256(), privKeyD)
+	privKey, _ := btcec.PrivKeyFromBytes(btcec.S256(), privKeyD)
 
 nexttest:
 	for i := range sigScriptTests {

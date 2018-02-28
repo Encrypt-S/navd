@@ -13,7 +13,7 @@ import (
 	"time"
 
 	"github.com/aguycalled/navd/blockchain"
-	"github.com/aguycalled/navd/navec"
+	"github.com/aguycalled/navd/btcec"
 	"github.com/aguycalled/navd/chaincfg"
 	"github.com/aguycalled/navd/chaincfg/chainhash"
 	"github.com/aguycalled/navd/txscript"
@@ -129,7 +129,7 @@ type poolHarness struct {
 	//
 	// payAddr is the p2sh address for the signing key and is used for the
 	// payment address throughout the tests.
-	signKey     *navec.PrivateKey
+	signKey     *btcec.PrivateKey
 	payAddr     navutil.Address
 	payScript   []byte
 	chainParams *chaincfg.Params
@@ -280,7 +280,7 @@ func newPoolHarness(chainParams *chaincfg.Params) (*poolHarness, []spendableOutp
 	if err != nil {
 		return nil, nil, err
 	}
-	signKey, signPub := navec.PrivKeyFromBytes(navec.S256(), keyBytes)
+	signKey, signPub := btcec.PrivKeyFromBytes(btcec.S256(), keyBytes)
 
 	// Generate associated pay-to-script-hash address and resulting payment
 	// script.

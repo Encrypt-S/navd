@@ -15,7 +15,7 @@ import (
 	"time"
 
 	"github.com/aguycalled/navd/blockchain"
-	"github.com/aguycalled/navd/navec"
+	"github.com/aguycalled/navd/btcec"
 	"github.com/aguycalled/navd/chaincfg"
 	"github.com/aguycalled/navd/chaincfg/chainhash"
 	"github.com/aguycalled/navd/integration/rpctest"
@@ -31,11 +31,11 @@ const (
 // makeTestOutput creates an on-chain output paying to a freshly generated
 // p2pkh output with the specified amount.
 func makeTestOutput(r *rpctest.Harness, t *testing.T,
-	amt navutil.Amount) (*navec.PrivateKey, *wire.OutPoint, []byte, error) {
+	amt navutil.Amount) (*btcec.PrivateKey, *wire.OutPoint, []byte, error) {
 
 	// Create a fresh key, then send some coins to an address spendable by
 	// that key.
-	key, err := navec.NewPrivateKey(navec.S256())
+	key, err := btcec.NewPrivateKey(btcec.S256())
 	if err != nil {
 		return nil, nil, nil, err
 	}
