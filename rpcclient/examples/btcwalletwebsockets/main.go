@@ -27,8 +27,8 @@ func main() {
 		},
 	}
 
-	// Connect to local btcwallet RPC server using websockets.
-	certHomeDir := navutil.AppDataDir("btcwallet", false)
+	// Connect to local navwallet RPC server using websockets.
+	certHomeDir := navutil.AppDataDir("navwallet", false)
 	certs, err := ioutil.ReadFile(filepath.Join(certHomeDir, "rpc.cert"))
 	if err != nil {
 		log.Fatal(err)

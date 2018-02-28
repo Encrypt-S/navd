@@ -14,7 +14,7 @@ supported navcoin messages to and from the wire.  This package does not deal
 with the specifics of message handling such as what to do when a message is
 received.  This provides the caller with a high level of flexibility.
 
-Bitcoin Message Overview
+Navcoin Message Overview
 
 The navcoin protocol consists of exchanging messages between peers.  Each
 message is preceded by a header which identifies information about it such as
@@ -77,7 +77,7 @@ latest protocol version this package supports and is typically the value to use
 for all outbound connections before a potentially lower protocol version is
 negotiated.
 
-Bitcoin Network
+Navcoin Network
 
 The navcoin network is a magic number which is used to identify the start of a
 message and which navcoin network the message applies to.  This package provides
@@ -113,10 +113,10 @@ function.  It accepts any io.Reader, but typically this will be a net.Conn to
 a remote node running a navcoin peer.  Example syntax is:
 
 	// Reads and validates the next navcoin message from conn using the
-	// protocol version pver and the navcoin network btcnet.  The returns
+	// protocol version pver and the navcoin network navnet.  The returns
 	// are a wire.Message, a []byte which contains the unmarshalled
 	// raw payload, and a possible error.
-	msg, rawPayload, err := wire.ReadMessage(conn, pver, btcnet)
+	msg, rawPayload, err := wire.ReadMessage(conn, pver, navnet)
 	if err != nil {
 		// Log and handle the error
 	}
@@ -132,9 +132,9 @@ from a remote peer is:
 	msg := wire.NewMsgGetAddr()
 
 	// Writes a navcoin message msg to conn using the protocol version
-	// pver, and the navcoin network btcnet.  The return is a possible
+	// pver, and the navcoin network navnet.  The return is a possible
 	// error.
-	err := wire.WriteMessage(conn, msg, pver, btcnet)
+	err := wire.WriteMessage(conn, msg, pver, navnet)
 	if err != nil {
 		// Log and handle the error
 	}
@@ -147,7 +147,7 @@ io.ErrShortWrite, or of type wire.MessageError.  This allows the caller to
 differentiate between general IO errors and malformed messages through type
 assertions.
 
-Bitcoin Improvement Proposals
+Navcoin Improvement Proposals
 
 This package includes spec changes outlined by the following BIPs:
 

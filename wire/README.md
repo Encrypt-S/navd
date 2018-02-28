@@ -17,7 +17,7 @@ Package wire implements the navcoin wire protocol.  A comprehensive suite of
 tests with 100% test coverage is provided to ensure proper functionality.
 
 There is an associated blog post about the release of this package
-[here](https://blog.conformal.com/btcwire-the-navcoin-wire-protocol-package-from-navd/).
+[here](https://blog.conformal.com/navwire-the-navcoin-wire-protocol-package-from-navd/).
 
 This package has intentionally been designed so it can be used as a standalone
 package for any projects needing to interface with navcoin peers at the wire
@@ -29,7 +29,7 @@ protocol level.
 $ go get -u github.com/aguycalled/navd/wire
 ```
 
-## Bitcoin Message Overview
+## Navcoin Message Overview
 
 The navcoin protocol consists of exchanging messages between peers. Each message
 is preceded by a header which identifies information about it such as which
@@ -55,13 +55,13 @@ to a remote node running a navcoin peer.  Example syntax is:
 	// Use the most recent protocol version supported by the package and the
 	// main navcoin network.
 	pver := wire.ProtocolVersion
-	btcnet := wire.MainNet
+	navnet := wire.MainNet
 
 	// Reads and validates the next navcoin message from conn using the
-	// protocol version pver and the navcoin network btcnet.  The returns
+	// protocol version pver and the navcoin network navnet.  The returns
 	// are a wire.Message, a []byte which contains the unmarshalled
 	// raw payload, and a possible error.
-	msg, rawPayload, err := wire.ReadMessage(conn, pver, btcnet)
+	msg, rawPayload, err := wire.ReadMessage(conn, pver, navnet)
 	if err != nil {
 		// Log and handle the error
 	}
@@ -80,15 +80,15 @@ from a remote peer is:
 	// Use the most recent protocol version supported by the package and the
 	// main navcoin network.
 	pver := wire.ProtocolVersion
-	btcnet := wire.MainNet
+	navnet := wire.MainNet
 
 	// Create a new getaddr navcoin message.
 	msg := wire.NewMsgGetAddr()
 
 	// Writes a navcoin message msg to conn using the protocol version
-	// pver, and the navcoin network btcnet.  The return is a possible
+	// pver, and the navcoin network navnet.  The return is a possible
 	// error.
-	err := wire.WriteMessage(conn, msg, pver, btcnet)
+	err := wire.WriteMessage(conn, msg, pver, navnet)
 	if err != nil {
 		// Log and handle the error
 	}

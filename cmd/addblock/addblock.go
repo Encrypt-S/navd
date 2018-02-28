@@ -13,7 +13,7 @@ import (
 	"github.com/aguycalled/navd/blockchain/indexers"
 	"github.com/aguycalled/navd/database"
 	"github.com/aguycalled/navd/limits"
-	"github.com/btcsuite/btclog"
+	"github.com/btcsuite/navlog"
 )
 
 const (
@@ -23,7 +23,7 @@ const (
 
 var (
 	cfg *config
-	log btclog.Logger
+	log navlog.Logger
 )
 
 // loadBlockDB opens the block database and returns a handle to it.
@@ -69,7 +69,7 @@ func realMain() error {
 	cfg = tcfg
 
 	// Setup logging.
-	backendLogger := btclog.NewBackend(os.Stdout)
+	backendLogger := navlog.NewBackend(os.Stdout)
 	defer os.Stdout.Sync()
 	log = backendLogger.Logger("MAIN")
 	database.UseLogger(backendLogger.Logger("BCDB"))

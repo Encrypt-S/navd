@@ -11,7 +11,7 @@ import (
 	"sync"
 
 	"github.com/aguycalled/navd/blockchain"
-	"github.com/aguycalled/navd/btcec"
+	"github.com/aguycalled/navd/navec"
 	"github.com/aguycalled/navd/chaincfg"
 	"github.com/aguycalled/navd/chaincfg/chainhash"
 	"github.com/aguycalled/navd/rpcclient"
@@ -71,7 +71,7 @@ type undoEntry struct {
 // wallet functionality to the harness. The wallet uses a hard-coded HD key
 // hierarchy which promotes reproducibility between harness test runs.
 type memWallet struct {
-	coinbaseKey  *btcec.PrivateKey
+	coinbaseKey  *navec.PrivateKey
 	coinbaseAddr navutil.Address
 
 	// hdRoot is the root master private key for the wallet.
@@ -560,7 +560,7 @@ func (m *memWallet) ConfirmedBalance() navutil.Amount {
 }
 
 // keyToAddr maps the passed private to corresponding p2pkh address.
-func keyToAddr(key *btcec.PrivateKey, net *chaincfg.Params) (navutil.Address, error) {
+func keyToAddr(key *navec.PrivateKey, net *chaincfg.Params) (navutil.Address, error) {
 	serializedKey := key.PubKey().SerializeCompressed()
 	pubKeyAddr, err := navutil.NewAddressPubKey(serializedKey, net)
 	if err != nil {

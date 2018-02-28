@@ -6,7 +6,7 @@
         2. [Linux/BSD/MacOSX/POSIX](#PosixInstallation)
           1. [Gentoo Linux](#GentooInstallation)
     2. [Configuration](#Configuration)
-    3. [Controlling and Querying navd via btcctl](#BtcctlConfig)
+    3. [Controlling and Querying navd via navctl](#BtcctlConfig)
     4. [Mining](#Mining)
 3. [Help](#Help)
     1. [Startup](#Startup)
@@ -19,7 +19,7 @@
 5. [Developer Resources](#DeveloperResources)
     1. [Code Contribution Guidelines](#ContributionGuidelines)
     2. [JSON-RPC Reference](#JSONRPCReference)
-    3. [The btcsuite Bitcoin-related Go Packages](#GoPackages)
+    3. [The btcsuite Navcoin-related Go Packages](#GoPackages)
 
 <a name="About" />
 
@@ -32,12 +32,12 @@ This project is currently under active development and is in a Beta state.  It
 is extremely stable and has been in production use since October 2013.
 
 It properly downloads, validates, and serves the block chain using the exact
-rules (including consensus bugs) for block acceptance as Bitcoin Core.  We have
+rules (including consensus bugs) for block acceptance as Navcoin Core.  We have
 taken great care to avoid navd causing a fork to the block chain.  It includes a
 full block validation testing framework which contains all of the 'official'
 block acceptance tests (and some additional ones) that is run on every pull
 request to help ensure it properly follows consensus.  Also, it passes all of
-the JSON test data in the Bitcoin Core code.
+the JSON test data in the Navcoin Core code.
 
 It also properly relays newly mined blocks, maintains a transaction pool, and
 relays individual transactions that have not yet made it into a block.  It
@@ -45,12 +45,12 @@ ensures all individual transactions admitted to the pool follow the rules
 required by the block chain and also includes more strict checks which filter
 transactions based on miner requirements ("standard" transactions).
 
-One key difference between navd and Bitcoin Core is that navd does *NOT* include
+One key difference between navd and Navcoin Core is that navd does *NOT* include
 wallet functionality and this was a very intentional design decision.  See the
 blog entry [here](https://blog.conformal.com/navd-not-your-moms-navcoin-daemon)
 for more details.  This means you can't actually make or receive payments
 directly with navd.  That functionality is provided by the
-[btcwallet](https://github.com/btcsuite/btcwallet) and
+[navwallet](https://github.com/aguycalled/navwallet) and
 [Paymetheus](https://github.com/btcsuite/Paymetheus) (Windows-only) projects
 which are both under active development.
 
@@ -120,7 +120,7 @@ $ go install . ./cmd/...
 
 **2.1.2.1 Gentoo Linux Installation**
 
-* Install Layman and enable the Bitcoin overlay.
+* Install Layman and enable the Navcoin overlay.
   * https://gitlab.com/navcoin/gentoo
 * Copy or symlink `/var/lib/layman/navcoin/Documentation/package.keywords/navd-live` to `/etc/portage/package.keywords/`
 * Install navd: `$ emerge net-p2p/navd`
@@ -134,9 +134,9 @@ options, which can be viewed by running: `$ navd --help`.
 
 <a name="BtcctlConfig" />
 
-**2.3 Controlling and Querying navd via btcctl**
+**2.3 Controlling and Querying navd via navctl**
 
-btcctl is a command line utility that can be used to both control and query navd
+navctl is a command line utility that can be used to both control and query navd
 via [RPC](http://www.wikipedia.org/wiki/Remote_procedure_call).  navd does
 **not** enable its RPC server by default;  You must configure at minimum both an
 RPC username and password or both an RPC limited username and password:
@@ -149,7 +149,7 @@ rpcpass=SomeDecentp4ssw0rd
 rpclimituser=mylimituser
 rpclimitpass=Limitedp4ssw0rd
 ```
-* btcctl.conf configuration file
+* navctl.conf configuration file
 ```
 [Application Options]
 rpcuser=myuser
@@ -161,7 +161,7 @@ OR
 rpclimituser=mylimituser
 rpclimitpass=Limitedp4ssw0rd
 ```
-For a list of available options, run: `$ btcctl --help`
+For a list of available options, run: `$ navctl --help`
 
 <a name="Mining" />
 
@@ -229,7 +229,7 @@ configuration necessary, however, there is an optional method to use a
 **3.1 Wallet**
 
 navd was intentionally developed without an integrated wallet for security
-reasons.  Please see [btcwallet](https://github.com/btcsuite/btcwallet) for more
+reasons.  Please see [navwallet](https://github.com/aguycalled/navwallet) for more
 information.
 
 
@@ -267,33 +267,33 @@ information.
 
 <a name="GoPackages" />
 
-* The btcsuite Bitcoin-related Go Packages:
-    * [btcrpcclient](https://github.com/btcsuite/btcrpcclient) - Implements a
-      robust and easy to use Websocket-enabled Bitcoin JSON-RPC client
-    * [btcjson](https://github.com/btcsuite/btcjson) - Provides an extensive API
+* The btcsuite Navcoin-related Go Packages:
+    * [navrpcclient](https://github.com/btcsuite/navrpcclient) - Implements a
+      robust and easy to use Websocket-enabled Navcoin JSON-RPC client
+    * [navjson](https://github.com/btcsuite/navjson) - Provides an extensive API
       for the underlying JSON-RPC command and return values
     * [wire](https://github.com/aguycalled/navd/tree/master/wire) - Implements the
-      Bitcoin wire protocol
+      Navcoin wire protocol
     * [peer](https://github.com/aguycalled/navd/tree/master/peer) -
-      Provides a common base for creating and managing Bitcoin network peers.
+      Provides a common base for creating and managing Navcoin network peers.
     * [blockchain](https://github.com/aguycalled/navd/tree/master/blockchain) -
-      Implements Bitcoin block handling and chain selection rules
+      Implements Navcoin block handling and chain selection rules
     * [blockchain/fullblocktests](https://github.com/aguycalled/navd/tree/master/blockchain/fullblocktests) -
       Provides a set of block tests for testing the consensus validation rules
     * [txscript](https://github.com/aguycalled/navd/tree/master/txscript) -
-      Implements the Bitcoin transaction scripting language
-    * [btcec](https://github.com/aguycalled/navd/tree/master/btcec) - Implements
+      Implements the Navcoin transaction scripting language
+    * [navec](https://github.com/aguycalled/navd/tree/master/navec) - Implements
       support for the elliptic curve cryptographic functions needed for the
-      Bitcoin scripts
+      Navcoin scripts
     * [database](https://github.com/aguycalled/navd/tree/master/database) -
-      Provides a database interface for the Bitcoin block chain
+      Provides a database interface for the Navcoin block chain
     * [mempool](https://github.com/aguycalled/navd/tree/master/mempool) -
       Package mempool provides a policy-enforced pool of unmined navcoin
       transactions.
-    * [navutil](https://github.com/aguycalled/navutil) - Provides Bitcoin-specific
+    * [navutil](https://github.com/aguycalled/navutil) - Provides Navcoin-specific
       convenience functions and types
     * [chainhash](https://github.com/aguycalled/navd/tree/master/chaincfg/chainhash) -
       Provides a generic hash type and associated functions that allows the
       specific hash algorithm to be abstracted.
     * [connmgr](https://github.com/aguycalled/navd/tree/master/connmgr) -
-      Package connmgr implements a generic Bitcoin network connection manager.
+      Package connmgr implements a generic Navcoin network connection manager.

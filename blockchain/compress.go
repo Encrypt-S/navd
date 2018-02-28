@@ -5,7 +5,7 @@
 package blockchain
 
 import (
-	"github.com/aguycalled/navd/btcec"
+	"github.com/aguycalled/navd/navec"
 	"github.com/aguycalled/navd/txscript"
 )
 
@@ -109,7 +109,7 @@ func deserializeVLQ(serialized []byte) (uint64, int) {
 // In order to reduce the size of stored scripts, a domain specific compression
 // algorithm is used which recognizes standard scripts and stores them using
 // less bytes than the original script.  The compression algorithm used here was
-// obtained from Bitcoin Core, so all credits for the algorithm go to it.
+// obtained from Navcoin Core, so all credits for the algorithm go to it.
 //
 // The general serialized format is:
 //
@@ -218,7 +218,7 @@ func isPubKey(script []byte) (bool, []byte) {
 
 		// Ensure the public key is valid.
 		serializedPubKey := script[1:34]
-		_, err := btcec.ParsePubKey(serializedPubKey, btcec.S256())
+		_, err := navec.ParsePubKey(serializedPubKey, navec.S256())
 		if err == nil {
 			return true, serializedPubKey
 		}
@@ -230,7 +230,7 @@ func isPubKey(script []byte) (bool, []byte) {
 
 		// Ensure the public key is valid.
 		serializedPubKey := script[1:66]
-		_, err := btcec.ParsePubKey(serializedPubKey, btcec.S256())
+		_, err := navec.ParsePubKey(serializedPubKey, navec.S256())
 		if err == nil {
 			return true, serializedPubKey
 		}
@@ -399,7 +399,7 @@ func decompressScript(compressedPkScript []byte, version int32) []byte {
 		compressedKey := make([]byte, 33)
 		compressedKey[0] = byte(encodedScriptSize - 2)
 		copy(compressedKey[1:], compressedPkScript[1:])
-		key, err := btcec.ParsePubKey(compressedKey, btcec.S256())
+		key, err := navec.ParsePubKey(compressedKey, navec.S256())
 		if err != nil {
 			return nil
 		}
@@ -424,7 +424,7 @@ func decompressScript(compressedPkScript []byte, version int32) []byte {
 // In order to reduce the size of stored amounts, a domain specific compression
 // algorithm is used which relies on there typically being a lot of zeroes at
 // end of the amounts.  The compression algorithm used here was obtained from
-// Bitcoin Core, so all credits for the algorithm go to it.
+// Navcoin Core, so all credits for the algorithm go to it.
 //
 // While this is simply exchanging one uint64 for another, the resulting value
 // for typical amounts has a much smaller magnitude which results in fewer bytes

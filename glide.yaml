@@ -1,6 +1,6 @@
 package: github.com/aguycalled/navd
 import:
-- package: github.com/btcsuite/btclog
+- package: github.com/btcsuite/navlog
 - package: github.com/aguycalled/navutil
   version: c3ff179366044979fb9856c2feb79bd4c2184c7a
   subpackages:

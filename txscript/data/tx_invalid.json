@@ -49,15 +49,15 @@
 "01000000010001000000000000000000000000000000000000000000000000000000000000000000006d483045022027deccc14aa6668e78a8c9da3484fbcd4f9dcc9bb7d1b85146314b21b9ae4d86022100d0b43dece8cfb07348de0ca8bc5b86276fa88f7f2138381128b7c36ab2e42264012321029bb13463ddd5d2cc05da6e84e37536cb9525703cfd8f43afdb414988987a92f6acffffffff020040075af075070001510001000000000000015100000000", "P2SH"],
 
 ["Duplicate inputs"],
-["Removed because btcscript doesn't check input duplication, btcchain does"],
+["Removed because btcscript doesn't check input duplication, navchain does"],
 
 ["Coinbase of size 1"],
 ["Note the input is just required to make the tester happy"],
-["Removed because btcscript doesn't handle coinbase checking, btcchain does"],
+["Removed because btcscript doesn't handle coinbase checking, navchain does"],
 
 ["Coinbase of size 101"],
 ["Note the input is just required to make the tester happy"],
-["Removed because btcscript doesn't handle coinbase checking, btcchain does"],
+["Removed because btcscript doesn't handle coinbase checking, navchain does"],
 
 ["Null txin"],
 ["Removed because btcscript doesn't do tx sanity checking."],

@@ -12,7 +12,7 @@ import (
 	"encoding/json"
 	"fmt"
 
-	"github.com/aguycalled/navd/btcjson"
+	"github.com/aguycalled/navd/navjson"
 	"github.com/aguycalled/navd/chaincfg/chainhash"
 	"github.com/aguycalled/navd/wire"
 	"github.com/aguycalled/navutil"
@@ -48,7 +48,7 @@ func (r FutureDebugLevelResult) Receive() (string, error) {
 //
 // NOTE: This is a navd extension.
 func (c *Client) DebugLevelAsync(levelSpec string) FutureDebugLevelResult {
-	cmd := btcjson.NewDebugLevelCmd(levelSpec)
+	cmd := navjson.NewDebugLevelCmd(levelSpec)
 	return c.sendCmd(cmd)
 }
 
@@ -82,20 +82,20 @@ func (r FutureCreateEncryptedWalletResult) Receive() error {
 //
 // See CreateEncryptedWallet for the blocking version and more details.
 //
-// NOTE: This is a btcwallet extension.
+// NOTE: This is a navwallet extension.
 func (c *Client) CreateEncryptedWalletAsync(passphrase string) FutureCreateEncryptedWalletResult {
-	cmd := btcjson.NewCreateEncryptedWalletCmd(passphrase)
+	cmd := navjson.NewCreateEncryptedWalletCmd(passphrase)
 	return c.sendCmd(cmd)
 }
 
 // CreateEncryptedWallet requests the creation of an encrypted wallet.  Wallets
-// managed by btcwallet are only written to disk with encrypted private keys,
+// managed by navwallet are only written to disk with encrypted private keys,
 // and generating wallets on the fly is impossible as it requires user input for
 // the encryption passphrase.  This RPC specifies the passphrase and instructs
 // the wallet creation.  This may error if a wallet is already opened, or the
 // new wallet cannot be written to disk.
 //
-// NOTE: This is a btcwallet extension.
+// NOTE: This is a navwallet extension.
 func (c *Client) CreateEncryptedWallet(passphrase string) error {
 	return c.CreateEncryptedWalletAsync(passphrase).Receive()
 }
@@ -106,14 +106,14 @@ type FutureListAddressTransactionsResult chan *response
 
 // Receive waits for the response promised by the future and returns information
 // about all transactions associated with the provided addresses.
-func (r FutureListAddressTransactionsResult) Receive() ([]btcjson.ListTransactionsResult, error) {
+func (r FutureListAddressTransactionsResult) Receive() ([]navjson.ListTransactionsResult, error) {
 	res, err := receiveFuture(r)
 	if err != nil {
 		return nil, err
 	}
 
 	// Unmarshal the result as an array of listtransactions objects.
-	var transactions []btcjson.ListTransactionsResult
+	var transactions []navjson.ListTransactionsResult
 	err = json.Unmarshal(res, &transactions)
 	if err != nil {
 		return nil, err
@@ -134,15 +134,15 @@ func (c *Client) ListAddressTransactionsAsync(addresses []navutil.Address, accou
 	for _, addr := range addresses {
 		addrs = append(addrs, addr.EncodeAddress())
 	}
-	cmd := btcjson.NewListAddressTransactionsCmd(addrs, &account)
+	cmd := navjson.NewListAddressTransactionsCmd(addrs, &account)
 	return c.sendCmd(cmd)
 }
 
 // ListAddressTransactions returns information about all transactions associated
 // with the provided addresses.
 //
-// NOTE: This is a btcwallet extension.
-func (c *Client) ListAddressTransactions(addresses []navutil.Address, account string) ([]btcjson.ListTransactionsResult, error) {
+// NOTE: This is a navwallet extension.
+func (c *Client) ListAddressTransactions(addresses []navutil.Address, account string) ([]navjson.ListTransactionsResult, error) {
 	return c.ListAddressTransactionsAsync(addresses, account).Receive()
 }
 
@@ -159,7 +159,7 @@ func (r FutureGetBestBlockResult) Receive() (*chainhash.Hash, int32, error) {
 	}
 
 	// Unmarshal result as a getbestblock result object.
-	var bestBlock btcjson.GetBestBlockResult
+	var bestBlock navjson.GetBestBlockResult
 	err = json.Unmarshal(res, &bestBlock)
 	if err != nil {
 		return nil, 0, err
@@ -182,7 +182,7 @@ func (r FutureGetBestBlockResult) Receive() (*chainhash.Hash, int32, error) {
 //
 // NOTE: This is a navd extension.
 func (c *Client) GetBestBlockAsync() FutureGetBestBlockResult {
-	cmd := btcjson.NewGetBestBlockCmd()
+	cmd := navjson.NewGetBestBlockCmd()
 	return c.sendCmd(cmd)
 }
 
@@ -200,7 +200,7 @@ type FutureGetCurrentNetResult chan *response
 
 // Receive waits for the response promised by the future and returns the network
 // the server is running on.
-func (r FutureGetCurrentNetResult) Receive() (wire.BitcoinNet, error) {
+func (r FutureGetCurrentNetResult) Receive() (wire.NavcoinNet, error) {
 	res, err := receiveFuture(r)
 	if err != nil {
 		return 0, err
@@ -213,7 +213,7 @@ func (r FutureGetCurrentNetResult) Receive() (wire.BitcoinNet, error) {
 		return 0, err
 	}
 
-	return wire.BitcoinNet(net), nil
+	return wire.NavcoinNet(net), nil
 }
 
 // GetCurrentNetAsync returns an instance of a type that can be used to get the
@@ -224,14 +224,14 @@ func (r FutureGetCurrentNetResult) Receive() (wire.BitcoinNet, error) {
 //
 // NOTE: This is a navd extension.
 func (c *Client) GetCurrentNetAsync() FutureGetCurrentNetResult {
-	cmd := btcjson.NewGetCurrentNetCmd()
+	cmd := navjson.NewGetCurrentNetCmd()
 	return c.sendCmd(cmd)
 }
 
 // GetCurrentNet returns the network the server is running on.
 //
 // NOTE: This is a navd extension.
-func (c *Client) GetCurrentNet() (wire.BitcoinNet, error) {
+func (c *Client) GetCurrentNet() (wire.NavcoinNet, error) {
 	return c.GetCurrentNetAsync().Receive()
 }
 
@@ -291,7 +291,7 @@ func (c *Client) GetHeadersAsync(blockLocators []chainhash.Hash, hashStop *chain
 	if hashStop != nil {
 		hash = hashStop.String()
 	}
-	cmd := btcjson.NewGetHeadersCmd(locators, hash)
+	cmd := navjson.NewGetHeadersCmd(locators, hash)
 	return c.sendCmd(cmd)
 }
 
@@ -358,18 +358,18 @@ func (r FutureExportWatchingWalletResult) Receive() ([]byte, []byte, error) {
 //
 // See ExportWatchingWallet for the blocking version and more details.
 //
-// NOTE: This is a btcwallet extension.
+// NOTE: This is a navwallet extension.
 func (c *Client) ExportWatchingWalletAsync(account string) FutureExportWatchingWalletResult {
-	cmd := btcjson.NewExportWatchingWalletCmd(&account, btcjson.Bool(true))
+	cmd := navjson.NewExportWatchingWalletCmd(&account, navjson.Bool(true))
 	return c.sendCmd(cmd)
 }
 
 // ExportWatchingWallet returns the raw bytes for a watching-only version of
 // wallet.bin and tx.bin, respectively, for the specified account that can be
-// used by btcwallet to enable a wallet which does not have the private keys
+// used by navwallet to enable a wallet which does not have the private keys
 // necessary to spend funds.
 //
-// NOTE: This is a btcwallet extension.
+// NOTE: This is a navwallet extension.
 func (c *Client) ExportWatchingWallet(account string) ([]byte, []byte, error) {
 	return c.ExportWatchingWalletAsync(account).Receive()
 }
@@ -380,14 +380,14 @@ type FutureSessionResult chan *response
 
 // Receive waits for the response promised by the future and returns the
 // session result.
-func (r FutureSessionResult) Receive() (*btcjson.SessionResult, error) {
+func (r FutureSessionResult) Receive() (*navjson.SessionResult, error) {
 	res, err := receiveFuture(r)
 	if err != nil {
 		return nil, err
 	}
 
 	// Unmarshal result as a session result object.
-	var session btcjson.SessionResult
+	var session navjson.SessionResult
 	err = json.Unmarshal(res, &session)
 	if err != nil {
 		return nil, err
@@ -409,7 +409,7 @@ func (c *Client) SessionAsync() FutureSessionResult {
 		return newFutureError(ErrWebsocketsRequired)
 	}
 
-	cmd := btcjson.NewSessionCmd()
+	cmd := navjson.NewSessionCmd()
 	return c.sendCmd(cmd)
 }
 
@@ -418,7 +418,7 @@ func (c *Client) SessionAsync() FutureSessionResult {
 // This RPC requires the client to be running in websocket mode.
 //
 // NOTE: This is a btcsuite extension.
-func (c *Client) Session() (*btcjson.SessionResult, error) {
+func (c *Client) Session() (*navjson.SessionResult, error) {
 	return c.SessionAsync().Receive()
 }
 
@@ -434,7 +434,7 @@ type FutureVersionResult chan *response
 //
 // NOTE: This is a btcsuite extension ported from
 // github.com/decred/dcrrpcclient.
-func (r FutureVersionResult) Receive() (map[string]btcjson.VersionResult,
+func (r FutureVersionResult) Receive() (map[string]navjson.VersionResult,
 	error) {
 	res, err := receiveFuture(r)
 	if err != nil {
@@ -442,7 +442,7 @@ func (r FutureVersionResult) Receive() (map[string]btcjson.VersionResult,
 	}
 
 	// Unmarshal result as a version result object.
-	var vr map[string]btcjson.VersionResult
+	var vr map[string]navjson.VersionResult
 	err = json.Unmarshal(res, &vr)
 	if err != nil {
 		return nil, err
@@ -460,7 +460,7 @@ func (r FutureVersionResult) Receive() (map[string]btcjson.VersionResult,
 // NOTE: This is a btcsuite extension ported from
 // github.com/decred/dcrrpcclient.
 func (c *Client) VersionAsync() FutureVersionResult {
-	cmd := btcjson.NewVersionCmd()
+	cmd := navjson.NewVersionCmd()
 	return c.sendCmd(cmd)
 }
 
@@ -468,6 +468,6 @@ func (c *Client) VersionAsync() FutureVersionResult {
 //
 // NOTE: This is a btcsuite extension ported from
 // github.com/decred/dcrrpcclient.
-func (c *Client) Version() (map[string]btcjson.VersionResult, error) {
+func (c *Client) Version() (map[string]navjson.VersionResult, error) {
 	return c.VersionAsync().Receive()
 }

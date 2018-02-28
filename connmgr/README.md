@@ -7,7 +7,7 @@ connmgr
 [![GoDoc](https://img.shields.io/badge/godoc-reference-blue.svg)]
 (http://godoc.org/github.com/aguycalled/navd/connmgr)
 
-Package connmgr implements a generic Bitcoin network connection manager.
+Package connmgr implements a generic Navcoin network connection manager.
 
 ## Overview
 

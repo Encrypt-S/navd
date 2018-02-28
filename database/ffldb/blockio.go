@@ -23,7 +23,7 @@ import (
 )
 
 const (
-	// The Bitcoin protocol encodes block height as int32, so max number of
+	// The Navcoin protocol encodes block height as int32, so max number of
 	// blocks is 2^31.  Max block size per the protocol is 32MiB per block.
 	// So the theoretical max at the time this comment was written is 64PiB
 	// (pebibytes).  With files @ 512MiB each, this would require a maximum
@@ -106,7 +106,7 @@ type writeCursor struct {
 type blockStore struct {
 	// network is the specific network to use in the flat files for each
 	// block.
-	network wire.BitcoinNet
+	network wire.NavcoinNet
 
 	// basePath is the base path used for the flat block files and metadata.
 	basePath string
@@ -456,7 +456,7 @@ func (s *blockStore) writeBlock(rawBlock []byte) (blockLocation, error) {
 		wc.curFile.file = file
 	}
 
-	// Bitcoin network.
+	// Navcoin network.
 	origOffset := wc.curOffset
 	hasher := crc32.New(castagnoli)
 	var scratch [4]byte
@@ -738,7 +738,7 @@ func scanBlockFiles(dbPath string) (int, uint32) {
 
 // newBlockStore returns a new block store with the current block file number
 // and offset set and all fields initialized.
-func newBlockStore(basePath string, network wire.BitcoinNet) *blockStore {
+func newBlockStore(basePath string, network wire.NavcoinNet) *blockStore {
 	// Look for the end of the latest block to file to determine what the
 	// write cursor position is from the viewpoing of the block files on
 	// disk.

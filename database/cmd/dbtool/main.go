@@ -11,7 +11,7 @@ import (
 	"strings"
 
 	"github.com/aguycalled/navd/database"
-	"github.com/btcsuite/btclog"
+	"github.com/btcsuite/navlog"
 	flags "github.com/jessevdk/go-flags"
 )
 
@@ -21,7 +21,7 @@ const (
 )
 
 var (
-	log             btclog.Logger
+	log             navlog.Logger
 	shutdownChannel = make(chan error)
 )
 
@@ -61,11 +61,11 @@ func loadBlockDB() (database.DB, error) {
 // around the fact that deferred functions do not run when os.Exit() is called.
 func realMain() error {
 	// Setup logging.
-	backendLogger := btclog.NewBackend(os.Stdout)
+	backendLogger := navlog.NewBackend(os.Stdout)
 	defer os.Stdout.Sync()
 	log = backendLogger.Logger("MAIN")
 	dbLog := backendLogger.Logger("BCDB")
-	dbLog.SetLevel(btclog.LevelDebug)
+	dbLog.SetLevel(navlog.LevelDebug)
 	database.UseLogger(dbLog)
 
 	// Setup the parser options and commands.

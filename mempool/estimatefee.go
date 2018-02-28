@@ -47,7 +47,7 @@ const (
 
 	bytePerKb = 1000
 
-	btcPerSatoshi = 1E-8
+	navPerSatoshi = 1E-8
 )
 
 var (
@@ -70,7 +70,7 @@ func (rate SatoshiPerByte) ToBtcPerKb() BtcPerKilobyte {
 		return -1.0
 	}
 
-	return BtcPerKilobyte(float64(rate) * bytePerKb * btcPerSatoshi)
+	return BtcPerKilobyte(float64(rate) * bytePerKb * navPerSatoshi)
 }
 
 // Fee returns the fee for a transaction of a given size for

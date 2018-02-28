@@ -39,7 +39,7 @@ var (
 
 // loadBlocks loads the blocks contained in the testdata directory and returns
 // a slice of them.
-func loadBlocks(t *testing.T, dataFile string, network wire.BitcoinNet) ([]*navutil.Block, error) {
+func loadBlocks(t *testing.T, dataFile string, network wire.NavcoinNet) ([]*navutil.Block, error) {
 	// Open the file that contains the blocks for reading.
 	fi, err := os.Open(dataFile)
 	if err != nil {

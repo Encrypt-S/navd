@@ -1449,7 +1449,7 @@ func (tx *transaction) fetchPendingRegion(region *database.BlockRegion) ([]byte,
 
 // FetchBlockRegion returns the raw serialized bytes for the given block region.
 //
-// For example, it is possible to directly extract Bitcoin transactions and/or
+// For example, it is possible to directly extract Navcoin transactions and/or
 // scripts from a block with this function.  Depending on the backend
 // implementation, this can provide significant savings by avoiding the need to
 // load entire blocks.
@@ -1522,7 +1522,7 @@ func (tx *transaction) FetchBlockRegion(region *database.BlockRegion) ([]byte, e
 // FetchBlockRegions returns the raw serialized bytes for the given block
 // regions.
 //
-// For example, it is possible to directly extract Bitcoin transactions and/or
+// For example, it is possible to directly extract Navcoin transactions and/or
 // scripts from various blocks with this function.  Depending on the backend
 // implementation, this can provide significant savings by avoiding the need to
 // load entire blocks.
@@ -2040,7 +2040,7 @@ func initDB(ldb *leveldb.DB) error {
 
 // openDB opens the database at the provided path.  database.ErrDbDoesNotExist
 // is returned if the database doesn't exist and the create flag is not set.
-func openDB(dbPath string, network wire.BitcoinNet, create bool) (database.DB, error) {
+func openDB(dbPath string, network wire.NavcoinNet, create bool) (database.DB, error) {
 	// Error if the database doesn't exist and the create flag is not set.
 	metadataDbPath := filepath.Join(dbPath, metadataDbName)
 	dbExists := fileExists(metadataDbPath)

@@ -72,7 +72,7 @@ func (s int64Sorter) Less(i, j int) bool {
 
 // medianTime provides an implementation of the MedianTimeSource interface.
 // It is limited to maxMedianTimeEntries includes the same buggy behavior as
-// the time offset mechanism in Bitcoin Core.  This is necessary because it is
+// the time offset mechanism in Navcoin Core.  This is necessary because it is
 // used in the consensus code.
 type medianTime struct {
 	mtx                sync.Mutex
@@ -138,7 +138,7 @@ func (m *medianTime) AddTimeSample(sourceID string, timeVal time.Time) {
 		numOffsets)
 
 	// NOTE: The following code intentionally has a bug to mirror the
-	// buggy behavior in Bitcoin Core since the median time is used in the
+	// buggy behavior in Navcoin Core since the median time is used in the
 	// consensus rules.
 	//
 	// In particular, the offset is only updated when the number of entries

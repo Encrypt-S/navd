@@ -36,7 +36,7 @@ differences between navd and navcoind as far as how RPCs are serviced:
   further details on why they were separated.  This means that if you are
   talking directly to navd, only chain-related RPCs are available.  However both
   chain-related and wallet-related RPCs are available via
-  [btcwallet](https://github.com/btcsuite/btcwallet).
+  [navwallet](https://github.com/aguycalled/navwallet).
 * navd is secure by default which means that the RPC connection is TLS-enabled
   by default
 * navd provides access to the API through both
@@ -44,14 +44,14 @@ differences between navd and navcoind as far as how RPCs are serviced:
   [Websockets](http://en.wikipedia.org/wiki/WebSocket)
 
 Websockets are the preferred transport for navd RPC and are used by applications
-such as [btcwallet](https://github.com/btcsuite/btcwallet) for inter-process
+such as [navwallet](https://github.com/aguycalled/navwallet) for inter-process
 communication with navd.  The websocket connection endpoint for navd is
 `wss://your_ip_or_domain:8334/ws`.
 
 In addition to the [standard API](#Methods), an [extension API](#WSExtMethods)
 has been developed that is exclusive to clients using Websockets. In its current
 state, this API attempts to cover features found missing in the standard API
-during the development of btcwallet.
+during the development of navwallet.
 
 While the [standard API](#Methods) is stable, the
 [Websocket extension API](#WSExtMethods) should be considered a work in
@@ -138,7 +138,7 @@ authenticated will cause the websocket to be closed immediately.
 
 ### 4. Command-line Utility
 
-navd comes with a separate utility named `btcctl` which can be used to issue
+navd comes with a separate utility named `navctl` which can be used to issue
 these RPC commands via HTTP POST requests to navd after configuring it with the
 information in the [Authentication](#Authentication) section above.  It can also
 be used to communicate with any server/daemon/service which provides a JSON-RPC
@@ -372,7 +372,7 @@ the method name for further details such as parameter and return information.
 |Method|getinfo|
 |Parameters|None|
 |Description|Returns a JSON object containing various state info.|
-|Notes|NOTE: Since navd does NOT contain wallet functionality, wallet-related fields are not returned.  See getinfo in btcwallet for a version which includes that information.|
+|Notes|NOTE: Since navd does NOT contain wallet functionality, wallet-related fields are not returned.  See getinfo in navwallet for a version which includes that information.|
 |Returns|`{ (json object)`<br />&nbsp;&nbsp;`"version": n,  (numeric) the version of the server`<br />&nbsp;&nbsp;`"protocolversion": n,  (numeric) the latest supported protocol version`<br />&nbsp;&nbsp;`"blocks": n,  (numeric) the number of blocks processed`<br />&nbsp;&nbsp;`"timeoffset": n,  (numeric) the time offset`<br />&nbsp;&nbsp;`"connections": n,  (numeric) the number of connected peers`<br />&nbsp;&nbsp;`"proxy": "host:port",  (string) the proxy used by the server`<br />&nbsp;&nbsp;`"difficulty": n.nn,  (numeric) the current target difficulty`<br />&nbsp;&nbsp;`"testnet": true or false,  (boolean) whether or not server is using testnet`<br />&nbsp;&nbsp;`"relayfee": n.nn,  (numeric) the minimum relay fee for non-free transactions in BTC/KB`<br />`}`|
 |Example Return|`{`<br />&nbsp;&nbsp;`"version": 70000`<br />&nbsp;&nbsp;`"protocolversion": 70001,  `<br />&nbsp;&nbsp;`"blocks": 298963,`<br />&nbsp;&nbsp;`"timeoffset": 0,`<br />&nbsp;&nbsp;`"connections": 17,`<br />&nbsp;&nbsp;`"proxy": "",`<br />&nbsp;&nbsp;`"difficulty": 8000872135.97,`<br />&nbsp;&nbsp;`"testnet": false,`<br />&nbsp;&nbsp;`"relayfee": 0.00001,`<br />`}`|
 [Return to Overview](#MethodOverview)<br />
@@ -1074,7 +1074,7 @@ various languages.
 **9.1 Go**
 
 This section provides examples of using the RPC interface using Go and the
-[btcrpcclient](https://github.com/btcsuite/btcrpcclient) package.
+[navrpcclient](https://github.com/btcsuite/navrpcclient) package.
 
 * [Using getblockcount to Retrieve the Current Block Height](#ExampleGetBlockCount)
 * [Using getblock to Retrieve the Genesis Block](#ExampleGetBlock)
@@ -1086,7 +1086,7 @@ This section provides examples of using the RPC interface using Go and the
 **9.1.1 Using getblockcount to Retrieve the Current Block Height**<br />
 
 The following is an example Go application which uses the
-[btcrpcclient](https://github.com/btcsuite/btcrpcclient) package to connect with
+[navrpcclient](https://github.com/btcsuite/navrpcclient) package to connect with
 a navd instance via Websockets, issues [getblockcount](#getblockcount) to
 retrieve the current block height, and displays it.
 
@@ -1094,7 +1094,7 @@ retrieve the current block height, and displays it.
 package main
 
 import (
-	"github.com/btcsuite/btcrpcclient"
+	"github.com/btcsuite/navrpcclient"
 	"github.com/aguycalled/navutil"
 	"io/ioutil"
 	"log"
@@ -1114,14 +1114,14 @@ func main() {
 	// Create a new RPC client using websockets.  Since this example is
 	// not long-lived, the connection will be closed as soon as the program
 	// exits.
-	connCfg := &btcrpcclient.ConnConfig{
+	connCfg := &navrpcclient.ConnConfig{
 		Host:         "localhost:8334",
 		Endpoint:     "ws",
 		User:         "yourrpcuser",
 		Pass:         "yourrpcpass",
 		Certificates: certs,
 	}
-	client, err := btcrpcclient.New(connCfg, nil)
+	client, err := navrpcclient.New(connCfg, nil)
 	if err != nil {
 		log.Fatal(err)
 	}
@@ -1147,7 +1147,7 @@ Block count: 276978
 **9.1.2 Using getblock to Retrieve the Genesis Block**<br />
 
 The following is an example Go application which uses the
-[btcrpcclient](https://github.com/btcsuite/btcrpcclient) package to connect with
+[navrpcclient](https://github.com/btcsuite/navrpcclient) package to connect with
 a navd instance via Websockets, issues [getblock](#getblock) to retrieve
 information about the Genesis block, and display a few details about it.
 
@@ -1155,7 +1155,7 @@ information about the Genesis block, and display a few details about it.
 package main
 
 import (
-	"github.com/btcsuite/btcrpcclient"
+	"github.com/btcsuite/navrpcclient"
 	"github.com/aguycalled/navutil"
 	"github.com/aguycalled/navd/chaincfg/chainhash"
 	"github.com/aguycalled/navd/wire"
@@ -1178,14 +1178,14 @@ func main() {
 	// Create a new RPC client using websockets.  Since this example is
 	// not long-lived, the connection will be closed as soon as the program
 	// exits.
-	connCfg := &btcrpcclient.ConnConfig{
+	connCfg := &navrpcclient.ConnConfig{
 		Host:         "localhost:18334",
 		Endpoint:     "ws",
 		User:         "yourrpcuser",
 		Pass:         "yourrpcpass",
 		Certificates: certs,
 	}
-	client, err := btcrpcclient.New(connCfg, nil)
+	client, err := navrpcclient.New(connCfg, nil)
 	if err != nil {
 		log.Fatal(err)
 	}
@@ -1237,7 +1237,7 @@ Num transactions: 1
 Notifications (Websocket-specific)**<br />
 
 The following is an example Go application which uses the
-[btcrpcclient](https://github.com/btcsuite/btcrpcclient) package to connect with
+[navrpcclient](https://github.com/btcsuite/navrpcclient) package to connect with
 a navd instance via Websockets and registers for
 [blockconnected](#blockconnected) and [blockdisconnected](#blockdisconnected)
 notifications with [notifyblocks](#notifyblocks).  It also sets up handlers for
@@ -1247,7 +1247,7 @@ the notifications.
 package main
 
 import (
-	"github.com/btcsuite/btcrpcclient"
+	"github.com/btcsuite/navrpcclient"
 	"github.com/aguycalled/navutil"
 	"github.com/aguycalled/navd/chaincfg/chainhash"
 	"github.com/aguycalled/navd/wire"
@@ -1260,7 +1260,7 @@ import (
 func main() {
 	// Setup handlers for blockconnected and blockdisconnected
 	// notifications.
-	ntfnHandlers := btcrpcclient.NotificationHandlers{
+	ntfnHandlers := navrpcclient.NotificationHandlers{
 		OnBlockConnected: func(hash *chainhash.Hash, height int32) {
 			log.Printf("Block connected: %v (%d)", hash, height)
 		},
@@ -1279,14 +1279,14 @@ func main() {
 	}
 
 	// Create a new RPC client using websockets.
-	connCfg := &btcrpcclient.ConnConfig{
+	connCfg := &navrpcclient.ConnConfig{
 		Host:         "localhost:8334",
 		Endpoint:     "ws",
 		User:         "yourrpcuser",
 		Pass:         "yourrpcpass",
 		Certificates: certs,
 	}
-	client, err := btcrpcclient.New(connCfg, &ntfnHandlers)
+	client, err := navrpcclient.New(connCfg, &ntfnHandlers)
 	if err != nil {
 		log.Fatal(err)
 	}

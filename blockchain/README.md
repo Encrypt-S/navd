@@ -12,7 +12,7 @@ you are running a POSIX OS, you can run the `cov_report.sh` script for a
 real-time report.  Package blockchain is licensed under the liberal ISC license.
 
 There is an associated blog post about the release of this package
-[here](https://blog.conformal.com/btcchain-the-navcoin-chain-package-from-bctd/).
+[here](https://blog.conformal.com/navchain-the-navcoin-chain-package-from-bctd/).
 
 This package has intentionally been designed so it can be used as a standalone
 package for any projects needing to handle processing of blocks into the navcoin
@@ -24,7 +24,7 @@ block chain.
 $ go get -u github.com/aguycalled/navd/blockchain
 ```
 
-## Bitcoin Chain Processing Overview
+## Navcoin Chain Processing Overview
 
 Before a block is allowed into the block chain, it must go through an intensive
 series of validation rules.  The following list serves as a general outline of

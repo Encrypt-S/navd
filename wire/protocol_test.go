@@ -35,17 +35,17 @@ func TestServiceFlagStringer(t *testing.T) {
 	}
 }
 
-// TestBitcoinNetStringer tests the stringized output for navcoin net types.
-func TestBitcoinNetStringer(t *testing.T) {
+// TestNavcoinNetStringer tests the stringized output for navcoin net types.
+func TestNavcoinNetStringer(t *testing.T) {
 	tests := []struct {
-		in   BitcoinNet
+		in   NavcoinNet
 		want string
 	}{
 		{MainNet, "MainNet"},
 		{TestNet, "TestNet"},
 		{TestNet3, "TestNet3"},
 		{SimNet, "SimNet"},
-		{0xffffffff, "Unknown BitcoinNet (4294967295)"},
+		{0xffffffff, "Unknown NavcoinNet (4294967295)"},
 	}
 
 	t.Logf("Running %d tests", len(tests))

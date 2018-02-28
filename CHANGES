@@ -77,7 +77,7 @@ Changes in 0.12.0 (Fri Nov 20 2015)
   - Websocket changes:
     - Implement session command which returns a per-session unique id (#500,
       #503)
-  - btcctl utility changes:
+  - navctl utility changes:
     - Add getmempoolinfo command (#453)
     - Add getblockheader command (#461)
     - Add getwalletinfo command (#471)
@@ -140,11 +140,11 @@ Changes in 0.11.1 (Wed May 27 2015)
     - Update getrawtransaction result to omit the 'confirmations' field
       when it is 0 (#420, #422)
     - Update signrawtransaction result to include errors (#423)
-  - btcctl utility changes:
+  - navctl utility changes:
     - Add gettxoutproof command (#428)
     - Add verifytxoutproof command (#428)
   - Notable developer-related package changes:
-    - The btcec package now provides the ability to perform ECDH
+    - The navec package now provides the ability to perform ECDH
       encryption and decryption (#375)
     - The block and header validation in the blockchain package has been
       split to help pave the way toward concurrent downloads (#386)
@@ -203,14 +203,14 @@ Changes in 0.11.0 (Wed May 06 2015)
     - Implement new commands stopnotifyspent, stopnotifyreceived,
       stopnotifyblocks, and stopnotifynewtransactions to allow clients to
       cancel notification registrations (#122, #342)
-  - btcctl utility changes:
+  - navctl utility changes:
     - A single dash can now be used as an argument to cause that argument to
       be read from stdin (#348)
     - Add generate command
   - Notable developer-related package changes:
-    - The new version 2 btcjson package has now replaced the deprecated
+    - The new version 2 navjson package has now replaced the deprecated
       version 1 package (#368)
-    - The btcec package now performs all signing using RFC6979 deterministic
+    - The navec package now performs all signing using RFC6979 deterministic
       signatures (#358, #360)
     - The txscript package has been significantly cleaned up and had a few
       API changes (#387, #388, #389, #390, #391, #392, #393, #395, #396,
@@ -268,13 +268,13 @@ Changes in 0.10.0 (Sun Mar 01 2015)
   - Crypto changes:
     - Optimize scalar multiplication by the base point by using a
       pre-computed table which results in approximately a 35% speedup
-     (https://github.com/btcsuite/btcec/issues/2)
+     (https://github.com/btcsuite/navec/issues/2)
     - Optimize general scalar multiplication by using the secp256k1
       endomorphism which results in approximately a 17-20% speedup
-     (https://github.com/btcsuite/btcec/issues/1)
+     (https://github.com/btcsuite/navec/issues/1)
     - Optimize general scalar multiplication by using non-adjacent form
       which results in approximately an additional 8% speedup
-     (https://github.com/btcsuite/btcec/issues/3)
+     (https://github.com/btcsuite/navec/issues/3)
   - Implement optional address indexing:
     - Add a new parameter --addrindex which will enable the creation of an
       address index which can be queried to determine all transactions which
@@ -309,7 +309,7 @@ Changes in 0.10.0 (Sun Mar 01 2015)
       for notifications about transactions paying to rescanned addresses
       or spending outputs from the final rescan utxo set when the rescan
       is through the best block in the chain
-  - btcctl utility changes:
+  - navctl utility changes:
     - Make the list of commands available via the -l option rather than
       dumping the entire list on usage errors
     - Alphabetize and categorize the list of commands by chain and wallet
@@ -337,13 +337,13 @@ Changes in 0.10.0 (Sun Mar 01 2015)
   - Notable developer-related package changes:
     - Many of the core packages have been relocated into the navd repository
       (https://github.com/aguycalled/navd/issues/214)
-    - A new version of the btcjson package that has been completely
+    - A new version of the navjson package that has been completely
       redesigned from the ground up based based upon how the project has
       evolved and lessons learned while using it since it was first written
-      is now available in the btcjson/v2/btcjson directory
+      is now available in the navjson/v2/navjson directory
       - This will ultimately replace the current version so anyone making
         use of this package will need to update their code accordingly
-    - The btcec package now provides better facilities for working directly
+    - The navec package now provides better facilities for working directly
       with its public and private keys without having to mix elements from
       the ecdsa package
     - Update the script builder to ensure all rules specified by BIP0062 are
@@ -451,9 +451,9 @@ Changes in 0.9.0 (Sat Sep 20 2014)
     - Add rescanfinished notification
     - Modify the rescanprogress notification to include block hash as well
       as height (https://github.com/conformal/navd/issues/151)
-  - btcctl utility changes:
+  - navctl utility changes:
     - Accept --simnet flag which automatically selects the appropriate port
-      and TLS certificates needed to communicate with navd and btcwallet on
+      and TLS certificates needed to communicate with navd and navwallet on
       the simulation test network
     - Fix createrawtransaction command to send amounts denominated in BTC
     - Add estimatefee command
@@ -465,23 +465,23 @@ Changes in 0.9.0 (Sat Sep 20 2014)
     - Add signrawtransaction command
   - addblock utility changes:
     - Accept --simnet flag which automatically selects the appropriate port
-      and TLS certificates needed to communicate with navd and btcwallet on
+      and TLS certificates needed to communicate with navd and navwallet on
       the simulation test network
   - Notable developer-related package changes:
     - Provide a new bloom package in navutil which allows creating and
       working with BIP0037 bloom filters
     - Provide a new hdkeychain package in navutil which allows working with
       BIP0032 hierarchical deterministic key chains
-    - Introduce a new btcnet package which houses network parameters
+    - Introduce a new navnet package which houses network parameters
     - Provide new simnet network (--simnet) which is useful for private
       simulation testing
     - Enforce low S values in serialized signatures as detailed in BIP0062
     - Return errors from all methods on the navdb.Db interface
       (https://github.com/conformal/navdb/issues/5)
-    - Allow behavior flags to alter btcchain.ProcessBlock
-      (https://github.com/conformal/btcchain/issues/5)
+    - Allow behavior flags to alter navchain.ProcessBlock
+      (https://github.com/conformal/navchain/issues/5)
     - Provide a new SerializeSize API for blocks
-      (https://github.com/conformal/btcwire/issues/19)
+      (https://github.com/conformal/navwire/issues/19)
     - Several of the core packages now work with Google App Engine
   - Misc changes:
     - Correct an issue where the database could corrupt under certain
@@ -512,7 +512,7 @@ Changes in 0.8.0-beta (Sun May 25 2014)
       (https://github.com/conformal/navd/issues/128)
     - Reduce max bytes allowed for a standard nulldata transaction to 40 for
       compatibility with the reference client
-    - Introduce a new btcnet package which houses all of the network params
+    - Introduce a new navnet package which houses all of the network params
       for each network (mainnet, testnet3, regtest) to ultimately enable
       easier addition and tweaking of networks without needing to change
       several packages
@@ -523,7 +523,7 @@ Changes in 0.8.0-beta (Sun May 25 2014)
     - Implement inventory rebroadcast handler for sendrawtransaction
       (https://github.com/conformal/navd/issues/99)
     - Update user agent to fully support BIP0014
-      (https://github.com/conformal/btcwire/issues/10)
+      (https://github.com/conformal/navwire/issues/10)
   - Implement initial mining support:
     - Add a new logging subsystem for mining related operations
     - Implement infrastructure for creating block templates
@@ -567,7 +567,7 @@ Changes in 0.8.0-beta (Sun May 25 2014)
       (https://github.com/conformal/navd/issues/123)
     - Significantly optimize the rescan command to yield up to a 60x speed
       increase
-  - btcctl utility changes:
+  - navctl utility changes:
     - Add createencryptedwallet command
     - Add getblockchaininfo command
     - Add importwallet commmand
@@ -575,7 +575,7 @@ Changes in 0.8.0-beta (Sun May 25 2014)
     - Add setgenerate command
     - Accept --testnet and --wallet flags which automatically select
       the appropriate port and TLS certificates needed to communicate
-      with navd and btcwallet (https://github.com/conformal/navd/issues/112)
+      with navd and navwallet (https://github.com/conformal/navd/issues/112)
     - Allow path expansion from config file entries
       (https://github.com/conformal/navd/issues/113)
     - Minor refactor simplify handling of options
@@ -629,7 +629,7 @@ Changes in 0.7.0 (Thu Feb 20 2014)
       concurrent websocket clients
     - Add a new websocket command notifyallnewtxs to request notifications
       (https://github.com/conformal/navd/issues/86) (thanks @flammit)
-  - Improve btcctl utility in the following ways:
+  - Improve navctl utility in the following ways:
     - Add getnetworkhashps command
     - Add gettransaction command (wallet-specific)
     - Add signmessage command (wallet-specific)
@@ -662,7 +662,7 @@ Changes in 0.6.0 (Tue Feb 04 2014)
     caused a chain fork on block
     0000000000000001e4241fd0b3469a713f41c5682605451c05d3033288fb2244
   - Correct an issue which could lead to an error in removeBlockNode
-    (https://github.com/conformal/btcchain/issues/4)
+    (https://github.com/conformal/navchain/issues/4)
   - Improve addblock utility as follows:
     - Check imported blocks against all chain rules and checkpoints
     - Skip blocks which are already known so you can stop and restart the
@@ -682,7 +682,7 @@ Changes in 0.6.0 (Tue Feb 04 2014)
     - Rollback to the last known good point when a header does not match a
       checkpoint
     - Log information about what is happening with headers
-  - Improve btcctl utility in the following ways:
+  - Improve navctl utility in the following ways:
     - Add getaddednodeinfo command
     - Add getnettotals command
     - Add getblocktemplate command (wallet-specific)
@@ -733,7 +733,7 @@ Changes in 0.6.0 (Tue Feb 04 2014)
     - Change the data sent over websockets to text since it is JSON-RPC
     - Allow connections that do not have an Origin header set
   - Expose and track the number of bytes read and written per peer
-    (https://github.com/conformal/btcwire/issues/6)
+    (https://github.com/conformal/navwire/issues/6)
   - Correct an issue with sendrawtransaction when invoked via websockets
     which prevented a minedtx notification from being added
   - Rescan operations issued from remote wallets are no stopped when
@@ -756,10 +756,10 @@ Changes in 0.5.0 (Mon Jan 13 2014)
     (https://github.com/conformal/navd/issues/38)
   - Fix an issue which could lead to a panic on chain switches
     (https://github.com/conformal/navd/issues/70)
-  - Improve btcctl utility in the following ways:
+  - Improve navctl utility in the following ways:
     - Show getdifficulty output as floating point to 6 digits of precision
     - Show all JSON object replies formatted as standard JSON
-    - Allow btcctl getblock to accept optional params
+    - Allow navctl getblock to accept optional params
     - Add getaccount command (wallet-specific)
     - Add getaccountaddress command (wallet-specific)
     - Add sendrawtransaction command
@@ -825,7 +825,7 @@ Changes in 0.4.0 (Thu Dec 12 2013)
   - Update address manager to recognize and properly work with Tor
     addresses (https://github.com/conformal/navd/issues/36) and
     (https://github.com/conformal/navd/issues/37)
-  - Improve btcctl utility in the following ways:
+  - Improve navctl utility in the following ways:
     - Add the ability to specify a configuration file
     - Add a default entry for the RPC cert to point to the location
       it will likely be in the navd home directory
@@ -854,13 +854,13 @@ Changes in 0.4.0 (Thu Dec 12 2013)
   - Update Ctrl+C interrupt handler to properly sync address manager and
     remove the UPnP port mapping (if needed)
   - Continue cleanup and work on implementing RPC API calls
-    - Add importprivkey (import private key) command to btcctl
+    - Add importprivkey (import private key) command to navctl
     - Update getrawtransaction to provide addresses properly, support
       new verbose param, and match the reference implementation with the
       exception of MULTISIG (thanks @flammit)
     - Update getblock with new verbose flag (thanks @flammit)
-    - Add listtransactions command to btcctl
-    - Add getbalance command to btcctl
+    - Add listtransactions command to navctl
+    - Add getbalance command to navctl
   - Add basic support for navd to run as a native Windows service
     (https://github.com/conformal/navd/issues/42)
   - Package addblock utility with Windows MSIs
@@ -875,7 +875,7 @@ Changes in 0.3.3 (Wed Nov 13 2013)
   - Optimize most recently used inventory handling
     (https://github.com/conformal/navd/issues/21)
   - Optimize duplicate transaction input check
-    (https://github.com/conformal/btcchain/issues/2)
+    (https://github.com/conformal/navchain/issues/2)
   - Optimize transaction hashing
     (https://github.com/conformal/navd/issues/25)
   - Rework and optimize wallet listener notifications
@@ -920,7 +920,7 @@ Changes in 0.3.2 (Tue Oct 22 2013)
   - Add support for the following RPC calls: getrawmempool,
     getbestblockhash, decoderawtransaction, getdifficulty,
     getconnectioncount, getpeerinfo, and addnode
-  - Improve the btcctl utility that is used to issue JSON-RPC commands
+  - Improve the navctl utility that is used to issue JSON-RPC commands
   - Fix an issue preventing navd from cleanly shutting down with the RPC
     stop command
   - Add a number of database interface tests to ensure backends implement
@@ -938,7 +938,7 @@ Changes in 0.3.1-alpha (Tue Oct 15 2013)
     it would take away from more important issues at this stage
   - Add a warning if there are multiple block chain databases of different types
   - Fix issue with unexpected EOF in leveldb -- https://github.com/conformal/navd/issues/18
-  - Fix issue preventing block 21066 on testnet -- https://github.com/conformal/btcchain/issues/1
+  - Fix issue preventing block 21066 on testnet -- https://github.com/conformal/navchain/issues/1
   - Fix issue preventing block 96464 on testnet -- https://github.com/conformal/btcscript/issues/1
   - Optimize transaction lookups
   - Correct a few cases of list removal that could result in improper cleanup
