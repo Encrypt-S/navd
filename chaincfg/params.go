@@ -257,7 +257,6 @@ var MainNetParams = Params{
 	// Checkpoints ordered from oldest to newest.
 	Checkpoints: []Checkpoint{
 		{10000, newHashFromStr("844f1eab31e8773328ba21970362b4fcff19622f13787cbbe164649ad2393b7a")},
-		{10000, newHashFromStr("844f1eab31e8773328ba21970362b4fcff19622f13787cbbe164649ad2393b7a")},
 		{20000, newHashFromStr("fea6d227117db665c5cff2fca0b29d850c5e7f064463d001f5228e80a7e21624")},
 		{30000, newHashFromStr("5e6212b3b23ed3e5092d7765f7ae36512ecdc254f84c9988161e955d94c91a48")},
 		{40000, newHashFromStr("3ae62cc62888db77de952d5855fb59f24a46f008177badc5f4f78ab12734985d")},
