@@ -7,9 +7,9 @@ package txscript
 import (
 	"fmt"
 
-	"github.com/aguycalled/navd/chaincfg"
-	"github.com/aguycalled/navd/wire"
-	"github.com/aguycalled/navutil"
+	"github.com/viacoin/viad/chaincfg"
+	"github.com/viacoin/viad/wire"
+	"github.com/viacoin/viautil"
 )
 
 const (
@@ -217,7 +217,7 @@ func expectedInputs(pops []parsedOpcode, class ScriptClass) int {
 		// of sigs and number of keys.  Check the first push instruction
 		// to see how many arguments are expected. typeOfScript already
 		// checked this so we know it'll be a small int.  Also, due to
-		// the original navcoind bug where OP_CHECKMULTISIG pops an
+		// the original bitcoind bug where OP_CHECKMULTISIG pops an
 		// additional item from the stack, add an extra expected input
 		// for the extra push that is required to compensate.
 		return asSmallInt(pops[0].opcode) + 1
@@ -419,38 +419,38 @@ func payToPubKeyScript(serializedPubKey []byte) ([]byte, error) {
 
 // PayToAddrScript creates a new script to pay a transaction output to a the
 // specified address.
-func PayToAddrScript(addr navutil.Address) ([]byte, error) {
+func PayToAddrScript(addr viautil.Address) ([]byte, error) {
 	const nilAddrErrStr = "unable to generate payment script for nil address"
 
 	switch addr := addr.(type) {
-	case *navutil.AddressPubKeyHash:
+	case *viautil.AddressPubKeyHash:
 		if addr == nil {
 			return nil, scriptError(ErrUnsupportedAddress,
 				nilAddrErrStr)
 		}
 		return payToPubKeyHashScript(addr.ScriptAddress())
 
-	case *navutil.AddressScriptHash:
+	case *viautil.AddressScriptHash:
 		if addr == nil {
 			return nil, scriptError(ErrUnsupportedAddress,
 				nilAddrErrStr)
 		}
 		return payToScriptHashScript(addr.ScriptAddress())
 
-	case *navutil.AddressPubKey:
+	case *viautil.AddressPubKey:
 		if addr == nil {
 			return nil, scriptError(ErrUnsupportedAddress,
 				nilAddrErrStr)
 		}
 		return payToPubKeyScript(addr.ScriptAddress())
 
-	case *navutil.AddressWitnessPubKeyHash:
+	case *viautil.AddressWitnessPubKeyHash:
 		if addr == nil {
 			return nil, scriptError(ErrUnsupportedAddress,
 				nilAddrErrStr)
 		}
 		return payToWitnessPubKeyHashScript(addr.ScriptAddress())
-	case *navutil.AddressWitnessScriptHash:
+	case *viautil.AddressWitnessScriptHash:
 		if addr == nil {
 			return nil, scriptError(ErrUnsupportedAddress,
 				nilAddrErrStr)
@@ -480,7 +480,7 @@ func NullDataScript(data []byte) ([]byte, error) {
 // nrequired of the keys in pubkeys are required to have signed the transaction
 // for success.  An Error with the error code ErrTooManyRequiredSigs will be
 // returned if nrequired is larger than the number of keys provided.
-func MultiSigScript(pubkeys []*navutil.AddressPubKey, nrequired int) ([]byte, error) {
+func MultiSigScript(pubkeys []*viautil.AddressPubKey, nrequired int) ([]byte, error) {
 	if len(pubkeys) < nrequired {
 		str := fmt.Sprintf("unable to generate multisig script with "+
 			"%d required signatures when there are only %d public "+
@@ -521,8 +521,8 @@ func PushedData(script []byte) ([][]byte, error) {
 // signatures associated with the passed PkScript.  Note that it only works for
 // 'standard' transaction script types.  Any data such as public keys which are
 // invalid are omitted from the results.
-func ExtractPkScriptAddrs(pkScript []byte, chainParams *chaincfg.Params) (ScriptClass, []navutil.Address, int, error) {
-	var addrs []navutil.Address
+func ExtractPkScriptAddrs(pkScript []byte, chainParams *chaincfg.Params) (ScriptClass, []viautil.Address, int, error) {
+	var addrs []viautil.Address
 	var requiredSigs int
 
 	// No valid addresses or required signatures if the script doesn't
@@ -540,7 +540,7 @@ func ExtractPkScriptAddrs(pkScript []byte, chainParams *chaincfg.Params) (Script
 		// Therefore the pubkey hash is the 3rd item on the stack.
 		// Skip the pubkey hash if it's invalid for some reason.
 		requiredSigs = 1
-		addr, err := navutil.NewAddressPubKeyHash(pops[2].data,
+		addr, err := viautil.NewAddressPubKeyHash(pops[2].data,
 			chainParams)
 		if err == nil {
 			addrs = append(addrs, addr)
@@ -552,7 +552,7 @@ func ExtractPkScriptAddrs(pkScript []byte, chainParams *chaincfg.Params) (Script
 		// Therefore, the pubkey hash is the second item on the stack.
 		// Skip the pubkey hash if it's invalid for some reason.
 		requiredSigs = 1
-		addr, err := navutil.NewAddressWitnessPubKeyHash(pops[1].data,
+		addr, err := viautil.NewAddressWitnessPubKeyHash(pops[1].data,
 			chainParams)
 		if err == nil {
 			addrs = append(addrs, addr)
@@ -564,7 +564,7 @@ func ExtractPkScriptAddrs(pkScript []byte, chainParams *chaincfg.Params) (Script
 		// Therefore the pubkey is the first item on the stack.
 		// Skip the pubkey if it's invalid for some reason.
 		requiredSigs = 1
-		addr, err := navutil.NewAddressPubKey(pops[0].data, chainParams)
+		addr, err := viautil.NewAddressPubKey(pops[0].data, chainParams)
 		if err == nil {
 			addrs = append(addrs, addr)
 		}
@@ -575,7 +575,7 @@ func ExtractPkScriptAddrs(pkScript []byte, chainParams *chaincfg.Params) (Script
 		// Therefore the script hash is the 2nd item on the stack.
 		// Skip the script hash if it's invalid for some reason.
 		requiredSigs = 1
-		addr, err := navutil.NewAddressScriptHashFromHash(pops[1].data,
+		addr, err := viautil.NewAddressScriptHashFromHash(pops[1].data,
 			chainParams)
 		if err == nil {
 			addrs = append(addrs, addr)
@@ -587,7 +587,7 @@ func ExtractPkScriptAddrs(pkScript []byte, chainParams *chaincfg.Params) (Script
 		// Therefore, the script hash is the second item on the stack.
 		// Skip the script hash if it's invalid for some reason.
 		requiredSigs = 1
-		addr, err := navutil.NewAddressWitnessScriptHash(pops[1].data,
+		addr, err := viautil.NewAddressWitnessScriptHash(pops[1].data,
 			chainParams)
 		if err == nil {
 			addrs = append(addrs, addr)
@@ -603,9 +603,9 @@ func ExtractPkScriptAddrs(pkScript []byte, chainParams *chaincfg.Params) (Script
 		numPubKeys := asSmallInt(pops[len(pops)-2].opcode)
 
 		// Extract the public keys while skipping any that are invalid.
-		addrs = make([]navutil.Address, 0, numPubKeys)
+		addrs = make([]viautil.Address, 0, numPubKeys)
 		for i := 0; i < numPubKeys; i++ {
-			addr, err := navutil.NewAddressPubKey(pops[i+1].data,
+			addr, err := viautil.NewAddressPubKey(pops[i+1].data,
 				chainParams)
 			if err == nil {
 				addrs = append(addrs, addr)
@@ -628,7 +628,8 @@ func ExtractPkScriptAddrs(pkScript []byte, chainParams *chaincfg.Params) (Script
 type AtomicSwapDataPushes struct {
 	RecipientHash160 [20]byte
 	RefundHash160    [20]byte
-	SecretHash       [20]byte
+	SecretHash       [32]byte
+	SecretSize       int64
 	LockTime         int64
 }
 
@@ -643,47 +644,61 @@ type AtomicSwapDataPushes struct {
 //
 // This function is only defined in the txscript package due to API limitations
 // which prevent callers using txscript to parse nonstandard scripts.
-func ExtractAtomicSwapDataPushes(pkScript []byte) (*AtomicSwapDataPushes, error) {
+func ExtractAtomicSwapDataPushes(version uint16, pkScript []byte) (*AtomicSwapDataPushes, error) {
 	pops, err := parseScript(pkScript)
 	if err != nil {
 		return nil, err
 	}
 
-	if len(pops) != 17 {
+	if len(pops) != 20 {
 		return nil, nil
 	}
 	isAtomicSwap := pops[0].opcode.value == OP_IF &&
-		pops[1].opcode.value == OP_RIPEMD160 &&
-		pops[2].opcode.value == OP_DATA_20 &&
+		pops[1].opcode.value == OP_SIZE &&
+		canonicalPush(pops[2]) &&
 		pops[3].opcode.value == OP_EQUALVERIFY &&
-		pops[4].opcode.value == OP_DUP &&
-		pops[5].opcode.value == OP_HASH160 &&
-		pops[6].opcode.value == OP_DATA_20 &&
-		pops[7].opcode.value == OP_ELSE &&
-		canonicalPush(pops[8]) &&
-		pops[9].opcode.value == OP_CHECKLOCKTIMEVERIFY &&
-		pops[10].opcode.value == OP_DROP &&
-		pops[11].opcode.value == OP_DUP &&
-		pops[12].opcode.value == OP_HASH160 &&
-		pops[13].opcode.value == OP_DATA_20 &&
-		pops[14].opcode.value == OP_ENDIF &&
-		pops[15].opcode.value == OP_EQUALVERIFY &&
-		pops[16].opcode.value == OP_CHECKSIG
+		pops[4].opcode.value == OP_SHA256 &&
+		pops[5].opcode.value == OP_DATA_32 &&
+		pops[6].opcode.value == OP_EQUALVERIFY &&
+		pops[7].opcode.value == OP_DUP &&
+		pops[8].opcode.value == OP_HASH160 &&
+		pops[9].opcode.value == OP_DATA_20 &&
+		pops[10].opcode.value == OP_ELSE &&
+		canonicalPush(pops[11]) &&
+		pops[12].opcode.value == OP_CHECKLOCKTIMEVERIFY &&
+		pops[13].opcode.value == OP_DROP &&
+		pops[14].opcode.value == OP_DUP &&
+		pops[15].opcode.value == OP_HASH160 &&
+		pops[16].opcode.value == OP_DATA_20 &&
+		pops[17].opcode.value == OP_ENDIF &&
+		pops[18].opcode.value == OP_EQUALVERIFY &&
+		pops[19].opcode.value == OP_CHECKSIG
 	if !isAtomicSwap {
 		return nil, nil
 	}
 
 	pushes := new(AtomicSwapDataPushes)
-	copy(pushes.SecretHash[:], pops[2].data)
-	copy(pushes.RecipientHash160[:], pops[6].data)
-	copy(pushes.RefundHash160[:], pops[13].data)
-	if pops[8].data != nil {
-		locktime, err := makeScriptNum(pops[8].data, true, 5)
+	copy(pushes.SecretHash[:], pops[5].data)
+	copy(pushes.RecipientHash160[:], pops[9].data)
+	copy(pushes.RefundHash160[:], pops[16].data)
+	if pops[2].data != nil {
+		locktime, err := makeScriptNum(pops[2].data, true, 5)
+		if err != nil {
+			return nil, nil
+		}
+		pushes.SecretSize = int64(locktime)
+	} else if op := pops[2].opcode; isSmallInt(op) {
+		pushes.SecretSize = int64(asSmallInt(op))
+	} else {
+		return nil, nil
+	}
+	if pops[11].data != nil {
+		locktime, err := makeScriptNum(pops[11].data, true, 5)
 		if err != nil {
 			return nil, nil
 		}
 		pushes.LockTime = int64(locktime)
-	} else if op := pops[8].opcode; isSmallInt(op) {
+	} else if op := pops[11].opcode; isSmallInt(op) {
 		pushes.LockTime = int64(asSmallInt(op))
 	} else {
 		return nil, nil
