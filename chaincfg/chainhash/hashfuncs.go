@@ -6,6 +6,7 @@
 package chainhash
 
 import "crypto/sha256"
+import "github.com/aguycalled/gox13hash"
 
 // HashB calculates hash(b) and returns the resulting bytes.
 func HashB(b []byte) []byte {
@@ -30,4 +31,14 @@ func DoubleHashB(b []byte) []byte {
 func DoubleHashH(b []byte) Hash {
 	first := sha256.Sum256(b)
 	return Hash(sha256.Sum256(first[:]))
+}
+
+// X13HashB calculates X13Hash(b) and returns the resulting bytes.
+func X13HashB(b []byte) []byte {
+	return gox13hash.Sum(b)
+}
+
+// X13HashH calculates X13Hash(b) and returns the resulting bytes as a Hash.
+func X13HashH(b []byte) []byte {
+	return Hash(gox13hash.Sum(b))
 }
