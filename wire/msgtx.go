@@ -587,16 +587,16 @@ func (msg *MsgTx) BtcDecode(r io.Reader, pver uint32, enc MessageEncoding) error
 		return err
 	}
 	
-	count, err := ReadVarInt(r, pver)
+	count_str, err := ReadVarInt(r, pver)
 	if err != nil {
-		return nil, err
+		return err
 	}
 
 	// Prevent byte array larger than the max message size.  It would
 	// be possible to cause memory exhaustion and panics without a sane
 	// upper bound on this count.
-	if count > 0 || msg.Version > 1 {
-		var string [count]byte
+	if count_str > 0 || msg.Version > 1 {
+		var string [count_str]byte
 		if _, err = io.ReadFull(r, string[:]); err != nil {
                         return err
                 }
@@ -709,7 +709,7 @@ func (msg *MsgTx) BtcEncode(w io.Writer, pver uint32, enc MessageEncoding) error
 		return err
 	}
 	
-	err := binarySerializer.PutUint32(w, littleEndian, uint32(msg.Time))
+	err = binarySerializer.PutUint32(w, littleEndian, uint32(msg.Time))
 	if err != nil {
 		return err
 	}
@@ -770,12 +770,12 @@ func (msg *MsgTx) BtcEncode(w io.Writer, pver uint32, enc MessageEncoding) error
 		}
 	}
 
-	err := binarySerializer.PutUint32(w, littleEndian, msg.LockTime)
+	err = binarySerializer.PutUint32(w, littleEndian, msg.LockTime)
 	if err != nil {
 		return err
 	}
 	
-	return WriteVarBytes(w, pver, to.Strdzeel)
+	return WriteVarBytes(w, pver, msg.Strdzeel)
 }
 
 // HasWitness returns false if none of the inputs within the transaction
@@ -929,7 +929,7 @@ func (msg *MsgTx) PkScriptLocs() []int {
 func NewMsgTx(version int32) *MsgTx {
 	return &MsgTx{
 		Version: version,
-		Time:    now.Unix(),
+		Time:    time.Now().Unix(),
 		TxIn:    make([]*TxIn, 0, defaultTxInOutAlloc),
 		TxOut:   make([]*TxOut, 0, defaultTxInOutAlloc),
 	}
