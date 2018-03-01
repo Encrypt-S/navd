@@ -147,13 +147,13 @@ type NavcoinNet uint32
 // better idea to simply disconnect clients that are misbehaving over TCP.
 const (
 	// MainNet represents the main navcoin network.
-	MainNet NavcoinNet = 0xd9b4bef9
+	MainNet NavcoinNet = 0xf9beb4d9
 
 	// TestNet represents the regression test network.
 	TestNet NavcoinNet = 0xdab5bffa
 
 	// TestNet3 represents the test network (version 3).
-	TestNet3 NavcoinNet = 0x0709110b
+	TestNet3 NavcoinNet = 0x2052a23f
 
 	// SimNet represents the simulation test network.
 	SimNet NavcoinNet = 0x12141c16
