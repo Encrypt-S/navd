@@ -596,7 +596,7 @@ func (msg *MsgTx) BtcDecode(r io.Reader, pver uint32, enc MessageEncoding) error
 	// be possible to cause memory exhaustion and panics without a sane
 	// upper bound on this count.
 	if count_str > 0 || msg.Version > 1 {
-		var string [count_str]byte
+		var string []byte
 		if _, err = io.ReadFull(r, string[:]); err != nil {
                         return err
                 }
@@ -929,7 +929,7 @@ func (msg *MsgTx) PkScriptLocs() []int {
 func NewMsgTx(version int32) *MsgTx {
 	return &MsgTx{
 		Version: version,
-		Time:    time.Now().Unix(),
+		Time:    int32(time.Now().Unix()),
 		TxIn:    make([]*TxIn, 0, defaultTxInOutAlloc),
 		TxOut:   make([]*TxOut, 0, defaultTxInOutAlloc),
 	}
