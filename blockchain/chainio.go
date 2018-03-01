@@ -12,10 +12,10 @@ import (
 	"sort"
 	"time"
 
-	"github.com/roasbeef/btcd/chaincfg/chainhash"
-	"github.com/roasbeef/btcd/database"
-	"github.com/roasbeef/btcd/wire"
-	"github.com/roasbeef/btcutil"
+	"github.com/navcoin/navd/chaincfg/chainhash"
+	"github.com/navcoin/navd/database"
+	"github.com/navcoin/navd/wire"
+	"github.com/navcoin/navutil"
 )
 
 var (
@@ -414,7 +414,7 @@ func serializeSpendJournalEntry(stxos []spentTxOut) []byte {
 // view MUST have the utxos referenced by all of the transactions available for
 // the passed block since that information is required to reconstruct the spent
 // txouts.
-func dbFetchSpendJournalEntry(dbTx database.Tx, block *btcutil.Block, view *UtxoViewpoint) ([]spentTxOut, error) {
+func dbFetchSpendJournalEntry(dbTx database.Tx, block *navutil.Block, view *UtxoViewpoint) ([]spentTxOut, error) {
 	// Exclude the coinbase transaction since it can't spend anything.
 	spendBucket := dbTx.Metadata().Bucket(spendJournalBucketName)
 	serialized := spendBucket.Get(block.Hash()[:])
@@ -459,7 +459,7 @@ func dbRemoveSpendJournalEntry(dbTx database.Tx, blockHash *chainhash.Hash) erro
 // The unspent transaction output (utxo) set consists of an entry for each
 // transaction which contains a utxo serialized using a format that is highly
 // optimized to reduce space using domain specific compression algorithms.  This
-// format is a slightly modified version of the format used in Bitcoin Core.
+// format is a slightly modified version of the format used in NavCoin Core.
 //
 // The serialized format is:
 //
@@ -779,7 +779,7 @@ func deserializeUtxoEntry(serialized []byte) (*UtxoEntry, error) {
 }
 
 // dbFetchUtxoEntry uses an existing database transaction to fetch all unspent
-// outputs for the provided Bitcoin transaction hash from the utxo set.
+// outputs for the provided NavCoin transaction hash from the utxo set.
 //
 // When there is no entry for the provided hash, nil will be returned for the
 // both the entry and the error.
@@ -1057,7 +1057,7 @@ func dbPutBestState(dbTx database.Tx, snapshot *BestState, workSum *big.Int) err
 // the genesis block, so it must only be called on an uninitialized database.
 func (b *BlockChain) createChainState() error {
 	// Create a new node from the genesis block and set it as the best node.
-	genesisBlock := btcutil.NewBlock(b.chainParams.GenesisBlock)
+	genesisBlock := navutil.NewBlock(b.chainParams.GenesisBlock)
 	header := &genesisBlock.MsgBlock().Header
 	node := newBlockNode(header, 0)
 	node.status = statusDataStored | statusValid
@@ -1203,7 +1203,7 @@ func (b *BlockChain) initChainState() error {
 
 		// Initialize the state related to the best block.
 		blockSize := uint64(len(blockBytes))
-		blockWeight := uint64(GetBlockWeight(btcutil.NewBlock(&block)))
+		blockWeight := uint64(GetBlockWeight(navutil.NewBlock(&block)))
 		numTxns := uint64(len(block.Transactions))
 		b.stateSnapshot = newBestState(tip, blockSize, blockWeight,
 			numTxns, state.totalTxns, tip.CalcPastMedianTime())
@@ -1254,9 +1254,9 @@ func dbFetchHeaderByHeight(dbTx database.Tx, height int32) (*wire.BlockHeader, e
 }
 
 // dbFetchBlockByNode uses an existing database transaction to retrieve the
-// raw block for the provided node, deserialize it, and return a btcutil.Block
+// raw block for the provided node, deserialize it, and return a navutil.Block
 // with the height set.
-func dbFetchBlockByNode(dbTx database.Tx, node *blockNode) (*btcutil.Block, error) {
+func dbFetchBlockByNode(dbTx database.Tx, node *blockNode) (*navutil.Block, error) {
 	// Load the raw block bytes from the database.
 	blockBytes, err := dbTx.FetchBlock(&node.hash)
 	if err != nil {
@@ -1264,7 +1264,7 @@ func dbFetchBlockByNode(dbTx database.Tx, node *blockNode) (*btcutil.Block, erro
 	}
 
 	// Create the encapsulated block and set the height appropriately.
-	block, err := btcutil.NewBlockFromBytes(blockBytes)
+	block, err := navutil.NewBlockFromBytes(blockBytes)
 	if err != nil {
 		return nil, err
 	}
@@ -1276,7 +1276,7 @@ func dbFetchBlockByNode(dbTx database.Tx, node *blockNode) (*btcutil.Block, erro
 // BlockByHeight returns the block at the given height in the main chain.
 //
 // This function is safe for concurrent access.
-func (b *BlockChain) BlockByHeight(blockHeight int32) (*btcutil.Block, error) {
+func (b *BlockChain) BlockByHeight(blockHeight int32) (*navutil.Block, error) {
 	// Lookup the block height in the best chain.
 	node := b.bestChain.NodeByHeight(blockHeight)
 	if node == nil {
@@ -1285,7 +1285,7 @@ func (b *BlockChain) BlockByHeight(blockHeight int32) (*btcutil.Block, error) {
 	}
 
 	// Load the block from the database and return it.
-	var block *btcutil.Block
+	var block *navutil.Block
 	err := b.db.View(func(dbTx database.Tx) error {
 		var err error
 		block, err = dbFetchBlockByNode(dbTx, node)
@@ -1298,7 +1298,7 @@ func (b *BlockChain) BlockByHeight(blockHeight int32) (*btcutil.Block, error) {
 // the appropriate chain height set.
 //
 // This function is safe for concurrent access.
-func (b *BlockChain) BlockByHash(hash *chainhash.Hash) (*btcutil.Block, error) {
+func (b *BlockChain) BlockByHash(hash *chainhash.Hash) (*navutil.Block, error) {
 	// Lookup the block hash in block index and ensure it is in the best
 	// chain.
 	node := b.index.LookupNode(hash)
@@ -1308,7 +1308,7 @@ func (b *BlockChain) BlockByHash(hash *chainhash.Hash) (*btcutil.Block, error) {
 	}
 
 	// Load the block from the database and return it.
-	var block *btcutil.Block
+	var block *navutil.Block
 	err := b.db.View(func(dbTx database.Tx) error {
 		var err error
 		block, err = dbFetchBlockByNode(dbTx, node)

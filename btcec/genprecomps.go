@@ -17,7 +17,7 @@ import (
 	"log"
 	"os"
 
-	"github.com/roasbeef/btcd/btcec"
+	"github.com/navcoin/navd/btcec"
 )
 
 func main() {

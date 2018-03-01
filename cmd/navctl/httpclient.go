@@ -10,7 +10,7 @@ import (
 	"net"
 	"net/http"
 
-	"github.com/roasbeef/btcd/btcjson"
+	"github.com/navcoin/navd/btcjson"
 	"github.com/btcsuite/go-socks/socks"
 )
 

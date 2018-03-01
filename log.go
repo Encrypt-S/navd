@@ -10,20 +10,20 @@ import (
 	"os"
 	"path/filepath"
 
-	"github.com/roasbeef/btcd/netsync"
+	"github.com/navcoin/navd/netsync"
 
-	"github.com/roasbeef/btcd/addrmgr"
-	"github.com/roasbeef/btcd/blockchain"
-	"github.com/roasbeef/btcd/blockchain/indexers"
-	"github.com/roasbeef/btcd/connmgr"
-	"github.com/roasbeef/btcd/database"
-	"github.com/roasbeef/btcd/mempool"
-	"github.com/roasbeef/btcd/mining"
-	"github.com/roasbeef/btcd/mining/cpuminer"
-	"github.com/roasbeef/btcd/peer"
-	"github.com/roasbeef/btcd/txscript"
+	"github.com/navcoin/navd/addrmgr"
+	"github.com/navcoin/navd/blockchain"
+	"github.com/navcoin/navd/blockchain/indexers"
+	"github.com/navcoin/navd/connmgr"
+	"github.com/navcoin/navd/database"
+	"github.com/navcoin/navd/mempool"
+	"github.com/navcoin/navd/mining"
+	"github.com/navcoin/navd/mining/cpuminer"
+	"github.com/navcoin/navd/peer"
+	"github.com/navcoin/navd/txscript"
 
-	"github.com/btcsuite/btclog"
+	"github.com/navcoin/navlog"
 	"github.com/jrick/logrotate/rotator"
 )
 
@@ -49,7 +49,7 @@ var (
 	// backendLog is the logging backend used to create all subsystem loggers.
 	// The backend must not be used before the log rotator has been initialized,
 	// or data races and/or nil pointer dereferences will occur.
-	backendLog = btclog.NewBackend(logWriter{})
+	backendLog = navlog.NewBackend(logWriter{})
 
 	// logRotator is one of the logging outputs.  It should be closed on
 	// application shutdown.
@@ -59,7 +59,7 @@ var (
 	amgrLog = backendLog.Logger("AMGR")
 	cmgrLog = backendLog.Logger("CMGR")
 	bcdbLog = backendLog.Logger("BCDB")
-	btcdLog = backendLog.Logger("BTCD")
+	navdLog = backendLog.Logger("BTCD")
 	chanLog = backendLog.Logger("CHAN")
 	discLog = backendLog.Logger("DISC")
 	indxLog = backendLog.Logger("INDX")
@@ -88,12 +88,12 @@ func init() {
 }
 
 // subsystemLoggers maps each subsystem identifier to its associated logger.
-var subsystemLoggers = map[string]btclog.Logger{
+var subsystemLoggers = map[string]navlog.Logger{
 	"ADXR": adxrLog,
 	"AMGR": amgrLog,
 	"CMGR": cmgrLog,
 	"BCDB": bcdbLog,
-	"BTCD": btcdLog,
+	"NAVD": navdLog,
 	"CHAN": chanLog,
 	"DISC": discLog,
 	"INDX": indxLog,
@@ -136,7 +136,7 @@ func setLogLevel(subsystemID string, logLevel string) {
 	}
 
 	// Defaults to info if the log level is invalid.
-	level, _ := btclog.LevelFromString(logLevel)
+	level, _ := navlog.LevelFromString(logLevel)
 	logger.SetLevel(level)
 }
 

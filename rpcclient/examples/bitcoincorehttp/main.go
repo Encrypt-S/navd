@@ -7,17 +7,17 @@ package main
 import (
 	"log"
 
-	"github.com/roasbeef/btcd/rpcclient"
+	"github.com/navcoin/navd/rpcclient"
 )
 
 func main() {
-	// Connect to local bitcoin core RPC server using HTTP POST mode.
+	// Connect to local navcoin core RPC server using HTTP POST mode.
 	connCfg := &rpcclient.ConnConfig{
 		Host:         "localhost:8332",
 		User:         "yourrpcuser",
 		Pass:         "yourrpcpass",
-		HTTPPostMode: true, // Bitcoin core only supports HTTP POST mode
-		DisableTLS:   true, // Bitcoin core does not provide TLS by default
+		HTTPPostMode: true, // NavCoin core only supports HTTP POST mode
+		DisableTLS:   true, // NavCoin core does not provide TLS by default
 	}
 	// Notice the notification parameter is nil since notifications are
 	// not supported in HTTP POST mode.

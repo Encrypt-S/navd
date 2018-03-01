@@ -9,7 +9,7 @@ import (
 	"io"
 )
 
-// MsgMemPool implements the Message interface and represents a bitcoin mempool
+// MsgMemPool implements the Message interface and represents a navcoin mempool
 // message.  It is used to request a list of transactions still in the active
 // memory pool of a relay.
 //
@@ -17,7 +17,7 @@ import (
 // starting with BIP0035Version.
 type MsgMemPool struct{}
 
-// BtcDecode decodes r using the bitcoin protocol encoding into the receiver.
+// BtcDecode decodes r using the navcoin protocol encoding into the receiver.
 // This is part of the Message interface implementation.
 func (msg *MsgMemPool) BtcDecode(r io.Reader, pver uint32, enc MessageEncoding) error {
 	if pver < BIP0035Version {
@@ -29,7 +29,7 @@ func (msg *MsgMemPool) BtcDecode(r io.Reader, pver uint32, enc MessageEncoding) 
 	return nil
 }
 
-// BtcEncode encodes the receiver to w using the bitcoin protocol encoding.
+// BtcEncode encodes the receiver to w using the navcoin protocol encoding.
 // This is part of the Message interface implementation.
 func (msg *MsgMemPool) BtcEncode(w io.Writer, pver uint32, enc MessageEncoding) error {
 	if pver < BIP0035Version {
@@ -53,7 +53,7 @@ func (msg *MsgMemPool) MaxPayloadLength(pver uint32) uint32 {
 	return 0
 }
 
-// NewMsgMemPool returns a new bitcoin pong message that conforms to the Message
+// NewMsgMemPool returns a new navcoin pong message that conforms to the Message
 // interface.  See MsgPong for details.
 func NewMsgMemPool() *MsgMemPool {
 	return &MsgMemPool{}

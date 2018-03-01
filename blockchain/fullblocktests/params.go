@@ -9,9 +9,9 @@ import (
 	"math/big"
 	"time"
 
-	"github.com/roasbeef/btcd/chaincfg"
-	"github.com/roasbeef/btcd/chaincfg/chainhash"
-	"github.com/roasbeef/btcd/wire"
+	"github.com/navcoin/navd/chaincfg"
+	"github.com/navcoin/navd/chaincfg/chainhash"
+	"github.com/navcoin/navd/wire"
 )
 
 // newHashFromStr converts the passed big-endian hex string into a
@@ -43,7 +43,7 @@ var (
 	// the overhead of creating it multiple times.
 	bigOne = big.NewInt(1)
 
-	// regressionPowLimit is the highest proof of work value a Bitcoin block
+	// regressionPowLimit is the highest proof of work value a NavCoin block
 	// can have for the regression test network.  It is the value 2^255 - 1.
 	regressionPowLimit = new(big.Int).Sub(new(big.Int).Lsh(bigOne, 255), bigOne)
 

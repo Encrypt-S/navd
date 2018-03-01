@@ -7,17 +7,17 @@ package wire
 import (
 	"io"
 
-	"github.com/roasbeef/btcd/chaincfg/chainhash"
+	"github.com/navcoin/navd/chaincfg/chainhash"
 )
 
-// MsgGetCFilter implements the Message interface and represents a bitcoin
+// MsgGetCFilter implements the Message interface and represents a navcoin
 // getcfilter message. It is used to request a committed filter for a block.
 type MsgGetCFilter struct {
 	BlockHash  chainhash.Hash
 	FilterType FilterType
 }
 
-// BtcDecode decodes r using the bitcoin protocol encoding into the receiver.
+// BtcDecode decodes r using the navcoin protocol encoding into the receiver.
 // This is part of the Message interface implementation.
 func (msg *MsgGetCFilter) BtcDecode(r io.Reader, pver uint32, _ MessageEncoding) error {
 	err := readElement(r, &msg.BlockHash)
@@ -27,7 +27,7 @@ func (msg *MsgGetCFilter) BtcDecode(r io.Reader, pver uint32, _ MessageEncoding)
 	return readElement(r, &msg.FilterType)
 }
 
-// BtcEncode encodes the receiver to w using the bitcoin protocol encoding.
+// BtcEncode encodes the receiver to w using the navcoin protocol encoding.
 // This is part of the Message interface implementation.
 func (msg *MsgGetCFilter) BtcEncode(w io.Writer, pver uint32, _ MessageEncoding) error {
 	err := writeElement(w, &msg.BlockHash)
@@ -50,7 +50,7 @@ func (msg *MsgGetCFilter) MaxPayloadLength(pver uint32) uint32 {
 	return chainhash.HashSize + 1
 }
 
-// NewMsgGetCFilter returns a new bitcoin getcfilter message that conforms to
+// NewMsgGetCFilter returns a new navcoin getcfilter message that conforms to
 // the Message interface using the passed parameters and defaults for the
 // remaining fields.
 func NewMsgGetCFilter(blockHash *chainhash.Hash,

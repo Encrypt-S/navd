@@ -10,11 +10,11 @@ import (
 	"os"
 	"path/filepath"
 
-	"github.com/roasbeef/btcd/chaincfg"
-	"github.com/roasbeef/btcd/database"
-	_ "github.com/roasbeef/btcd/database/ffldb"
-	"github.com/roasbeef/btcd/wire"
-	"github.com/roasbeef/btcutil"
+	"github.com/navcoin/navd/chaincfg"
+	"github.com/navcoin/navd/database"
+	_ "github.com/navcoin/navd/database/ffldb"
+	"github.com/navcoin/navd/wire"
+	"github.com/navcoin/navutil"
 )
 
 // This example demonstrates creating a new database.
@@ -22,8 +22,8 @@ func ExampleCreate() {
 	// This example assumes the ffldb driver is imported.
 	//
 	// import (
-	// 	"github.com/roasbeef/btcd/database"
-	// 	_ "github.com/roasbeef/btcd/database/ffldb"
+	// 	"github.com/navcoin/navd/database"
+	// 	_ "github.com/navcoin/navd/database/ffldb"
 	// )
 
 	// Create a database and schedule it to be closed and removed on exit.
@@ -48,8 +48,8 @@ func Example_basicUsage() {
 	// This example assumes the ffldb driver is imported.
 	//
 	// import (
-	// 	"github.com/roasbeef/btcd/database"
-	// 	_ "github.com/roasbeef/btcd/database/ffldb"
+	// 	"github.com/navcoin/navd/database"
+	// 	_ "github.com/navcoin/navd/database/ffldb"
 	// )
 
 	// Create a database and schedule it to be closed and removed on exit.
@@ -114,8 +114,8 @@ func Example_blockStorageAndRetrieval() {
 	// This example assumes the ffldb driver is imported.
 	//
 	// import (
-	// 	"github.com/roasbeef/btcd/database"
-	// 	_ "github.com/roasbeef/btcd/database/ffldb"
+	// 	"github.com/navcoin/navd/database"
+	// 	_ "github.com/navcoin/navd/database/ffldb"
 	// )
 
 	// Create a database and schedule it to be closed and removed on exit.
@@ -136,7 +136,7 @@ func Example_blockStorageAndRetrieval() {
 	// and example.
 	err = db.Update(func(tx database.Tx) error {
 		genesisBlock := chaincfg.MainNetParams.GenesisBlock
-		return tx.StoreBlock(btcutil.NewBlock(genesisBlock))
+		return tx.StoreBlock(navutil.NewBlock(genesisBlock))
 	})
 	if err != nil {
 		fmt.Println(err)

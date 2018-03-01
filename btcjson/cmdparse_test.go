@@ -10,7 +10,7 @@ import (
 	"reflect"
 	"testing"
 
-	"github.com/roasbeef/btcd/btcjson"
+	"github.com/navcoin/navd/btcjson"
 )
 
 // TestAssignField tests the assignField function handles supported combinations

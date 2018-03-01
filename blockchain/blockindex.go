@@ -10,10 +10,10 @@ import (
 	"sync"
 	"time"
 
-	"github.com/roasbeef/btcd/chaincfg"
-	"github.com/roasbeef/btcd/chaincfg/chainhash"
-	"github.com/roasbeef/btcd/database"
-	"github.com/roasbeef/btcd/wire"
+	"github.com/navcoin/navd/chaincfg"
+	"github.com/navcoin/navd/chaincfg/chainhash"
+	"github.com/navcoin/navd/database"
+	"github.com/navcoin/navd/wire"
 )
 
 // blockStatus is a bit field representing the validation state of the block.

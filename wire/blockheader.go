@@ -9,7 +9,7 @@ import (
 	"io"
 	"time"
 
-	"github.com/roasbeef/btcd/chaincfg/chainhash"
+	"github.com/navcoin/navd/chaincfg/chainhash"
 )
 
 // MaxBlockHeaderPayload is the maximum number of bytes a block header can be.
@@ -17,7 +17,7 @@ import (
 // PrevBlock and MerkleRoot hashes.
 const MaxBlockHeaderPayload = 16 + (chainhash.HashSize * 2)
 
-// BlockHeader defines information about a block and is used in the bitcoin
+// BlockHeader defines information about a block and is used in the navcoin
 // block (MsgBlock) and headers (MsgHeaders) messages.
 type BlockHeader struct {
 	// Version of the block.  This is not the same as the protocol version.
@@ -56,7 +56,7 @@ func (h *BlockHeader) BlockHash() chainhash.Hash {
 	return chainhash.DoubleHashH(buf.Bytes())
 }
 
-// BtcDecode decodes r using the bitcoin protocol encoding into the receiver.
+// BtcDecode decodes r using the navcoin protocol encoding into the receiver.
 // This is part of the Message interface implementation.
 // See Deserialize for decoding block headers stored to disk, such as in a
 // database, as opposed to decoding block headers from the wire.
@@ -64,7 +64,7 @@ func (h *BlockHeader) BtcDecode(r io.Reader, pver uint32, enc MessageEncoding) e
 	return readBlockHeader(r, pver, h)
 }
 
-// BtcEncode encodes the receiver to w using the bitcoin protocol encoding.
+// BtcEncode encodes the receiver to w using the navcoin protocol encoding.
 // This is part of the Message interface implementation.
 // See Serialize for encoding block headers to be stored to disk, such as in a
 // database, as opposed to encoding block headers for the wire.
@@ -110,7 +110,7 @@ func NewBlockHeader(version int32, prevHash, merkleRootHash *chainhash.Hash,
 	}
 }
 
-// readBlockHeader reads a bitcoin block header from r.  See Deserialize for
+// readBlockHeader reads a navcoin block header from r.  See Deserialize for
 // decoding block headers stored to disk, such as in a database, as opposed to
 // decoding from the wire.
 func readBlockHeader(r io.Reader, pver uint32, bh *BlockHeader) error {
@@ -118,7 +118,7 @@ func readBlockHeader(r io.Reader, pver uint32, bh *BlockHeader) error {
 		(*uint32Time)(&bh.Timestamp), &bh.Bits, &bh.Nonce)
 }
 
-// writeBlockHeader writes a bitcoin block header to w.  See Serialize for
+// writeBlockHeader writes a navcoin block header to w.  See Serialize for
 // encoding block headers to be stored to disk, such as in a database, as
 // opposed to encoding for the wire.
 func writeBlockHeader(w io.Writer, pver uint32, bh *BlockHeader) error {

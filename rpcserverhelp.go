@@ -11,7 +11,7 @@ import (
 	"strings"
 	"sync"
 
-	"github.com/roasbeef/btcd/btcjson"
+	"github.com/navcoin/navd/btcjson"
 )
 
 // helpDescsEnUS defines the English descriptions used for the help strings.
@@ -86,7 +86,7 @@ var helpDescsEnUS = map[string]string{
 	"scriptpubkeyresult-hex":       "Hex-encoded bytes of the script",
 	"scriptpubkeyresult-reqSigs":   "The number of required signatures",
 	"scriptpubkeyresult-type":      "The type of the script (e.g. 'pubkeyhash')",
-	"scriptpubkeyresult-addresses": "The bitcoin addresses associated with this script",
+	"scriptpubkeyresult-addresses": "The navcoin addresses associated with this script",
 
 	// Vout help.
 	"vout-value":        "The amount in BTC",
@@ -108,7 +108,7 @@ var helpDescsEnUS = map[string]string{
 	"decodescriptresult-asm":       "Disassembly of the script",
 	"decodescriptresult-reqSigs":   "The number of required signatures",
 	"decodescriptresult-type":      "The type of the script (e.g. 'pubkeyhash')",
-	"decodescriptresult-addresses": "The bitcoin addresses associated with this script",
+	"decodescriptresult-addresses": "The navcoin addresses associated with this script",
 	"decodescriptresult-p2sh":      "The script hash for use in pay-to-script-hash transactions (only present if the provided redeem script is not already a pay-to-script-hash script)",
 
 	// DecodeScriptCmd help.
@@ -163,7 +163,7 @@ var helpDescsEnUS = map[string]string{
 	"getblock--synopsis":   "Returns information about a block given its hash.",
 	"getblock-hash":        "The hash of the block",
 	"getblock-verbose":     "Specifies the block is returned as a JSON object instead of hex-encoded string",
-	"getblock-verbosetx":   "Specifies that each transaction is returned as a JSON object and only applies if the verbose flag is true (btcd extension)",
+	"getblock-verbosetx":   "Specifies that each transaction is returned as a JSON object and only applies if the verbose flag is true (navd extension)",
 	"getblock--condition0": "verbose=false",
 	"getblock--condition1": "verbose=true",
 	"getblock--result0":    "Hex-encoded bytes of the serialized block",
@@ -342,7 +342,7 @@ var helpDescsEnUS = map[string]string{
 	"getconnectioncount--result0":  "The number of connections",
 
 	// GetCurrentNetCmd help.
-	"getcurrentnet--synopsis": "Get bitcoin network the server is running on.",
+	"getcurrentnet--synopsis": "Get navcoin network the server is running on.",
 	"getcurrentnet--result0":  "The network identifer",
 
 	// GetDifficultyCmd help.
@@ -373,7 +373,7 @@ var helpDescsEnUS = map[string]string{
 	"infowalletresult-version":         "The version of the server",
 	"infowalletresult-protocolversion": "The latest supported protocol version",
 	"infowalletresult-walletversion":   "The version of the wallet server",
-	"infowalletresult-balance":         "The total bitcoin balance of the wallet",
+	"infowalletresult-balance":         "The total navcoin balance of the wallet",
 	"infowalletresult-blocks":          "The number of blocks processed",
 	"infowalletresult-timeoffset":      "The time offset",
 	"infowalletresult-connections":     "The number of connected peers",
@@ -462,7 +462,7 @@ var helpDescsEnUS = map[string]string{
 
 	// GetRawMempoolVerboseResult help.
 	"getrawmempoolverboseresult-size":             "Transaction size in bytes",
-	"getrawmempoolverboseresult-fee":              "Transaction fee in bitcoins",
+	"getrawmempoolverboseresult-fee":              "Transaction fee in navcoins",
 	"getrawmempoolverboseresult-time":             "Local time transaction entered pool in seconds since 1 Jan 1970 GMT",
 	"getrawmempoolverboseresult-height":           "Block height when transaction entered the pool",
 	"getrawmempoolverboseresult-startingpriority": "Priority when transaction entered the pool",
@@ -517,7 +517,7 @@ var helpDescsEnUS = map[string]string{
 		"Transactions pulled from the mempool will have the 'confirmations' field set to 0.\n" +
 		"Usage of this RPC requires the optional --addrindex flag to be activated, otherwise all responses will simply return with an error stating the address index has not yet been built.\n" +
 		"Similarly, until the address index has caught up with the current best height, all requests will return an error response in order to avoid serving stale data.",
-	"searchrawtransactions-address":     "The Bitcoin address to search for",
+	"searchrawtransactions-address":     "The NavCoin address to search for",
 	"searchrawtransactions-verbose":     "Specifies the transaction is returned as a JSON object instead of hex-encoded string",
 	"searchrawtransactions--condition0": "verbose=0",
 	"searchrawtransactions--condition1": "verbose=1",
@@ -531,7 +531,7 @@ var helpDescsEnUS = map[string]string{
 	// SendRawTransactionCmd help.
 	"sendrawtransaction--synopsis":     "Submits the serialized, hex-encoded transaction to the local peer and relays it to the network.",
 	"sendrawtransaction-hextx":         "Serialized, hex-encoded signed transaction",
-	"sendrawtransaction-allowhighfees": "Whether or not to allow insanely high fees (btcd does not yet implement this parameter, so it has no effect)",
+	"sendrawtransaction-allowhighfees": "Whether or not to allow insanely high fees (navd does not yet implement this parameter, so it has no effect)",
 	"sendrawtransaction--result0":      "The hash of the transaction",
 
 	// SetGenerateCmd help.
@@ -540,8 +540,8 @@ var helpDescsEnUS = map[string]string{
 	"setgenerate-genproclimit": "The number of processors (cores) to limit generation to or -1 for default",
 
 	// StopCmd help.
-	"stop--synopsis": "Shutdown btcd.",
-	"stop--result0":  "The string 'btcd stopping.'",
+	"stop--synopsis": "Shutdown navd.",
+	"stop--result0":  "The string 'navd stopping.'",
 
 	// SubmitBlockOptions help.
 	"submitblockoptions-workid": "This parameter is currently ignored",
@@ -556,16 +556,16 @@ var helpDescsEnUS = map[string]string{
 
 	// ValidateAddressResult help.
 	"validateaddresschainresult-isvalid": "Whether or not the address is valid",
-	"validateaddresschainresult-address": "The bitcoin address (only when isvalid is true)",
+	"validateaddresschainresult-address": "The navcoin address (only when isvalid is true)",
 
 	// ValidateAddressCmd help.
 	"validateaddress--synopsis": "Verify an address is valid.",
-	"validateaddress-address":   "Bitcoin address to validate",
+	"validateaddress-address":   "NavCoin address to validate",
 
 	// VerifyChainCmd help.
 	"verifychain--synopsis": "Verifies the block chain database.\n" +
 		"The actual checks performed by the checklevel parameter are implementation specific.\n" +
-		"For btcd this is:\n" +
+		"For navd this is:\n" +
 		"checklevel=0 - Look up each block and ensure it can be loaded from the database.\n" +
 		"checklevel=1 - Perform basic context-free sanity checks on each block.",
 	"verifychain-checklevel": "How thorough the block verification is",
@@ -574,7 +574,7 @@ var helpDescsEnUS = map[string]string{
 
 	// VerifyMessageCmd help.
 	"verifymessage--synopsis": "Verify a signed message.",
-	"verifymessage-address":   "The bitcoin address to use for the signature",
+	"verifymessage-address":   "The navcoin address to use for the signature",
 	"verifymessage-signature": "The base-64 encoded signature provided by the signer",
 	"verifymessage-message":   "The signed message",
 	"verifymessage--result0":  "Whether or not the signature verified",
@@ -612,7 +612,7 @@ var helpDescsEnUS = map[string]string{
 	"outpoint-index": "The index of the outpoint",
 
 	// NotifySpentCmd help.
-	"notifyspent--synopsis": "Send a redeemingtx notification when a transaction spending an outpoint appears in mempool (if relayed to this btcd instance) and when such a transaction first appears in a newly-attached block.",
+	"notifyspent--synopsis": "Send a redeemingtx notification when a transaction spending an outpoint appears in mempool (if relayed to this navd instance) and when such a transaction first appears in a newly-attached block.",
 	"notifyspent-outpoints": "List of transaction outpoints to monitor.",
 
 	// StopNotifySpentCmd help.

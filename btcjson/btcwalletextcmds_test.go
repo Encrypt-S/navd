@@ -11,10 +11,10 @@ import (
 	"reflect"
 	"testing"
 
-	"github.com/roasbeef/btcd/btcjson"
+	"github.com/navcoin/navd/btcjson"
 )
 
-// TestBtcWalletExtCmds tests all of the btcwallet extended commands marshal and
+// TestBtcWalletExtCmds tests all of the navwallet extended commands marshal and
 // unmarshal into valid results include handling of optional fields being
 // omitted in the marshalled command, while optional fields with defaults have
 // the default assigned on unmarshalled commands.

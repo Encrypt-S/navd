@@ -10,9 +10,9 @@ import (
 	"encoding/hex"
 	"encoding/json"
 
-	"github.com/roasbeef/btcd/btcjson"
-	"github.com/roasbeef/btcd/chaincfg/chainhash"
-	"github.com/roasbeef/btcd/wire"
+	"github.com/navcoin/navd/btcjson"
+	"github.com/navcoin/navd/chaincfg/chainhash"
+	"github.com/navcoin/navd/wire"
 )
 
 // FutureGetBestBlockHashResult is a future promise to deliver the result of a
@@ -589,7 +589,7 @@ func (c *Client) EstimateFeeAsync(numBlocks int64) FutureEstimateFeeResult {
 	return c.sendCmd(cmd)
 }
 
-// EstimateFee provides an estimated fee  in bitcoins per kilobyte.
+// EstimateFee provides an estimated fee  in navcoins per kilobyte.
 func (c *Client) EstimateFee(numBlocks int64) (float64, error) {
 	return c.EstimateFeeAsync(numBlocks).Receive()
 }

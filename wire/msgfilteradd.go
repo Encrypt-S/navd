@@ -16,7 +16,7 @@ const (
 	MaxFilterAddDataSize = 520
 )
 
-// MsgFilterAdd implements the Message interface and represents a bitcoin
+// MsgFilterAdd implements the Message interface and represents a navcoin
 // filteradd message.  It is used to add a data element to an existing Bloom
 // filter.
 //
@@ -25,7 +25,7 @@ type MsgFilterAdd struct {
 	Data []byte
 }
 
-// BtcDecode decodes r using the bitcoin protocol encoding into the receiver.
+// BtcDecode decodes r using the navcoin protocol encoding into the receiver.
 // This is part of the Message interface implementation.
 func (msg *MsgFilterAdd) BtcDecode(r io.Reader, pver uint32, enc MessageEncoding) error {
 	if pver < BIP0037Version {
@@ -40,7 +40,7 @@ func (msg *MsgFilterAdd) BtcDecode(r io.Reader, pver uint32, enc MessageEncoding
 	return err
 }
 
-// BtcEncode encodes the receiver to w using the bitcoin protocol encoding.
+// BtcEncode encodes the receiver to w using the navcoin protocol encoding.
 // This is part of the Message interface implementation.
 func (msg *MsgFilterAdd) BtcEncode(w io.Writer, pver uint32, enc MessageEncoding) error {
 	if pver < BIP0037Version {
@@ -72,7 +72,7 @@ func (msg *MsgFilterAdd) MaxPayloadLength(pver uint32) uint32 {
 		MaxFilterAddDataSize
 }
 
-// NewMsgFilterAdd returns a new bitcoin filteradd message that conforms to the
+// NewMsgFilterAdd returns a new navcoin filteradd message that conforms to the
 // Message interface.  See MsgFilterAdd for details.
 func NewMsgFilterAdd(data []byte) *MsgFilterAdd {
 	return &MsgFilterAdd{

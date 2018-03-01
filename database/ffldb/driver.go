@@ -7,19 +7,19 @@ package ffldb
 import (
 	"fmt"
 
-	"github.com/roasbeef/btcd/database"
-	"github.com/roasbeef/btcd/wire"
-	"github.com/btcsuite/btclog"
+	"github.com/navcoin/navd/database"
+	"github.com/navcoin/navd/wire"
+	"github.com/navcoin/navlog"
 )
 
-var log = btclog.Disabled
+var log = navlog.Disabled
 
 const (
 	dbType = "ffldb"
 )
 
 // parseArgs parses the arguments from the database Open/Create methods.
-func parseArgs(funcName string, args ...interface{}) (string, wire.BitcoinNet, error) {
+func parseArgs(funcName string, args ...interface{}) (string, wire.NavCoinNet, error) {
 	if len(args) != 2 {
 		return "", 0, fmt.Errorf("invalid arguments to %s.%s -- "+
 			"expected database path and block network", dbType,
@@ -32,7 +32,7 @@ func parseArgs(funcName string, args ...interface{}) (string, wire.BitcoinNet, e
 			"expected database path string", dbType, funcName)
 	}
 
-	network, ok := args[1].(wire.BitcoinNet)
+	network, ok := args[1].(wire.NavCoinNet)
 	if !ok {
 		return "", 0, fmt.Errorf("second argument to %s.%s is invalid -- "+
 			"expected block network", dbType, funcName)
@@ -65,7 +65,7 @@ func createDBDriver(args ...interface{}) (database.DB, error) {
 
 // useLogger is the callback provided during driver registration that sets the
 // current logger to the provided one.
-func useLogger(logger btclog.Logger) {
+func useLogger(logger navlog.Logger) {
 	log = logger
 }
 

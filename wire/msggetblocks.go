@@ -8,14 +8,14 @@ import (
 	"fmt"
 	"io"
 
-	"github.com/roasbeef/btcd/chaincfg/chainhash"
+	"github.com/navcoin/navd/chaincfg/chainhash"
 )
 
 // MaxBlockLocatorsPerMsg is the maximum number of block locator hashes allowed
 // per message.
 const MaxBlockLocatorsPerMsg = 500
 
-// MsgGetBlocks implements the Message interface and represents a bitcoin
+// MsgGetBlocks implements the Message interface and represents a navcoin
 // getblocks message.  It is used to request a list of blocks starting after the
 // last known hash in the slice of block locator hashes.  The list is returned
 // via an inv message (MsgInv) and is limited by a specific hash to stop at or
@@ -48,7 +48,7 @@ func (msg *MsgGetBlocks) AddBlockLocatorHash(hash *chainhash.Hash) error {
 	return nil
 }
 
-// BtcDecode decodes r using the bitcoin protocol encoding into the receiver.
+// BtcDecode decodes r using the navcoin protocol encoding into the receiver.
 // This is part of the Message interface implementation.
 func (msg *MsgGetBlocks) BtcDecode(r io.Reader, pver uint32, enc MessageEncoding) error {
 	err := readElement(r, &msg.ProtocolVersion)
@@ -83,7 +83,7 @@ func (msg *MsgGetBlocks) BtcDecode(r io.Reader, pver uint32, enc MessageEncoding
 	return readElement(r, &msg.HashStop)
 }
 
-// BtcEncode encodes the receiver to w using the bitcoin protocol encoding.
+// BtcEncode encodes the receiver to w using the navcoin protocol encoding.
 // This is part of the Message interface implementation.
 func (msg *MsgGetBlocks) BtcEncode(w io.Writer, pver uint32, enc MessageEncoding) error {
 	count := len(msg.BlockLocatorHashes)
@@ -127,7 +127,7 @@ func (msg *MsgGetBlocks) MaxPayloadLength(pver uint32) uint32 {
 	return 4 + MaxVarIntPayload + (MaxBlockLocatorsPerMsg * chainhash.HashSize) + chainhash.HashSize
 }
 
-// NewMsgGetBlocks returns a new bitcoin getblocks message that conforms to the
+// NewMsgGetBlocks returns a new navcoin getblocks message that conforms to the
 // Message interface using the passed parameters and defaults for the remaining
 // fields.
 func NewMsgGetBlocks(hashStop *chainhash.Hash) *MsgGetBlocks {

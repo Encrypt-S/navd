@@ -2,16 +2,16 @@ chainhash
 =========
 
 <<<<<<< HEAD
-[![Build Status](http://img.shields.io/travis/roasbeef/btcd.svg)](https://travis-ci.org/roasbeef/btcd)
+[![Build Status](http://img.shields.io/travis/navcoin/navd.svg)](https://travis-ci.org/navcoin/navd)
 [![ISC License](http://img.shields.io/badge/license-ISC-blue.svg)](http://copyfree.org)
-[![GoDoc](https://img.shields.io/badge/godoc-reference-blue.svg)](http://godoc.org/github.com/roasbeef/btcd/chaincfg/chainhash)
+[![GoDoc](https://img.shields.io/badge/godoc-reference-blue.svg)](http://godoc.org/github.com/navcoin/navd/chaincfg/chainhash)
 =======
-[![Build Status](http://img.shields.io/travis/roasbeef/btcd.svg)]
-(https://travis-ci.org/roasbeef/btcd) [![ISC License]
+[![Build Status](http://img.shields.io/travis/navcoin/navd.svg)]
+(https://travis-ci.org/navcoin/navd) [![ISC License]
 (http://img.shields.io/badge/license-ISC-blue.svg)](http://copyfree.org)
 [![GoDoc](https://img.shields.io/badge/godoc-reference-blue.svg)]
-(http://godoc.org/github.com/roasbeef/btcd/chaincfg/chainhash)
->>>>>>> c7d17841... multi: update imports to roasbeef's
+(http://godoc.org/github.com/navcoin/navd/chaincfg/chainhash)
+>>>>>>> c7d17841... multi: update imports to navcoin's
 
 chainhash provides a generic hash type and associated functions that allows the
 specific hash algorithm to be abstracted.
@@ -19,7 +19,7 @@ specific hash algorithm to be abstracted.
 ## Installation and Updating
 
 ```bash
-$ go get -u github.com/roasbeef/btcd/chaincfg/chainhash
+$ go get -u github.com/navcoin/navd/chaincfg/chainhash
 ```
 
 ## GPG Verification Key

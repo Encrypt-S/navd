@@ -1,8 +1,10 @@
-hash: d74068b4218716346d9ed6c2bd10439e7c599216dd7b63ef37e9ff0f56632898
-updated: 2017-11-17T15:59:49.625897724-08:00
+hash: 4f9c3778439018782d825562aee182e0ad3c4b91dbc04ee9c720bdaae57e2b3e
+updated: 2018-03-01T21:43:08.549904374+01:00
 imports:
 - name: github.com/aead/siphash
   version: e404fcfc888570cadd1610538e2dbc89f66af814
+- name: github.com/aguycalled/gox13hash
+  version: be82d90d82accfc6cad08469ba7737ba291a5310
 - name: github.com/btcsuite/btclog
   version: 84c8d2346e9fc8c7b947e243b9c24e6df9fd206a
 - name: github.com/btcsuite/fastsha256
@@ -45,7 +47,7 @@ imports:
   - svc
   - winapi
 - name: github.com/davecgh/go-spew
-  version: ecdeabc65495df2dec95d7c4a4c3e021903035e5
+  version: 8991bc29aa16c548c550c7ff78260e27b9ab7c73
   subpackages:
   - spew
 - name: github.com/jessevdk/go-flags
@@ -55,7 +57,58 @@ imports:
   subpackages:
   - rotator
 - name: github.com/kkdai/bstream
-  version: f391b8402d23024e7c0f624b31267a89998fca95
+  version: f71540b9dfdcfe64dbf2818e9b66423c6aafcacd
+- name: github.com/navcoin/navd
+  version: 0dcaa7f9b47c3b541fa4270ad57fb3d13b518061
+  subpackages:
+  - addrmgr
+  - blockchain
+  - blockchain/fullblocktests
+  - blockchain/indexers
+  - btcec
+  - btcjson
+  - chaincfg
+  - chaincfg/chainhash
+  - connmgr
+  - database
+  - database/ffldb
+  - database/internal/treap
+  - integration/rpctest
+  - limits
+  - mempool
+  - mining
+  - mining/cpuminer
+  - netsync
+  - peer
+  - rpcclient
+  - txscript
+  - wire
+- name: github.com/navcoin/navlog
+  version: 84c8d2346e9fc8c7b947e243b9c24e6df9fd206a
+- name: github.com/navcoin/navutil
+  version: c3ff179366044979fb9856c2feb79bd4c2184c7a
+  subpackages:
+  - bloom
+  - gcs
+  - gcs/builder
+  - hdkeychain
+- name: github.com/roasbeef/btcd
+  version: 0dcaa7f9b47c3b541fa4270ad57fb3d13b518061
+  subpackages:
+  - blockchain
+  - blockchain/indexers
+  - btcec
+  - btcjson
+  - chaincfg
+  - chaincfg/chainhash
+  - database
+  - database/internal/treap
+  - mempool
+  - mining
+  - peer
+  - rpcclient
+  - txscript
+  - wire
 - name: github.com/roasbeef/btcutil
   version: c3ff179366044979fb9856c2feb79bd4c2184c7a
   subpackages:
@@ -66,7 +119,7 @@ imports:
   - gcs/builder
   - hdkeychain
 - name: golang.org/x/crypto
-  version: 9419663f5a44be8b34ca85f08abc5fe1be11f8a3
+  version: 91a49db82a88618983a78a06c1cbd4e00ab749ab
   subpackages:
   - ripemd160
 testImports: []

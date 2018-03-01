@@ -15,9 +15,9 @@ import (
 	"strings"
 	"testing"
 
-	"github.com/roasbeef/btcd/chaincfg/chainhash"
-	"github.com/roasbeef/btcd/wire"
-	"github.com/roasbeef/btcutil"
+	"github.com/navcoin/navd/chaincfg/chainhash"
+	"github.com/navcoin/navd/wire"
+	"github.com/navcoin/navutil"
 )
 
 // scriptTestName returns a descriptive test name for the given reference script
@@ -77,7 +77,7 @@ func parseWitnessStack(elements []interface{}) ([][]byte, error) {
 // parsing.  It is declared here so it only needs to be created once.
 var shortFormOps map[string]byte
 
-// parseShortForm parses a string as as used in the Bitcoin Core reference tests
+// parseShortForm parses a string as as used in the NavCoin Core reference tests
 // into the script it came from.
 //
 // The format used for these tests is pretty simple if ad-hoc:
@@ -347,7 +347,7 @@ func testScripts(t *testing.T, tests [][]interface{}, useSigCache bool) {
 
 		var (
 			witness  wire.TxWitness
-			inputAmt btcutil.Amount
+			inputAmt navutil.Amount
 		)
 
 		// When the first field of the test data is a slice it contains
@@ -367,7 +367,7 @@ func testScripts(t *testing.T, tests [][]interface{}, useSigCache bool) {
 				continue
 			}
 
-			inputAmt, err = btcutil.NewAmount(witnessData[len(witnessData)-1].(float64))
+			inputAmt, err = navutil.NewAmount(witnessData[len(witnessData)-1].(float64))
 			if err != nil {
 				t.Errorf("%s: can't parse input amt: %v",
 					name, err)
@@ -547,7 +547,7 @@ testloop:
 			continue
 		}
 
-		tx, err := btcutil.NewTxFromBytes(serializedTx)
+		tx, err := navutil.NewTxFromBytes(serializedTx)
 		if err != nil {
 			t.Errorf("bad test (arg 2 not msgtx %v) %d: %v", err,
 				i, test)
@@ -702,7 +702,7 @@ testloop:
 			continue
 		}
 
-		tx, err := btcutil.NewTxFromBytes(serializedTx)
+		tx, err := navutil.NewTxFromBytes(serializedTx)
 		if err != nil {
 			t.Errorf("bad test (arg 2 not msgtx %v) %d: %v", err,
 				i, test)
@@ -814,9 +814,9 @@ testloop:
 	}
 }
 
-// TestCalcSignatureHash runs the Bitcoin Core signature hash calculation tests
+// TestCalcSignatureHash runs the NavCoin Core signature hash calculation tests
 // in sighash.json.
-// https://github.com/bitcoin/bitcoin/blob/master/src/test/data/sighash.json
+// https://github.com/navcoin/navcoin/blob/master/src/test/data/sighash.json
 func TestCalcSignatureHash(t *testing.T) {
 	file, err := ioutil.ReadFile("data/sighash.json")
 	if err != nil {

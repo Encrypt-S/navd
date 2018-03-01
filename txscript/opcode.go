@@ -14,9 +14,9 @@ import (
 
 	"golang.org/x/crypto/ripemd160"
 
-	"github.com/roasbeef/btcd/btcec"
-	"github.com/roasbeef/btcd/chaincfg/chainhash"
-	"github.com/roasbeef/btcd/wire"
+	"github.com/navcoin/navd/btcec"
+	"github.com/navcoin/navd/chaincfg/chainhash"
+	"github.com/navcoin/navd/wire"
 )
 
 // An opcode defines the information related to a txscript opcode.  opfunc, if
@@ -30,7 +30,7 @@ type opcode struct {
 	opfunc func(*parsedOpcode, *Engine) error
 }
 
-// These constants are the values of the official opcodes used on the btc wiki,
+// These constants are the values of the official opcodes used on the nav wiki,
 // in bitcoin core and in most if not all other references and software related
 // to handling BTC scripts.
 const (
@@ -288,12 +288,12 @@ const (
 	OP_UNKNOWN247          = 0xf7 // 247
 	OP_UNKNOWN248          = 0xf8 // 248
 	OP_UNKNOWN249          = 0xf9 // 249
-	OP_SMALLINTEGER        = 0xfa // 250 - bitcoin core internal
-	OP_PUBKEYS             = 0xfb // 251 - bitcoin core internal
+	OP_SMALLINTEGER        = 0xfa // 250 - navcoin core internal
+	OP_PUBKEYS             = 0xfb // 251 - navcoin core internal
 	OP_UNKNOWN252          = 0xfc // 252
-	OP_PUBKEYHASH          = 0xfd // 253 - bitcoin core internal
-	OP_PUBKEY              = 0xfe // 254 - bitcoin core internal
-	OP_INVALIDOPCODE       = 0xff // 255 - bitcoin core internal
+	OP_PUBKEYHASH          = 0xfd // 253 - navcoin core internal
+	OP_PUBKEY              = 0xfe // 254 - navcoin core internal
+	OP_INVALIDOPCODE       = 0xff // 255 - navcoin core internal
 )
 
 // Conditional execution constants.
@@ -575,7 +575,7 @@ var opcodeArray = [256]opcode{
 	OP_UNKNOWN248: {OP_UNKNOWN248, "OP_UNKNOWN248", 1, opcodeInvalid},
 	OP_UNKNOWN249: {OP_UNKNOWN249, "OP_UNKNOWN249", 1, opcodeInvalid},
 
-	// Bitcoin Core internal use opcode.  Defined here for completeness.
+	// NavCoin Core internal use opcode.  Defined here for completeness.
 	OP_SMALLINTEGER: {OP_SMALLINTEGER, "OP_SMALLINTEGER", 1, opcodeInvalid},
 	OP_PUBKEYS:      {OP_PUBKEYS, "OP_PUBKEYS", 1, opcodeInvalid},
 	OP_UNKNOWN252:   {OP_UNKNOWN252, "OP_UNKNOWN252", 1, opcodeInvalid},

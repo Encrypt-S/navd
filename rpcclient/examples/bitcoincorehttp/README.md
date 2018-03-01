@@ -1,7 +1,7 @@
-Bitcoin Core HTTP POST Example
+NavCoin Core HTTP POST Example
 ==============================
 
-This example shows how to use the rpcclient package to connect to a Bitcoin
+This example shows how to use the rpcclient package to connect to a NavCoin
 Core RPC server using HTTP POST mode with TLS disabled and gets the current
 block count.
 
@@ -10,7 +10,7 @@ block count.
 The first step is to use `go get` to download and install the rpcclient package:
 
 ```bash
-$ go get github.com/roasbeef/btcd/rpcclient
+$ go get github.com/navcoin/navd/rpcclient
 ```
 
 Next, modify the `main.go` source to specify the correct RPC username and
@@ -24,7 +24,7 @@ password for the RPC server:
 Finally, navigate to the example's directory and run it with:
 
 ```bash
-$ cd $GOPATH/src/github.com/roasbeef/btcd/rpcclient/examples/bitcoincorehttp
+$ cd $GOPATH/src/github.com/navcoin/navd/rpcclient/examples/navcoincorehttp
 $ go run *.go
 ```
 

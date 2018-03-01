@@ -8,7 +8,7 @@ import (
 	"fmt"
 	"io"
 
-	"github.com/roasbeef/btcd/chaincfg/chainhash"
+	"github.com/navcoin/navd/chaincfg/chainhash"
 )
 
 const (
@@ -17,11 +17,11 @@ const (
 	MaxCFHeaderPayload = chainhash.HashSize
 
 	// MaxCFHeadersPerMsg is the maximum number of committed filter headers
-	// that can be in a single bitcoin cfheaders message.
+	// that can be in a single navcoin cfheaders message.
 	MaxCFHeadersPerMsg = 2000
 )
 
-// MsgCFHeaders implements the Message interface and represents a bitcoin
+// MsgCFHeaders implements the Message interface and represents a navcoin
 // cfheaders message.  It is used to deliver committed filter header information
 // in response to a getcfheaders message (MsgGetCFHeaders). The maximum number
 // of committed filter headers per message is currently 2000. See
@@ -44,7 +44,7 @@ func (msg *MsgCFHeaders) AddCFHeader(headerHash *chainhash.Hash) error {
 	return nil
 }
 
-// BtcDecode decodes r using the bitcoin protocol encoding into the receiver.
+// BtcDecode decodes r using the navcoin protocol encoding into the receiver.
 // This is part of the Message interface implementation.
 func (msg *MsgCFHeaders) BtcDecode(r io.Reader, pver uint32, _ MessageEncoding) error {
 	// Read stop hash
@@ -88,7 +88,7 @@ func (msg *MsgCFHeaders) BtcDecode(r io.Reader, pver uint32, _ MessageEncoding) 
 	return nil
 }
 
-// BtcEncode encodes the receiver to w using the bitcoin protocol encoding.
+// BtcEncode encodes the receiver to w using the navcoin protocol encoding.
 // This is part of the Message interface implementation.
 func (msg *MsgCFHeaders) BtcEncode(w io.Writer, pver uint32, _ MessageEncoding) error {
 	// Write stop hash
@@ -129,7 +129,7 @@ func (msg *MsgCFHeaders) BtcEncode(w io.Writer, pver uint32, _ MessageEncoding) 
 
 // Deserialize decodes a filter header from r into the receiver using a format
 // that is suitable for long-term storage such as a database. This function
-// differs from BtcDecode in that BtcDecode decodes from the bitcoin wire
+// differs from BtcDecode in that BtcDecode decodes from the navcoin wire
 // protocol as it was sent across the network.  The wire encoding can
 // technically differ depending on the protocol version and doesn't even really
 // need to match the format of a stored filter header at all. As of the time
@@ -158,7 +158,7 @@ func (msg *MsgCFHeaders) MaxPayloadLength(pver uint32) uint32 {
 		(MaxCFHeaderPayload * MaxCFHeadersPerMsg)
 }
 
-// NewMsgCFHeaders returns a new bitcoin cfheaders message that conforms to
+// NewMsgCFHeaders returns a new navcoin cfheaders message that conforms to
 // the Message interface. See MsgCFHeaders for details.
 func NewMsgCFHeaders() *MsgCFHeaders {
 	return &MsgCFHeaders{

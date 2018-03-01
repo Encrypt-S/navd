@@ -14,11 +14,11 @@ import (
 	"sort"
 	"sync"
 
-	"github.com/roasbeef/btcd/chaincfg/chainhash"
-	"github.com/roasbeef/btcd/database"
-	"github.com/roasbeef/btcd/database/internal/treap"
-	"github.com/roasbeef/btcd/wire"
-	"github.com/roasbeef/btcutil"
+	"github.com/navcoin/navd/chaincfg/chainhash"
+	"github.com/navcoin/navd/database"
+	"github.com/navcoin/navd/database/internal/treap"
+	"github.com/navcoin/navd/wire"
+	"github.com/navcoin/navutil"
 	"github.com/btcsuite/goleveldb/leveldb"
 	"github.com/btcsuite/goleveldb/leveldb/comparer"
 	ldberrors "github.com/btcsuite/goleveldb/leveldb/errors"
@@ -1146,7 +1146,7 @@ func (tx *transaction) hasBlock(hash *chainhash.Hash) bool {
 //   - ErrTxClosed if the transaction has already been closed
 //
 // This function is part of the database.Tx interface implementation.
-func (tx *transaction) StoreBlock(block *btcutil.Block) error {
+func (tx *transaction) StoreBlock(block *navutil.Block) error {
 	// Ensure transaction state is valid.
 	if err := tx.checkClosed(); err != nil {
 		return err
@@ -1449,7 +1449,7 @@ func (tx *transaction) fetchPendingRegion(region *database.BlockRegion) ([]byte,
 
 // FetchBlockRegion returns the raw serialized bytes for the given block region.
 //
-// For example, it is possible to directly extract Bitcoin transactions and/or
+// For example, it is possible to directly extract NavCoin transactions and/or
 // scripts from a block with this function.  Depending on the backend
 // implementation, this can provide significant savings by avoiding the need to
 // load entire blocks.
@@ -1522,7 +1522,7 @@ func (tx *transaction) FetchBlockRegion(region *database.BlockRegion) ([]byte, e
 // FetchBlockRegions returns the raw serialized bytes for the given block
 // regions.
 //
-// For example, it is possible to directly extract Bitcoin transactions and/or
+// For example, it is possible to directly extract NavCoin transactions and/or
 // scripts from various blocks with this function.  Depending on the backend
 // implementation, this can provide significant savings by avoiding the need to
 // load entire blocks.
@@ -2040,7 +2040,7 @@ func initDB(ldb *leveldb.DB) error {
 
 // openDB opens the database at the provided path.  database.ErrDbDoesNotExist
 // is returned if the database doesn't exist and the create flag is not set.
-func openDB(dbPath string, network wire.BitcoinNet, create bool) (database.DB, error) {
+func openDB(dbPath string, network wire.NavCoinNet, create bool) (database.DB, error) {
 	// Error if the database doesn't exist and the create flag is not set.
 	metadataDbPath := filepath.Join(dbPath, metadataDbName)
 	dbExists := fileExists(metadataDbPath)

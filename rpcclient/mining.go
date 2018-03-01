@@ -9,9 +9,9 @@ import (
 	"encoding/json"
 	"errors"
 
-	"github.com/roasbeef/btcd/btcjson"
-	"github.com/roasbeef/btcd/chaincfg/chainhash"
-	"github.com/roasbeef/btcutil"
+	"github.com/navcoin/navd/btcjson"
+	"github.com/navcoin/navd/chaincfg/chainhash"
+	"github.com/navcoin/navutil"
 )
 
 // FutureGenerateResult is a future promise to deliver the result of a
@@ -394,7 +394,7 @@ func (r FutureSubmitBlockResult) Receive() error {
 // returned instance.
 //
 // See SubmitBlock for the blocking version and more details.
-func (c *Client) SubmitBlockAsync(block *btcutil.Block, options *btcjson.SubmitBlockOptions) FutureSubmitBlockResult {
+func (c *Client) SubmitBlockAsync(block *navutil.Block, options *btcjson.SubmitBlockOptions) FutureSubmitBlockResult {
 	blockHex := ""
 	if block != nil {
 		blockBytes, err := block.Bytes()
@@ -409,8 +409,8 @@ func (c *Client) SubmitBlockAsync(block *btcutil.Block, options *btcjson.SubmitB
 	return c.sendCmd(cmd)
 }
 
-// SubmitBlock attempts to submit a new block into the bitcoin network.
-func (c *Client) SubmitBlock(block *btcutil.Block, options *btcjson.SubmitBlockOptions) error {
+// SubmitBlock attempts to submit a new block into the navcoin network.
+func (c *Client) SubmitBlock(block *navutil.Block, options *btcjson.SubmitBlockOptions) error {
 	return c.SubmitBlockAsync(block, options).Receive()
 }
 

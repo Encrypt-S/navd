@@ -9,13 +9,14 @@ import (
 	"fmt"
 	"io"
 	"strconv"
+	"time"
 
-	"github.com/roasbeef/btcd/chaincfg/chainhash"
+	"github.com/navcoin/navd/chaincfg/chainhash"
 )
 
 const (
 	// TxVersion is the current latest supported transaction version.
-	TxVersion = 1
+	TxVersion = 255
 
 	// MaxTxInSequenceNum is the maximum sequence number the sequence field
 	// of a transaction input can be.
@@ -175,14 +176,14 @@ func (c scriptFreeList) Return(buf []byte) {
 // the number of allocations.
 var scriptPool scriptFreeList = make(chan []byte, freeListMaxItems)
 
-// OutPoint defines a bitcoin data type that is used to track previous
+// OutPoint defines a navcoin data type that is used to track previous
 // transaction outputs.
 type OutPoint struct {
 	Hash  chainhash.Hash
 	Index uint32
 }
 
-// NewOutPoint returns a new bitcoin transaction outpoint point with the
+// NewOutPoint returns a new navcoin transaction outpoint point with the
 // provided hash and index.
 func NewOutPoint(hash *chainhash.Hash, index uint32) *OutPoint {
 	return &OutPoint{
@@ -206,7 +207,7 @@ func (o OutPoint) String() string {
 	return string(buf)
 }
 
-// TxIn defines a bitcoin transaction input.
+// TxIn defines a navcoin transaction input.
 type TxIn struct {
 	PreviousOutPoint OutPoint
 	SignatureScript  []byte
@@ -224,7 +225,7 @@ func (t *TxIn) SerializeSize() int {
 		len(t.SignatureScript)
 }
 
-// NewTxIn returns a new bitcoin transaction input with the provided
+// NewTxIn returns a new navcoin transaction input with the provided
 // previous outpoint point and signature script with a default sequence of
 // MaxTxInSequenceNum.
 func NewTxIn(prevOut *OutPoint, signatureScript []byte, witness [][]byte) *TxIn {
@@ -257,7 +258,7 @@ func (t TxWitness) SerializeSize() int {
 	return n
 }
 
-// TxOut defines a bitcoin transaction output.
+// TxOut defines a navcoin transaction output.
 type TxOut struct {
 	Value    int64
 	PkScript []byte
@@ -271,7 +272,7 @@ func (t *TxOut) SerializeSize() int {
 	return 8 + VarIntSerializeSize(uint64(len(t.PkScript))) + len(t.PkScript)
 }
 
-// NewTxOut returns a new bitcoin transaction output with the provided
+// NewTxOut returns a new navcoin transaction output with the provided
 // transaction value and public key script.
 func NewTxOut(value int64, pkScript []byte) *TxOut {
 	return &TxOut{
@@ -280,7 +281,7 @@ func NewTxOut(value int64, pkScript []byte) *TxOut {
 	}
 }
 
-// MsgTx implements the Message interface and represents a bitcoin tx message.
+// MsgTx implements the Message interface and represents a navcoin tx message.
 // It is used to deliver transaction information in response to a getdata
 // message (MsgGetData) for a given transaction.
 //
@@ -288,9 +289,11 @@ func NewTxOut(value int64, pkScript []byte) *TxOut {
 // inputs and outputs.
 type MsgTx struct {
 	Version  int32
+	Time     int32
 	TxIn     []*TxIn
 	TxOut    []*TxOut
 	LockTime uint32
+	Strdzeel []byte
 }
 
 // AddTxIn adds a transaction input to the message.
@@ -404,7 +407,7 @@ func (msg *MsgTx) Copy() *MsgTx {
 	return &newTx
 }
 
-// BtcDecode decodes r using the bitcoin protocol encoding into the receiver.
+// BtcDecode decodes r using the navcoin protocol encoding into the receiver.
 // This is part of the Message interface implementation.
 // See Deserialize for decoding transactions stored to disk, such as in a
 // database, as opposed to decoding transactions from the wire.
@@ -414,6 +417,12 @@ func (msg *MsgTx) BtcDecode(r io.Reader, pver uint32, enc MessageEncoding) error
 		return err
 	}
 	msg.Version = int32(version)
+	
+	time, err := binarySerializer.Uint32(r, littleEndian)
+	if err != nil {
+		return err
+	}
+	msg.Time = int32(time)
 
 	count, err := ReadVarInt(r, pver)
 	if err != nil {
@@ -577,6 +586,22 @@ func (msg *MsgTx) BtcDecode(r io.Reader, pver uint32, enc MessageEncoding) error
 		returnScriptBuffers()
 		return err
 	}
+	
+	count_str, err := ReadVarInt(r, pver)
+	if err != nil {
+		return err
+	}
+
+	// Prevent byte array larger than the max message size.  It would
+	// be possible to cause memory exhaustion and panics without a sane
+	// upper bound on this count.
+	if count_str > 0 || msg.Version > 1 {
+		var string []byte
+		if _, err = io.ReadFull(r, string[:]); err != nil {
+                        return err
+                }
+		msg.Strdzeel = string
+	}
 
 	// Create a single allocation to house all of the scripts and set each
 	// input signature script and output public key script to the
@@ -652,7 +677,7 @@ func (msg *MsgTx) BtcDecode(r io.Reader, pver uint32, enc MessageEncoding) error
 // Deserialize decodes a transaction from r into the receiver using a format
 // that is suitable for long-term storage such as a database while respecting
 // the Version field in the transaction.  This function differs from BtcDecode
-// in that BtcDecode decodes from the bitcoin wire protocol as it was sent
+// in that BtcDecode decodes from the navcoin wire protocol as it was sent
 // across the network.  The wire encoding can technically differ depending on
 // the protocol version and doesn't even really need to match the format of a
 // stored transaction at all.  As of the time this comment was written, the
@@ -674,12 +699,17 @@ func (msg *MsgTx) DeserializeNoWitness(r io.Reader) error {
 	return msg.BtcDecode(r, 0, BaseEncoding)
 }
 
-// BtcEncode encodes the receiver to w using the bitcoin protocol encoding.
+// BtcEncode encodes the receiver to w using the navcoin protocol encoding.
 // This is part of the Message interface implementation.
 // See Serialize for encoding transactions to be stored to disk, such as in a
 // database, as opposed to encoding transactions for the wire.
 func (msg *MsgTx) BtcEncode(w io.Writer, pver uint32, enc MessageEncoding) error {
 	err := binarySerializer.PutUint32(w, littleEndian, uint32(msg.Version))
+	if err != nil {
+		return err
+	}
+	
+	err = binarySerializer.PutUint32(w, littleEndian, uint32(msg.Time))
 	if err != nil {
 		return err
 	}
@@ -740,7 +770,12 @@ func (msg *MsgTx) BtcEncode(w io.Writer, pver uint32, enc MessageEncoding) error
 		}
 	}
 
-	return binarySerializer.PutUint32(w, littleEndian, msg.LockTime)
+	err = binarySerializer.PutUint32(w, littleEndian, msg.LockTime)
+	if err != nil {
+		return err
+	}
+	
+	return WriteVarBytes(w, pver, msg.Strdzeel)
 }
 
 // HasWitness returns false if none of the inputs within the transaction
@@ -758,7 +793,7 @@ func (msg *MsgTx) HasWitness() bool {
 // Serialize encodes the transaction to w using a format that suitable for
 // long-term storage such as a database while respecting the Version field in
 // the transaction.  This function differs from BtcEncode in that BtcEncode
-// encodes the transaction to the bitcoin wire protocol in order to be sent
+// encodes the transaction to the navcoin wire protocol in order to be sent
 // across the network.  The wire encoding can technically differ depending on
 // the protocol version and doesn't even really need to match the format of a
 // stored transaction at all.  As of the time this comment was written, the
@@ -787,10 +822,12 @@ func (msg *MsgTx) SerializeNoWitness(w io.Writer) error {
 // baseSize returns the serialized size of the transaction without accounting
 // for any witness data.
 func (msg *MsgTx) baseSize() int {
-	// Version 4 bytes + LockTime 4 bytes + Serialized varint size for the
-	// number of transaction inputs and outputs.
+	// Version 4 bytes + Time 4 bytes + LockTime 4 bytes + Serialized varint
+	// size for the number of transaction inputs and outputs + Serialized
+	// varint size of strdzeel.
 	n := 8 + VarIntSerializeSize(uint64(len(msg.TxIn))) +
-		VarIntSerializeSize(uint64(len(msg.TxOut)))
+		VarIntSerializeSize(uint64(len(msg.TxOut))) +
+		VarIntSerializeSize(uint64(len(msg.Strdzeel))) 
 
 	for _, txIn := range msg.TxIn {
 		n += txIn.SerializeSize()
@@ -853,10 +890,10 @@ func (msg *MsgTx) PkScriptLocs() []int {
 	// The starting offset in the serialized transaction of the first
 	// transaction output is:
 	//
-	// Version 4 bytes + serialized varint size for the number of
-	// transaction inputs and outputs + serialized size of each transaction
+	// Version 4 bytes + Time 4 bytes + serialized varint size for the number
+	// of transaction inputs and outputs + serialized size of each transaction
 	// input.
-	n := 4 + VarIntSerializeSize(uint64(len(msg.TxIn))) +
+	n := 8 + VarIntSerializeSize(uint64(len(msg.TxIn))) +
 		VarIntSerializeSize(uint64(numTxOut))
 
 	// If this transaction has a witness input, the an additional two bytes
@@ -884,7 +921,7 @@ func (msg *MsgTx) PkScriptLocs() []int {
 	return pkScriptLocs
 }
 
-// NewMsgTx returns a new bitcoin tx message that conforms to the Message
+// NewMsgTx returns a new navcoin tx message that conforms to the Message
 // interface.  The return instance has a default version of TxVersion and there
 // are no transaction inputs or outputs.  Also, the lock time is set to zero
 // to indicate the transaction is valid immediately as opposed to some time in
@@ -892,6 +929,7 @@ func (msg *MsgTx) PkScriptLocs() []int {
 func NewMsgTx(version int32) *MsgTx {
 	return &MsgTx{
 		Version: version,
+		Time:    int32(time.Now().Unix()),
 		TxIn:    make([]*TxIn, 0, defaultTxInOutAlloc),
 		TxOut:   make([]*TxOut, 0, defaultTxInOutAlloc),
 	}
@@ -908,7 +946,7 @@ func readOutPoint(r io.Reader, pver uint32, version int32, op *OutPoint) error {
 	return err
 }
 
-// writeOutPoint encodes op to the bitcoin protocol encoding for an OutPoint
+// writeOutPoint encodes op to the navcoin protocol encoding for an OutPoint
 // to w.
 func writeOutPoint(w io.Writer, pver uint32, version int32, op *OutPoint) error {
 	_, err := w.Write(op.Hash[:])
@@ -967,7 +1005,7 @@ func readTxIn(r io.Reader, pver uint32, version int32, ti *TxIn) error {
 	return readElement(r, &ti.Sequence)
 }
 
-// writeTxIn encodes ti to the bitcoin protocol encoding for a transaction
+// writeTxIn encodes ti to the navcoin protocol encoding for a transaction
 // input (TxIn) to w.
 func writeTxIn(w io.Writer, pver uint32, version int32, ti *TxIn) error {
 	err := writeOutPoint(w, pver, version, &ti.PreviousOutPoint)
@@ -996,7 +1034,7 @@ func readTxOut(r io.Reader, pver uint32, version int32, to *TxOut) error {
 	return err
 }
 
-// WriteTxOut encodes to into the bitcoin protocol encoding for a transaction
+// WriteTxOut encodes to into the navcoin protocol encoding for a transaction
 // output (TxOut) to w.
 //
 // NOTE: This function is exported in order to allow txscript to compute the
@@ -1010,7 +1048,7 @@ func WriteTxOut(w io.Writer, pver uint32, version int32, to *TxOut) error {
 	return WriteVarBytes(w, pver, to.PkScript)
 }
 
-// writeTxWitness encodes the bitcoin protocol encoding for a transaction
+// writeTxWitness encodes the navcoin protocol encoding for a transaction
 // input's witness into to w.
 func writeTxWitness(w io.Writer, pver uint32, version int32, wit [][]byte) error {
 	err := WriteVarInt(w, pver, uint64(len(wit)))

@@ -8,7 +8,7 @@ import (
 	"fmt"
 	"io"
 
-	"github.com/roasbeef/btcd/chaincfg/chainhash"
+	"github.com/navcoin/navd/chaincfg/chainhash"
 )
 
 // MsgGetCFHeaders is a message similar to MsgGetHeaders, but for committed
@@ -32,7 +32,7 @@ func (msg *MsgGetCFHeaders) AddBlockLocatorHash(hash *chainhash.Hash) error {
 	return nil
 }
 
-// BtcDecode decodes r using the bitcoin protocol encoding into the receiver.
+// BtcDecode decodes r using the navcoin protocol encoding into the receiver.
 // This is part of the Message interface implementation.
 func (msg *MsgGetCFHeaders) BtcDecode(r io.Reader, pver uint32, _ MessageEncoding) error {
 	// Read num block locator hashes and limit to max.
@@ -67,7 +67,7 @@ func (msg *MsgGetCFHeaders) BtcDecode(r io.Reader, pver uint32, _ MessageEncodin
 	return readElement(r, &msg.FilterType)
 }
 
-// BtcEncode encodes the receiver to w using the bitcoin protocol encoding.
+// BtcEncode encodes the receiver to w using the navcoin protocol encoding.
 // This is part of the Message interface implementation.
 func (msg *MsgGetCFHeaders) BtcEncode(w io.Writer, pver uint32, _ MessageEncoding) error {
 	// Limit to max block locator hashes per message.
@@ -113,7 +113,7 @@ func (msg *MsgGetCFHeaders) MaxPayloadLength(pver uint32) uint32 {
 		chainhash.HashSize) + chainhash.HashSize + 1
 }
 
-// NewMsgGetCFHeaders returns a new bitcoin getcfheader message that conforms to
+// NewMsgGetCFHeaders returns a new navcoin getcfheader message that conforms to
 // the Message interface using the passed parameters and defaults for the
 // remaining fields.
 func NewMsgGetCFHeaders() *MsgGetCFHeaders {

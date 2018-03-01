@@ -1,8 +1,7 @@
-package: github.com/roasbeef/btcd
+package: github.com/navcoin/navd
 import:
-- package: github.com/btcsuite/btclog
-- package: github.com/roasbeef/btcutil
-  version: c3ff179366044979fb9856c2feb79bd4c2184c7a
+- package: github.com/navcoin/navlog
+- package: github.com/navcoin/navutil
   subpackages:
   - bloom
   - hdkeychain

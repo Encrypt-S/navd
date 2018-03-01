@@ -10,16 +10,16 @@ import (
 	"os"
 	"path/filepath"
 
-	"github.com/roasbeef/btcd/blockchain"
-	"github.com/roasbeef/btcd/chaincfg"
-	"github.com/roasbeef/btcd/database"
-	_ "github.com/roasbeef/btcd/database/ffldb"
-	"github.com/roasbeef/btcutil"
+	"github.com/navcoin/navd/blockchain"
+	"github.com/navcoin/navd/chaincfg"
+	"github.com/navcoin/navd/database"
+	_ "github.com/navcoin/navd/database/ffldb"
+	"github.com/navcoin/navutil"
 )
 
 // This example demonstrates how to create a new chain instance and use
 // ProcessBlock to attempt to attempt add a block to the chain.  As the package
-// overview documentation describes, this includes all of the Bitcoin consensus
+// overview documentation describes, this includes all of the NavCoin consensus
 // rules.  This example intentionally attempts to insert a duplicate genesis
 // block to illustrate how an invalid block is handled.
 func ExampleBlockChain_ProcessBlock() {
@@ -39,7 +39,7 @@ func ExampleBlockChain_ProcessBlock() {
 	defer db.Close()
 
 	// Create a new BlockChain instance using the underlying database for
-	// the main bitcoin network.  This example does not demonstrate some
+	// the main navcoin network.  This example does not demonstrate some
 	// of the other available configuration options such as specifying a
 	// notification callback and signature cache.  Also, the caller would
 	// ordinarily keep a reference to the median time source and add time
@@ -58,7 +58,7 @@ func ExampleBlockChain_ProcessBlock() {
 	// Process a block.  For this example, we are going to intentionally
 	// cause an error by trying to process the genesis block which already
 	// exists.
-	genesisBlock := btcutil.NewBlock(chaincfg.MainNetParams.GenesisBlock)
+	genesisBlock := navutil.NewBlock(chaincfg.MainNetParams.GenesisBlock)
 	isMainChain, isOrphan, err := chain.ProcessBlock(genesisBlock,
 		blockchain.BFNone)
 	if err != nil {

@@ -9,7 +9,7 @@ import (
 	"io"
 )
 
-// MsgSendHeaders implements the Message interface and represents a bitcoin
+// MsgSendHeaders implements the Message interface and represents a navcoin
 // sendheaders message.  It is used to request the peer send block headers
 // rather than inventory vectors.
 //
@@ -17,7 +17,7 @@ import (
 // starting with SendHeadersVersion.
 type MsgSendHeaders struct{}
 
-// BtcDecode decodes r using the bitcoin protocol encoding into the receiver.
+// BtcDecode decodes r using the navcoin protocol encoding into the receiver.
 // This is part of the Message interface implementation.
 func (msg *MsgSendHeaders) BtcDecode(r io.Reader, pver uint32, enc MessageEncoding) error {
 	if pver < SendHeadersVersion {
@@ -29,7 +29,7 @@ func (msg *MsgSendHeaders) BtcDecode(r io.Reader, pver uint32, enc MessageEncodi
 	return nil
 }
 
-// BtcEncode encodes the receiver to w using the bitcoin protocol encoding.
+// BtcEncode encodes the receiver to w using the navcoin protocol encoding.
 // This is part of the Message interface implementation.
 func (msg *MsgSendHeaders) BtcEncode(w io.Writer, pver uint32, enc MessageEncoding) error {
 	if pver < SendHeadersVersion {
@@ -53,7 +53,7 @@ func (msg *MsgSendHeaders) MaxPayloadLength(pver uint32) uint32 {
 	return 0
 }
 
-// NewMsgSendHeaders returns a new bitcoin sendheaders message that conforms to
+// NewMsgSendHeaders returns a new navcoin sendheaders message that conforms to
 // the Message interface.  See MsgSendHeaders for details.
 func NewMsgSendHeaders() *MsgSendHeaders {
 	return &MsgSendHeaders{}

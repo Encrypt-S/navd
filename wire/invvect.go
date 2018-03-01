@@ -8,12 +8,12 @@ import (
 	"fmt"
 	"io"
 
-	"github.com/roasbeef/btcd/chaincfg/chainhash"
+	"github.com/navcoin/navd/chaincfg/chainhash"
 )
 
 const (
 	// MaxInvPerMsg is the maximum number of inventory vectors that can be in a
-	// single bitcoin inv message.
+	// single navcoin inv message.
 	MaxInvPerMsg = 50000
 
 	// Maximum payload size for an inventory vector.
@@ -58,7 +58,7 @@ func (invtype InvType) String() string {
 	return fmt.Sprintf("Unknown InvType (%d)", uint32(invtype))
 }
 
-// InvVect defines a bitcoin inventory vector which is used to describe data,
+// InvVect defines a navcoin inventory vector which is used to describe data,
 // as specified by the Type field, that a peer wants, has, or does not have to
 // another peer.
 type InvVect struct {

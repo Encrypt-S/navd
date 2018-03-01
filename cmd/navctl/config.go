@@ -13,8 +13,8 @@ import (
 	"regexp"
 	"strings"
 
-	"github.com/roasbeef/btcd/btcjson"
-	"github.com/roasbeef/btcutil"
+	"github.com/navcoin/navd/btcjson"
+	"github.com/navcoin/navutil"
 	flags "github.com/jessevdk/go-flags"
 )
 
@@ -26,13 +26,13 @@ const (
 )
 
 var (
-	btcdHomeDir           = btcutil.AppDataDir("btcd", false)
-	btcctlHomeDir         = btcutil.AppDataDir("btcctl", false)
-	btcwalletHomeDir      = btcutil.AppDataDir("btcwallet", false)
-	defaultConfigFile     = filepath.Join(btcctlHomeDir, "btcctl.conf")
+	navdHomeDir           = navutil.AppDataDir("navd", false)
+	navctlHomeDir         = navutil.AppDataDir("navctl", false)
+	navwalletHomeDir      = navutil.AppDataDir("navwallet", false)
+	defaultConfigFile     = filepath.Join(navctlHomeDir, "navctl.conf")
 	defaultRPCServer      = "localhost"
-	defaultRPCCertFile    = filepath.Join(btcdHomeDir, "rpc.cert")
-	defaultWalletCertFile = filepath.Join(btcwalletHomeDir, "rpc.cert")
+	defaultRPCCertFile    = filepath.Join(navdHomeDir, "rpc.cert")
+	defaultWalletCertFile = filepath.Join(navwalletHomeDir, "rpc.cert")
 )
 
 // listCommands categorizes and lists all of the usable commands along with
@@ -88,7 +88,7 @@ func listCommands() {
 	}
 }
 
-// config defines the configuration options for btcctl.
+// config defines the configuration options for navctl.
 //
 // See loadConfig for details on the configuration load process.
 type config struct {
@@ -118,9 +118,9 @@ func normalizeAddress(addr string, useTestNet3, useSimNet, useWallet bool) strin
 		switch {
 		case useTestNet3:
 			if useWallet {
-				defaultPort = "18332"
+				defaultPort = "44445"
 			} else {
-				defaultPort = "18334"
+				defaultPort = "44443"
 			}
 		case useSimNet:
 			if useWallet {
@@ -130,9 +130,9 @@ func normalizeAddress(addr string, useTestNet3, useSimNet, useWallet bool) strin
 			}
 		default:
 			if useWallet {
-				defaultPort = "8332"
+				defaultPort = "44444"
 			} else {
-				defaultPort = "8334"
+				defaultPort = "44442"
 			}
 		}
 
@@ -146,7 +146,7 @@ func normalizeAddress(addr string, useTestNet3, useSimNet, useWallet bool) strin
 func cleanAndExpandPath(path string) string {
 	// Expand initial ~ to OS specific home directory.
 	if strings.HasPrefix(path, "~") {
-		homeDir := filepath.Dir(btcctlHomeDir)
+		homeDir := filepath.Dir(navctlHomeDir)
 		path = strings.Replace(path, "~", homeDir, 1)
 	}
 
@@ -211,12 +211,12 @@ func loadConfig() (*config, []string, error) {
 	}
 
 	if _, err := os.Stat(preCfg.ConfigFile); os.IsNotExist(err) {
-		// Use config file for RPC server to create default btcctl config
+		// Use config file for RPC server to create default navctl config
 		var serverConfigPath string
 		if preCfg.Wallet {
-			serverConfigPath = filepath.Join(btcwalletHomeDir, "btcwallet.conf")
+			serverConfigPath = filepath.Join(navwalletHomeDir, "navwallet.conf")
 		} else {
-			serverConfigPath = filepath.Join(btcdHomeDir, "btcd.conf")
+			serverConfigPath = filepath.Join(navdHomeDir, "navd.conf")
 		}
 
 		err := createDefaultConfigFile(preCfg.ConfigFile, serverConfigPath)
@@ -280,8 +280,8 @@ func loadConfig() (*config, []string, error) {
 }
 
 // createDefaultConfig creates a basic config file at the given destination path.
-// For this it tries to read the config file for the RPC server (either btcd or
-// btcwallet), and extract the RPC user and password from it.
+// For this it tries to read the config file for the RPC server (either navd or
+// navwallet), and extract the RPC user and password from it.
 func createDefaultConfigFile(destinationPath, serverConfigPath string) error {
 	// Read the RPC server config
 	serverConfigFile, err := os.Open(serverConfigPath)

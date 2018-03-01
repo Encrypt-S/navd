@@ -35,7 +35,7 @@ func decodeHex(hexStr string) []byte {
 }
 
 var signatureTests = []signatureTest{
-	// signatures from bitcoin blockchain tx
+	// signatures from navcoin blockchain tx
 	// 0437cd7f8525ceed2324359c2d0ba26006d92d85
 	{
 		name: "valid signature.",
@@ -299,7 +299,7 @@ var signatureTests = []signatureTest{
 	// a way that is the same between openssl and go that will mark a number
 	// as negative. The Go ASN.1 parser marks numbers as negative when
 	// openssl does not (it doesn't handle negative numbers that I can tell
-	// at all. When not parsing DER signatures, which is done by by bitcoind
+	// at all. When not parsing DER signatures, which is done by by navcoind
 	// when accepting transactions into its mempool, we otherwise only check
 	// for the coordinates being zero.
 	{
@@ -357,7 +357,7 @@ func TestSignatureSerialize(t *testing.T) {
 		ecsig    *Signature
 		expected []byte
 	}{
-		// signature from bitcoin blockchain tx
+		// signature from navcoin blockchain tx
 		// 0437cd7f8525ceed2324359c2d0ba26006d92d85
 		{
 			"valid 1 - r and s most significant bits are zero",
@@ -377,7 +377,7 @@ func TestSignatureSerialize(t *testing.T) {
 				0x21, 0xa8, 0x76, 0x8d, 0x1d, 0x09,
 			},
 		},
-		// signature from bitcoin blockchain tx
+		// signature from navcoin blockchain tx
 		// cb00f8a0573b18faa8c4f467b049f5d202bf1101d9ef2633bc611be70376a4b4
 		{
 			"valid 2 - r most significant bit is one",
@@ -397,7 +397,7 @@ func TestSignatureSerialize(t *testing.T) {
 				0xac, 0xad, 0x7f, 0x9c, 0x86, 0x87, 0x24,
 			},
 		},
-		// signature from bitcoin blockchain tx
+		// signature from navcoin blockchain tx
 		// fda204502a3345e08afd6af27377c052e77f1fefeaeb31bdd45f1e1237ca5470
 		{
 			"valid 3 - s most significant bit is one",
@@ -524,9 +524,9 @@ func TestSignCompact(t *testing.T) {
 }
 
 func TestRFC6979(t *testing.T) {
-	// Test vectors matching Trezor and CoreBitcoin implementations.
+	// Test vectors matching Trezor and CoreNavCoin implementations.
 	// - https://github.com/trezor/trezor-crypto/blob/9fea8f8ab377dc514e40c6fd1f7c89a74c1d8dc6/tests.c#L432-L453
-	// - https://github.com/oleganza/CoreBitcoin/blob/e93dd71207861b5bf044415db5fa72405e7d8fbc/CoreBitcoin/BTCKey%2BTests.m#L23-L49
+	// - https://github.com/oleganza/CoreNavCoin/blob/e93dd71207861b5bf044415db5fa72405e7d8fbc/CoreNavCoin/BTCKey%2BTests.m#L23-L49
 	tests := []struct {
 		key       string
 		msg       string

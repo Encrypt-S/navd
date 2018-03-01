@@ -9,21 +9,21 @@ import (
 	"path/filepath"
 	"runtime"
 
-	"github.com/roasbeef/btcd/blockchain"
-	"github.com/roasbeef/btcd/blockchain/indexers"
-	"github.com/roasbeef/btcd/database"
-	"github.com/roasbeef/btcd/limits"
-	"github.com/btcsuite/btclog"
+	"github.com/navcoin/navd/blockchain"
+	"github.com/navcoin/navd/blockchain/indexers"
+	"github.com/navcoin/navd/database"
+	"github.com/navcoin/navd/limits"
+	"github.com/navcoin/navlog"
 )
 
 const (
-	// blockDbNamePrefix is the prefix for the btcd block database.
+	// blockDbNamePrefix is the prefix for the navd block database.
 	blockDbNamePrefix = "blocks"
 )
 
 var (
 	cfg *config
-	log btclog.Logger
+	log navlog.Logger
 )
 
 // loadBlockDB opens the block database and returns a handle to it.
@@ -69,7 +69,7 @@ func realMain() error {
 	cfg = tcfg
 
 	// Setup logging.
-	backendLogger := btclog.NewBackend(os.Stdout)
+	backendLogger := navlog.NewBackend(os.Stdout)
 	defer os.Stdout.Sync()
 	log = backendLogger.Logger("MAIN")
 	database.UseLogger(backendLogger.Logger("BCDB"))

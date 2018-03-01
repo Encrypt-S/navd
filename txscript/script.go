@@ -10,8 +10,8 @@ import (
 	"fmt"
 	"time"
 
-	"github.com/roasbeef/btcd/chaincfg/chainhash"
-	"github.com/roasbeef/btcd/wire"
+	"github.com/navcoin/navd/chaincfg/chainhash"
+	"github.com/navcoin/navd/wire"
 )
 
 // Bip16Activation is the timestamp where BIP0016 is valid to use in the
@@ -426,7 +426,7 @@ func calcHashOutputs(tx *wire.MsgTx) chainhash.Hash {
 
 // calcWitnessSignatureHash computes the sighash digest of a transaction's
 // segwit input using the new, optimized digest calculation algorithm defined
-// in BIP0143: https://github.com/bitcoin/bips/blob/master/bip-0143.mediawiki.
+// in BIP0143: https://github.com/navcoin/bips/blob/master/bip-0143.mediawiki.
 // This function makes use of pre-calculated sighash fragments stored within
 // the passed HashCache to eliminate duplicate hashing computations when
 // calculating the final digest, reducing the complexity from O(N^2) to O(N).

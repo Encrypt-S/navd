@@ -8,10 +8,10 @@ import (
 	"fmt"
 	"time"
 
-	"github.com/roasbeef/btcd/chaincfg"
-	"github.com/roasbeef/btcd/chaincfg/chainhash"
-	"github.com/roasbeef/btcd/txscript"
-	"github.com/roasbeef/btcutil"
+	"github.com/navcoin/navd/chaincfg"
+	"github.com/navcoin/navd/chaincfg/chainhash"
+	"github.com/navcoin/navd/txscript"
+	"github.com/navcoin/navutil"
 )
 
 // CheckpointConfirmations is the number of blocks before the end of the current
@@ -169,7 +169,7 @@ func (b *BlockChain) findPreviousCheckpoint() (*blockNode, error) {
 
 // isNonstandardTransaction determines whether a transaction contains any
 // scripts which are not one of the standard types.
-func isNonstandardTransaction(tx *btcutil.Tx) bool {
+func isNonstandardTransaction(tx *navutil.Tx) bool {
 	// Check all of the output public key scripts for non-standard scripts.
 	for _, txOut := range tx.MsgTx().TxOut {
 		scriptClass := txscript.GetScriptClass(txOut.PkScript)
@@ -197,7 +197,7 @@ func isNonstandardTransaction(tx *btcutil.Tx) bool {
 // decision and then manually added to the list of checkpoints for a network.
 //
 // This function is safe for concurrent access.
-func (b *BlockChain) IsCheckpointCandidate(block *btcutil.Block) (bool, error) {
+func (b *BlockChain) IsCheckpointCandidate(block *navutil.Block) (bool, error) {
 	b.chainLock.RLock()
 	defer b.chainLock.RUnlock()
 

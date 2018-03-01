@@ -12,7 +12,7 @@ import (
 	"math"
 	"time"
 
-	"github.com/roasbeef/btcd/chaincfg/chainhash"
+	"github.com/navcoin/navd/chaincfg/chainhash"
 )
 
 const (
@@ -301,12 +301,12 @@ func readElement(r io.Reader, element interface{}) error {
 		*e = InvType(rv)
 		return nil
 
-	case *BitcoinNet:
+	case *NavCoinNet:
 		rv, err := binarySerializer.Uint32(r, littleEndian)
 		if err != nil {
 			return err
 		}
-		*e = BitcoinNet(rv)
+		*e = NavCoinNet(rv)
 		return nil
 
 	case *BloomUpdateType:
@@ -433,7 +433,7 @@ func writeElement(w io.Writer, element interface{}) error {
 		}
 		return nil
 
-	case BitcoinNet:
+	case NavCoinNet:
 		err := binarySerializer.PutUint32(w, littleEndian, uint32(e))
 		if err != nil {
 			return err
