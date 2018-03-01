@@ -9,13 +9,14 @@ import (
 	"fmt"
 	"io"
 	"strconv"
+	"time"
 
 	"github.com/aguycalled/navd/chaincfg/chainhash"
 )
 
 const (
 	// TxVersion is the current latest supported transaction version.
-	TxVersion = 1
+	TxVersion = 255
 
 	// MaxTxInSequenceNum is the maximum sequence number the sequence field
 	// of a transaction input can be.
@@ -288,9 +289,11 @@ func NewTxOut(value int64, pkScript []byte) *TxOut {
 // inputs and outputs.
 type MsgTx struct {
 	Version  int32
+	Time     int32
 	TxIn     []*TxIn
 	TxOut    []*TxOut
 	LockTime uint32
+	Strdzeel []byte
 }
 
 // AddTxIn adds a transaction input to the message.
@@ -414,6 +417,12 @@ func (msg *MsgTx) BtcDecode(r io.Reader, pver uint32, enc MessageEncoding) error
 		return err
 	}
 	msg.Version = int32(version)
+	
+	time, err := binarySerializer.Uint32(r, littleEndian)
+	if err != nil {
+		return err
+	}
+	msg.Time = int32(time)
 
 	count, err := ReadVarInt(r, pver)
 	if err != nil {
@@ -577,6 +586,22 @@ func (msg *MsgTx) BtcDecode(r io.Reader, pver uint32, enc MessageEncoding) error
 		returnScriptBuffers()
 		return err
 	}
+	
+	count, err := ReadVarInt(r, pver)
+	if err != nil {
+		return nil, err
+	}
+
+	// Prevent byte array larger than the max message size.  It would
+	// be possible to cause memory exhaustion and panics without a sane
+	// upper bound on this count.
+	if count > 0 || msg.Version > 1 {
+		var string [count]byte
+		if _, err = io.ReadFull(r, string[:]); err != nil {
+                        return err
+                }
+		msg.Strdzeel = string
+	}
 
 	// Create a single allocation to house all of the scripts and set each
 	// input signature script and output public key script to the
@@ -683,6 +708,11 @@ func (msg *MsgTx) BtcEncode(w io.Writer, pver uint32, enc MessageEncoding) error
 	if err != nil {
 		return err
 	}
+	
+	err := binarySerializer.PutUint32(w, littleEndian, uint32(msg.Time))
+	if err != nil {
+		return err
+	}
 
 	// If the encoding version is set to WitnessEncoding, and the Flags
 	// field for the MsgTx aren't 0x00, then this indicates the transaction
@@ -740,7 +770,12 @@ func (msg *MsgTx) BtcEncode(w io.Writer, pver uint32, enc MessageEncoding) error
 		}
 	}
 
-	return binarySerializer.PutUint32(w, littleEndian, msg.LockTime)
+	err := binarySerializer.PutUint32(w, littleEndian, msg.LockTime)
+	if err != nil {
+		return err
+	}
+	
+	return WriteVarBytes(w, pver, to.Strdzeel)
 }
 
 // HasWitness returns false if none of the inputs within the transaction
@@ -787,10 +822,12 @@ func (msg *MsgTx) SerializeNoWitness(w io.Writer) error {
 // baseSize returns the serialized size of the transaction without accounting
 // for any witness data.
 func (msg *MsgTx) baseSize() int {
-	// Version 4 bytes + LockTime 4 bytes + Serialized varint size for the
-	// number of transaction inputs and outputs.
+	// Version 4 bytes + Time 4 bytes + LockTime 4 bytes + Serialized varint
+	// size for the number of transaction inputs and outputs + Serialized
+	// varint size of strdzeel.
 	n := 8 + VarIntSerializeSize(uint64(len(msg.TxIn))) +
-		VarIntSerializeSize(uint64(len(msg.TxOut)))
+		VarIntSerializeSize(uint64(len(msg.TxOut))) +
+		VarIntSerializeSize(uint64(len(msg.Strdzeel))) 
 
 	for _, txIn := range msg.TxIn {
 		n += txIn.SerializeSize()
@@ -853,10 +890,10 @@ func (msg *MsgTx) PkScriptLocs() []int {
 	// The starting offset in the serialized transaction of the first
 	// transaction output is:
 	//
-	// Version 4 bytes + serialized varint size for the number of
-	// transaction inputs and outputs + serialized size of each transaction
+	// Version 4 bytes + Time 4 bytes + serialized varint size for the number
+	// of transaction inputs and outputs + serialized size of each transaction
 	// input.
-	n := 4 + VarIntSerializeSize(uint64(len(msg.TxIn))) +
+	n := 8 + VarIntSerializeSize(uint64(len(msg.TxIn))) +
 		VarIntSerializeSize(uint64(numTxOut))
 
 	// If this transaction has a witness input, the an additional two bytes
@@ -892,6 +929,7 @@ func (msg *MsgTx) PkScriptLocs() []int {
 func NewMsgTx(version int32) *MsgTx {
 	return &MsgTx{
 		Version: version,
+		Time:    now.Unix(),
 		TxIn:    make([]*TxIn, 0, defaultTxInOutAlloc),
 		TxOut:   make([]*TxOut, 0, defaultTxInOutAlloc),
 	}
