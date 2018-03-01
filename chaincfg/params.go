@@ -96,6 +96,10 @@ const (
 	// includes the deployment of BIPS 141, 142, 144, 145, 147 and 173.
 	DeploymentSegwit
 
+	// DeploymentCommunityFund defines the rule change deployment ID
+	// for the activation of the Community Fund in the network.
+	DeploymentCommunityFund
+
 	// NOTE: DefinedDeployments must always come last since it is used to
 	// determine how many defined deployments there currently are.
 
@@ -273,7 +277,7 @@ var MainNetParams = Params{
 		{750000, newHashFromStr("7c163d8dc6320bdc3b1b726bf7be13fa3a44c621efcb0f8f3bcd7f2ad374b5ef")},
 		{957163, newHashFromStr("53a4525300051ce014fb034217690735121a42e5423b97385afbbbd5380f7583")},
 		{1465787,newHashFromStr("91694fd2980c65e6b81e8af75bf817d0ae9240863e0a0ef953d7ddc19cd86407")},
-		{1700000,newHashFromStr("8e2e2d9503c82c46f5a3138f562202af265f9b2a71dbbedac629e5624a246d15")}
+		{1700000,newHashFromStr("8e2e2d9503c82c46f5a3138f562202af265f9b2a71dbbedac629e5624a246d15")},
 	},
 
 	// Consensus rule change deployments.
