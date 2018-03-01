@@ -231,10 +231,7 @@ var MainNetParams = Params{
 	Net:         wire.MainNet,
 	DefaultPort: "44440",
 	DNSSeeds: []DNSSeed{
-		{"navtech1.navcoin.org", false},
-		{"navtech2.navcoin.org", false},
-		{"navtech3.navcoin.org", false},
-		{"navtech4.navcoin.org", false},
+		{"seed.nav.community", false},
 	},
 
 	// Chain parameters
