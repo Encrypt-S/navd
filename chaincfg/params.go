@@ -225,14 +225,12 @@ type Params struct {
 var MainNetParams = Params{
 	Name:        "mainnet",
 	Net:         wire.MainNet,
-	DefaultPort: "8333",
+	DefaultPort: "44440",
 	DNSSeeds: []DNSSeed{
-		{"seed.bitcoin.sipa.be", true},
-		{"dnsseed.bluematt.me", true},
-		{"dnsseed.bitcoin.dashjr.org", false},
-		{"seed.bitcoinstats.com", true},
-		{"seed.bitnodes.io", false},
-		{"seed.bitcoin.jonasschnelli.ch", true},
+		{"navtech1.navcoin.org", false},
+		{"navtech2.navcoin.org", false},
+		{"navtech3.navcoin.org", false},
+		{"navtech4.navcoin.org", false},
 	},
 
 	// Chain parameters
@@ -240,10 +238,10 @@ var MainNetParams = Params{
 	GenesisHash:              &genesisHash,
 	PowLimit:                 mainPowLimit,
 	PowLimitBits:             0x1d00ffff,
-	BIP0034Height:            227931, // 000000000000024b89b42a942fe0d9fea3bb44ab7bd1b19115dd6a759c0808b8
+	BIP0034Height:            900000, // ecb7444214d068028ec1fa4561662433452c1cbbd6b0f8eeb6452bcfa1d0a7d6
 	BIP0065Height:            388381, // 000000000000000004c2b624ed5d7756c508d90fd0da2c7c679febfa6c4735f0
 	BIP0066Height:            363725, // 00000000000000000379eaa19dce8c9b722d46ae6a57c2f1a988119488b50931
-	CoinbaseMaturity:         100,
+	CoinbaseMaturity:         50,
 	SubsidyReductionInterval: 210000,
 	TargetTimespan:           time.Hour * 24 * 14, // 14 days
 	TargetTimePerBlock:       time.Minute * 10,    // 10 minutes
@@ -254,32 +252,36 @@ var MainNetParams = Params{
 
 	// Checkpoints ordered from oldest to newest.
 	Checkpoints: []Checkpoint{
-		{11111, newHashFromStr("0000000069e244f73d78e8fd29ba2fd2ed618bd6fa2ee92559f542fdb26e7c1d")},
-		{33333, newHashFromStr("000000002dd5588a74784eaa7ab0507a18ad16a236e7b1ce69f00d7ddfb5d0a6")},
-		{74000, newHashFromStr("0000000000573993a3c9e41ce34471c079dcf5f52a0e824a81e7f953b8661a20")},
-		{105000, newHashFromStr("00000000000291ce28027faea320c8d2b054b2e0fe44a773f3eefb151d6bdc97")},
-		{134444, newHashFromStr("00000000000005b12ffd4cd315cd34ffd4a594f430ac814c91184a0d42d2b0fe")},
-		{168000, newHashFromStr("000000000000099e61ea72015e79632f216fe6cb33d7899acb35b75c8303b763")},
-		{193000, newHashFromStr("000000000000059f452a5f7340de6682a977387c17010ff6e6c3bd83ca8b1317")},
-		{210000, newHashFromStr("000000000000048b95347e83192f69cf0366076336c639f9b7228e9ba171342e")},
-		{216116, newHashFromStr("00000000000001b4f4b433e81ee46494af945cf96014816a4e2370f11b23df4e")},
-		{225430, newHashFromStr("00000000000001c108384350f74090433e7fcf79a606b8e797f065b130575932")},
-		{250000, newHashFromStr("000000000000003887df1f29024b06fc2200b55f8af8f35453d7be294df2d214")},
-		{267300, newHashFromStr("000000000000000a83fbd660e918f218bf37edd92b748ad940483c7c116179ac")},
-		{279000, newHashFromStr("0000000000000001ae8c72a0b0c301f67e3afca10e819efa9041e458e9bd7e40")},
-		{300255, newHashFromStr("0000000000000000162804527c6e9b9f0563a280525f9d08c12041def0a0f3b2")},
-		{319400, newHashFromStr("000000000000000021c6052e9becade189495d1c539aa37c58917305fd15f13b")},
-		{343185, newHashFromStr("0000000000000000072b8bf361d01a6ba7d445dd024203fafc78768ed4368554")},
-		{352940, newHashFromStr("000000000000000010755df42dba556bb72be6a32f3ce0b6941ce4430152c9ff")},
-		{382320, newHashFromStr("00000000000000000a8dc6ed5b133d0eb2fd6af56203e4159789b092defd8ab2")},
+		{ 0, newHashFromStr("00006a4e3e18c71c6d48ad6c261e2254fa764cf29607a4357c99b712dfbb8e6a")},
+		{10000, newHashFromStr("844f1eab31e8773328ba21970362b4fcff19622f13787cbbe164649ad2393b7a")},
+		{10000, newHashFromStr("844f1eab31e8773328ba21970362b4fcff19622f13787cbbe164649ad2393b7a")},
+		{20000, newHashFromStr("fea6d227117db665c5cff2fca0b29d850c5e7f064463d001f5228e80a7e21624")},
+		{30000, newHashFromStr("5e6212b3b23ed3e5092d7765f7ae36512ecdc254f84c9988161e955d94c91a48")},
+		{40000, newHashFromStr("3ae62cc62888db77de952d5855fb59f24a46f008177badc5f4f78ab12734985d")},
+		{50000, newHashFromStr("b0df7fbaa66f0844a607bd3d4b8d25d68a63c57fb34fdae7212c689165edcb8d")},
+		{60000, newHashFromStr("65504c021a5657321f070a11dd3973cc2dbc56a1f4a0c0d5f1a4d35e887e8182")},
+		{70000, newHashFromStr("22e5cbb2fbc635e031e424157c49ec55907ba5198ef3aee9595b30238666824f")},
+		{80000, newHashFromStr("64ce42ada8708c0b30b800403811275edd54054fc95f770f8dc49be1dad3a0e7")},
+		{100000, newHashFromStr("85e33b3e583fba18d1fc2227702ea97b9d5a441a1a3fa2633c28d6e5d3837218")},
+		{120000, newHashFromStr("4a11ab4cc4774ebc1dd602472fab4759c2d19ea29d8bb71073cb64474e70da89")},
+		{140000, newHashFromStr("e6c750c5ce99932b86ca000139909f37abbf829cc39cd09fe4eb7ec88cc50238")},
+		{160000, newHashFromStr("b855f143c2ebec37b0b9a9e2a2fc9e3d3d2437440c2101fb57ad11407e3bb147")},
+		{180000, newHashFromStr("774851c8ac775e671bed326be4fec73f5663aa4b1e84e89b20d0cea529fb5c06")},
+		{200000, newHashFromStr("9aa7fff01e07e800774b4ef7e11d55afffa8a1c6fdb0cd19762418cb8b901b32")},
+		{211160, newHashFromStr("7de94b058dc9fb6c183c5d3b493c88d13b597e473b86454c923e029d9c6a67b0")},
+		{575981, newHashFromStr("deb9ff859b5263edcf1968cb43626264c9b92e84a9805e2af6463776eca51137")},
+		{750000, newHashFromStr("7c163d8dc6320bdc3b1b726bf7be13fa3a44c621efcb0f8f3bcd7f2ad374b5ef")},
+		{957163, newHashFromStr("53a4525300051ce014fb034217690735121a42e5423b97385afbbbd5380f7583")},
+		{1465787,newHashFromStr("91694fd2980c65e6b81e8af75bf817d0ae9240863e0a0ef953d7ddc19cd86407")},
+		{1700000,newHashFromStr("8e2e2d9503c82c46f5a3138f562202af265f9b2a71dbbedac629e5624a246d15")}
 	},
 
 	// Consensus rule change deployments.
 	//
 	// The miner confirmation window is defined as:
 	//   target proof of work timespan / target proof of work spacing
-	RuleChangeActivationThreshold: 1916, // 95% of MinerConfirmationWindow
-	MinerConfirmationWindow:       2016, //
+	RuleChangeActivationThreshold: 15120, // 75% of MinerConfirmationWindow
+	MinerConfirmationWindow:       20160, //
 	Deployments: [DefinedDeployments]ConsensusDeployment{
 		DeploymentTestDummy: {
 			BitNumber:  28,
@@ -292,9 +294,9 @@ var MainNetParams = Params{
 			ExpireTime: 1493596800, // May 1st, 2017
 		},
 		DeploymentSegwit: {
-			BitNumber:  1,
-			StartTime:  1479168000, // November 15, 2016 UTC
-			ExpireTime: 1510704000, // November 15, 2017 UTC.
+			BitNumber:  4,
+			StartTime:  1493424000, // November 15, 2016 UTC
+			ExpireTime: 1525132800, // November 15, 2017 UTC.
 		},
 	},
 
@@ -303,12 +305,12 @@ var MainNetParams = Params{
 
 	// Human-readable part for Bech32 encoded segwit addresses, as defined in
 	// BIP 173.
-	Bech32HRPSegwit: "bc", // always bc for main net
+	Bech32HRPSegwit: "nav", // always bc for main net
 
 	// Address encoding magics
-	PubKeyHashAddrID:        0x00, // starts with 1
-	ScriptHashAddrID:        0x05, // starts with 3
-	PrivateKeyID:            0x80, // starts with 5 (uncompressed) or K (compressed)
+	PubKeyHashAddrID:        0x35, // starts with N
+	ScriptHashAddrID:        0x55, // starts with b
+	PrivateKeyID:            0x96, // starts with P (compressed)
 	WitnessPubKeyHashAddrID: 0x06, // starts with p2
 	WitnessScriptHashAddrID: 0x0A, // starts with 7Xh
 
@@ -401,12 +403,10 @@ var RegressionNetParams = Params{
 var TestNet3Params = Params{
 	Name:        "testnet3",
 	Net:         wire.TestNet3,
-	DefaultPort: "18333",
+	DefaultPort: "15556",
 	DNSSeeds: []DNSSeed{
-		{"testnet-seed.bitcoin.jonasschnelli.ch", true},
-		{"testnet-seed.bitcoin.schildbach.de", false},
-		{"seed.tnav.petertodd.org", true},
-		{"testnet-seed.bluematt.me", false},
+		{"176.9.19.245", false},
+		{"46.4.24.136", false},
 	},
 
 	// Chain parameters
@@ -428,25 +428,15 @@ var TestNet3Params = Params{
 
 	// Checkpoints ordered from oldest to newest.
 	Checkpoints: []Checkpoint{
-		{546, newHashFromStr("000000002a936ca763904c3c35fce2f3556c559c0214345d31b1bcebf76acb70")},
-		{100000, newHashFromStr("00000000009e2958c15ff9290d571bf9459e93b19765c6801ddeccadbb160a1e")},
-		{200000, newHashFromStr("0000000000287bffd321963ef05feab753ebe274e1d78b2fd4e2bfe9ad3aa6f2")},
-		{300001, newHashFromStr("0000000000004829474748f3d1bc8fcf893c88be255e6d7f571c548aff57abf4")},
-		{400002, newHashFromStr("0000000005e2c73b8ecb82ae2dbc2e8274614ebad7172b53528aba7501f5a089")},
-		{500011, newHashFromStr("00000000000929f63977fbac92ff570a9bd9e7715401ee96f2848f7b07750b02")},
-		{600002, newHashFromStr("000000000001f471389afd6ee94dcace5ccc44adc18e8bff402443f034b07240")},
-		{700000, newHashFromStr("000000000000406178b12a4dea3b27e13b3c4fe4510994fd667d7c1e6a3f4dc1")},
-		{800010, newHashFromStr("000000000017ed35296433190b6829db01e657d80631d43f5983fa403bfdb4c1")},
-		{900000, newHashFromStr("0000000000356f8d8924556e765b7a94aaebc6b5c8685dcfa2b1ee8b41acd89b")},
-		{1000007, newHashFromStr("00000000001ccb893d8a1f25b70ad173ce955e5f50124261bbbc50379a612ddf")},
+		{0, newHashFromStr("00004cf7dd6edaba62f83fb97f60cb5527cf35b79f9ec6f89b3041f83630422f")},
 	},
 
 	// Consensus rule change deployments.
 	//
 	// The miner confirmation window is defined as:
 	//   target proof of work timespan / target proof of work spacing
-	RuleChangeActivationThreshold: 1512, // 75% of MinerConfirmationWindow
-	MinerConfirmationWindow:       2016,
+	RuleChangeActivationThreshold: 300, // 75% of MinerConfirmationWindow
+	MinerConfirmationWindow:       400,
 	Deployments: [DefinedDeployments]ConsensusDeployment{
 		DeploymentTestDummy: {
 			BitNumber:  28,
@@ -456,12 +446,17 @@ var TestNet3Params = Params{
 		DeploymentCSV: {
 			BitNumber:  0,
 			StartTime:  1456790400, // March 1st, 2016
-			ExpireTime: 1493596800, // May 1st, 2017
+			ExpireTime: 1525132800, // May 1st, 2018
 		},
 		DeploymentSegwit: {
-			BitNumber:  1,
-			StartTime:  1462060800, // May 1, 2016 UTC
-			ExpireTime: 1493596800, // May 1, 2017 UTC.
+			BitNumber:  5,
+			StartTime:  1493424000, // May 1, 2017 UTC
+			ExpireTime: 1525132800, // May 1, 2018 UTC.
+		},
+		DeploymentCommunityFund: {
+			BitNumber:  6,
+			StartTime:  1493424000, // May 1, 2017 UTC
+			ExpireTime: 1525132800, // May 1, 2018 UTC.
 		},
 	},
 
@@ -480,8 +475,8 @@ var TestNet3Params = Params{
 	PrivateKeyID:            0xef, // starts with 9 (uncompressed) or c (compressed)
 
 	// BIP32 hierarchical deterministic extended key magics
-	HDPrivateKeyID: [4]byte{0x04, 0x35, 0x83, 0x94}, // starts with tprv
-	HDPublicKeyID:  [4]byte{0x04, 0x35, 0x87, 0xcf}, // starts with tpub
+	HDPrivateKeyID: [4]byte{0x40, 0x88, 0xda, 0x4e}, 
+	HDPublicKeyID:  [4]byte{0x40, 0x88, 0x2b, 0xe1}, 
 
 	// BIP44 coin type used in the hierarchical deterministic path for
 	// address generation.
