@@ -93,7 +93,7 @@ var subsystemLoggers = map[string]navlog.Logger{
 	"AMGR": amgrLog,
 	"CMGR": cmgrLog,
 	"BCDB": bcdbLog,
-	"BTCD": navdLog,
+	"NAVD": navdLog,
 	"CHAN": chanLog,
 	"DISC": discLog,
 	"INDX": indxLog,
