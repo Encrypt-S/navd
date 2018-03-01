@@ -10,11 +10,11 @@ import (
 	"os"
 	"path/filepath"
 
-	"github.com/aguycalled/navd/blockchain"
-	"github.com/aguycalled/navd/chaincfg"
-	"github.com/aguycalled/navd/database"
-	_ "github.com/aguycalled/navd/database/ffldb"
-	"github.com/aguycalled/navutil"
+	"github.com/navcoin/navd/blockchain"
+	"github.com/navcoin/navd/chaincfg"
+	"github.com/navcoin/navd/database"
+	_ "github.com/navcoin/navd/database/ffldb"
+	"github.com/navcoin/navutil"
 )
 
 // This example demonstrates how to create a new chain instance and use

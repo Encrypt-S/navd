@@ -7,8 +7,8 @@ package blockchain
 import (
 	"fmt"
 
-	"github.com/aguycalled/navd/database"
-	"github.com/aguycalled/navutil"
+	"github.com/navcoin/navd/database"
+	"github.com/navcoin/navutil"
 )
 
 // maybeAcceptBlock potentially accepts a block into the block chain and, if

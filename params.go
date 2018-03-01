@@ -5,8 +5,8 @@
 package main
 
 import (
-	"github.com/aguycalled/navd/chaincfg"
-	"github.com/aguycalled/navd/wire"
+	"github.com/navcoin/navd/chaincfg"
+	"github.com/navcoin/navd/wire"
 )
 
 // activeNetParams is a pointer to the parameters specific to the

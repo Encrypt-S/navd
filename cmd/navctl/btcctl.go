@@ -10,7 +10,7 @@ import (
 	"path/filepath"
 	"strings"
 
-	"github.com/aguycalled/navd/btcjson"
+	"github.com/navcoin/navd/btcjson"
 )
 
 const (

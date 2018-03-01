@@ -9,8 +9,8 @@ Overview
 
 This client provides a robust and easy to use client for interfacing with a
 Navcoin RPC server that uses a navd/navcoin core compatible Navcoin JSON-RPC
-API.  This client has been tested with navd (https://github.com/aguycalled/navd),
-navwallet (https://github.com/aguycalled/navwallet), and
+API.  This client has been tested with navd (https://github.com/navcoin/navd),
+navwallet (https://github.com/navcoin/navwallet), and
 navcoin core (https://github.com/navcoin).
 
 In addition to the compatible standard HTTP POST JSON-RPC API, navd and

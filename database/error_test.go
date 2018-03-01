@@ -8,7 +8,7 @@ import (
 	"errors"
 	"testing"
 
-	"github.com/aguycalled/navd/database"
+	"github.com/navcoin/navd/database"
 )
 
 // TestErrorCodeStringer tests the stringized output for the ErrorCode type.

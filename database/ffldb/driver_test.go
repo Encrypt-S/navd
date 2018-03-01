@@ -12,10 +12,10 @@ import (
 	"runtime"
 	"testing"
 
-	"github.com/aguycalled/navd/chaincfg"
-	"github.com/aguycalled/navd/database"
-	"github.com/aguycalled/navd/database/ffldb"
-	"github.com/aguycalled/navutil"
+	"github.com/navcoin/navd/chaincfg"
+	"github.com/navcoin/navd/database"
+	"github.com/navcoin/navd/database/ffldb"
+	"github.com/navcoin/navutil"
 )
 
 // dbType is the database type name for this driver.

@@ -5,13 +5,13 @@
 package netsync
 
 import (
-	"github.com/aguycalled/navd/blockchain"
-	"github.com/aguycalled/navd/chaincfg"
-	"github.com/aguycalled/navd/chaincfg/chainhash"
-	"github.com/aguycalled/navd/mempool"
-	"github.com/aguycalled/navd/peer"
-	"github.com/aguycalled/navd/wire"
-	"github.com/aguycalled/navutil"
+	"github.com/navcoin/navd/blockchain"
+	"github.com/navcoin/navd/chaincfg"
+	"github.com/navcoin/navd/chaincfg/chainhash"
+	"github.com/navcoin/navd/mempool"
+	"github.com/navcoin/navd/peer"
+	"github.com/navcoin/navd/wire"
+	"github.com/navcoin/navutil"
 )
 
 // PeerNotifier exposes methods to notify peers of status changes to

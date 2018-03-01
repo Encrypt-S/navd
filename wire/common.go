@@ -12,7 +12,7 @@ import (
 	"math"
 	"time"
 
-	"github.com/aguycalled/navd/chaincfg/chainhash"
+	"github.com/navcoin/navd/chaincfg/chainhash"
 )
 
 const (

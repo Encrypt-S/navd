@@ -8,7 +8,7 @@ import (
 	"fmt"
 	"net"
 
-	"github.com/aguycalled/navd/wire"
+	"github.com/navcoin/navd/wire"
 )
 
 var (

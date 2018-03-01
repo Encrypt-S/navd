@@ -8,8 +8,8 @@ import (
 	"net"
 	"testing"
 
-	"github.com/aguycalled/navd/addrmgr"
-	"github.com/aguycalled/navd/wire"
+	"github.com/navcoin/navd/addrmgr"
+	"github.com/navcoin/navd/wire"
 )
 
 // TestIPTypes ensures the various functions which determine the type of an IP

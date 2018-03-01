@@ -9,10 +9,10 @@ import (
 	"os"
 	"path/filepath"
 
-	"github.com/aguycalled/navd/blockchain"
-	"github.com/aguycalled/navd/chaincfg"
-	"github.com/aguycalled/navd/chaincfg/chainhash"
-	"github.com/aguycalled/navd/database"
+	"github.com/navcoin/navd/blockchain"
+	"github.com/navcoin/navd/chaincfg"
+	"github.com/navcoin/navd/chaincfg/chainhash"
+	"github.com/navcoin/navd/database"
 )
 
 const blockDbNamePrefix = "blocks"

@@ -7,7 +7,7 @@ package addrmgr
 import (
 	"time"
 
-	"github.com/aguycalled/navd/wire"
+	"github.com/navcoin/navd/wire"
 )
 
 // KnownAddress tracks information about a known network address that is used

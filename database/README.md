@@ -1,11 +1,11 @@
 database
 ========
 
-[![Build Status](http://img.shields.io/travis/aguycalled/navd.svg)]
-(https://travis-ci.org/aguycalled/navd)  [![ISC License]
+[![Build Status](http://img.shields.io/travis/navcoin/navd.svg)]
+(https://travis-ci.org/navcoin/navd)  [![ISC License]
 (http://img.shields.io/badge/license-ISC-blue.svg)](http://copyfree.org)
 [![GoDoc](https://img.shields.io/badge/godoc-reference-blue.svg)]
-(http://godoc.org/github.com/aguycalled/navd/database)
+(http://godoc.org/github.com/navcoin/navd/database)
 
 Package database provides a block and metadata storage database.
 
@@ -15,9 +15,9 @@ one entity can have the database open at a time (for most database backends),
 and that entity will be navd.
 
 When a client wants programmatic access to the data provided by navd, they'll
-likely want to use the [navrpcclient](https://github.com/aguycalled/navrpcclient)
+likely want to use the [navrpcclient](https://github.com/navcoin/navrpcclient)
 package which makes use of the [JSON-RPC API]
-(https://github.com/aguycalled/navd/tree/master/docs/json_rpc_api.md).
+(https://github.com/navcoin/navd/tree/master/docs/json_rpc_api.md).
 
 However, this package could be extremely useful for any applications requiring
 Navcoin block storage capabilities.
@@ -40,18 +40,18 @@ storage, and strict checksums in key areas to ensure data integrity.
 ## Installation and Updating
 
 ```bash
-$ go get -u github.com/aguycalled/navd/database
+$ go get -u github.com/navcoin/navd/database
 ```
 
 ## Examples
 
 * [Basic Usage Example]
-  (http://godoc.org/github.com/aguycalled/navd/database#example-package--BasicUsage)  
+  (http://godoc.org/github.com/navcoin/navd/database#example-package--BasicUsage)  
   Demonstrates creating a new database and using a managed read-write
   transaction to store and retrieve metadata.
 
 * [Block Storage and Retrieval Example]
-  (http://godoc.org/github.com/aguycalled/navd/database#example-package--BlockStorageAndRetrieval)  
+  (http://godoc.org/github.com/navcoin/navd/database#example-package--BlockStorageAndRetrieval)  
   Demonstrates creating a new database, using a managed read-write transaction
   to store a block, and then using a managed read-only transaction to fetch the
   block.

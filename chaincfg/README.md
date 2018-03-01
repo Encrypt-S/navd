@@ -1,11 +1,11 @@
 chaincfg
 ========
 
-[![Build Status](http://img.shields.io/travis/aguycalled/navd.svg)]
-(https://travis-ci.org/aguycalled/navd) [![ISC License]
+[![Build Status](http://img.shields.io/travis/navcoin/navd.svg)]
+(https://travis-ci.org/navcoin/navd) [![ISC License]
 (http://img.shields.io/badge/license-ISC-blue.svg)](http://copyfree.org)
 [![GoDoc](https://img.shields.io/badge/godoc-reference-blue.svg)]
-(http://godoc.org/github.com/aguycalled/navd/chaincfg)
+(http://godoc.org/github.com/navcoin/navd/chaincfg)
 
 Package chaincfg defines chain configuration parameters for the three standard
 Navcoin networks and provides the ability for callers to define their own custom
@@ -26,8 +26,8 @@ import (
 	"fmt"
 	"log"
 
-	"github.com/aguycalled/navutil"
-	"github.com/aguycalled/navd/chaincfg"
+	"github.com/navcoin/navutil"
+	"github.com/navcoin/navd/chaincfg"
 )
 
 var testnet = flag.Bool("testnet", false, "operate on the testnet Navcoin network")
@@ -58,7 +58,7 @@ func main() {
 ## Installation and Updating
 
 ```bash
-$ go get -u github.com/aguycalled/navd/chaincfg
+$ go get -u github.com/navcoin/navd/chaincfg
 ```
 
 ## GPG Verification Key

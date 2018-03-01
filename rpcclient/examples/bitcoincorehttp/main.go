@@ -7,7 +7,7 @@ package main
 import (
 	"log"
 
-	"github.com/aguycalled/navd/rpcclient"
+	"github.com/navcoin/navd/rpcclient"
 )
 
 func main() {

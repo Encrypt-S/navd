@@ -12,7 +12,7 @@ import (
 	"strings"
 	"time"
 
-	"github.com/aguycalled/navutil"
+	"github.com/navcoin/navutil"
 	flags "github.com/jessevdk/go-flags"
 )
 

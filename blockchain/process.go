@@ -8,9 +8,9 @@ import (
 	"fmt"
 	"time"
 
-	"github.com/aguycalled/navd/chaincfg/chainhash"
-	"github.com/aguycalled/navd/database"
-	"github.com/aguycalled/navutil"
+	"github.com/navcoin/navd/chaincfg/chainhash"
+	"github.com/navcoin/navd/database"
+	"github.com/navcoin/navutil"
 )
 
 // BehaviorFlags is a bitmask defining tweaks to the normal behavior when

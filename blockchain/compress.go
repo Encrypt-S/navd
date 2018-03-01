@@ -5,8 +5,8 @@
 package blockchain
 
 import (
-	"github.com/aguycalled/navd/btcec"
-	"github.com/aguycalled/navd/txscript"
+	"github.com/navcoin/navd/btcec"
+	"github.com/navcoin/navd/txscript"
 )
 
 // -----------------------------------------------------------------------------

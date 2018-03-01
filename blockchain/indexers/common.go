@@ -11,9 +11,9 @@ import (
 	"encoding/binary"
 	"errors"
 
-	"github.com/aguycalled/navd/blockchain"
-	"github.com/aguycalled/navd/database"
-	"github.com/aguycalled/navutil"
+	"github.com/navcoin/navd/blockchain"
+	"github.com/navcoin/navd/database"
+	"github.com/navcoin/navutil"
 )
 
 var (

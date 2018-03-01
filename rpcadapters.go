@@ -7,13 +7,13 @@ package main
 import (
 	"sync/atomic"
 
-	"github.com/aguycalled/navd/blockchain"
-	"github.com/aguycalled/navd/chaincfg/chainhash"
-	"github.com/aguycalled/navd/mempool"
-	"github.com/aguycalled/navd/netsync"
-	"github.com/aguycalled/navd/peer"
-	"github.com/aguycalled/navd/wire"
-	"github.com/aguycalled/navutil"
+	"github.com/navcoin/navd/blockchain"
+	"github.com/navcoin/navd/chaincfg/chainhash"
+	"github.com/navcoin/navd/mempool"
+	"github.com/navcoin/navd/netsync"
+	"github.com/navcoin/navd/peer"
+	"github.com/navcoin/navd/wire"
+	"github.com/navcoin/navutil"
 )
 
 // rpcPeer provides a peer for use with the RPC server and implements the

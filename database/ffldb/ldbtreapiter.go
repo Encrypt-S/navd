@@ -5,7 +5,7 @@
 package ffldb
 
 import (
-	"github.com/aguycalled/navd/database/internal/treap"
+	"github.com/navcoin/navd/database/internal/treap"
 	"github.com/btcsuite/goleveldb/leveldb/iterator"
 	"github.com/btcsuite/goleveldb/leveldb/util"
 )

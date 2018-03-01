@@ -2,9 +2,9 @@
 rpctest
 =======
 
-[![Build Status](http://img.shields.io/travis/aguycalled/navd.svg)](https://travis-ci.org/aguycalled/navd)
+[![Build Status](http://img.shields.io/travis/navcoin/navd.svg)](https://travis-ci.org/navcoin/navd)
 [![ISC License](http://img.shields.io/badge/license-ISC-blue.svg)](http://copyfree.org)
-[![GoDoc](https://img.shields.io/badge/godoc-reference-blue.svg)](http://godoc.org/github.com/aguycalled/navd/integration/rpctest)
+[![GoDoc](https://img.shields.io/badge/godoc-reference-blue.svg)](http://godoc.org/github.com/navcoin/navd/integration/rpctest)
 
 Package rpctest provides a navd-specific RPC testing harness crafting and
 executing integration tests by driving a `navd` instance via the `RPC`
@@ -21,7 +21,7 @@ systems/integration tests.
 ## Installation and Updating
 
 ```bash
-$ go get -u github.com/aguycalled/navd/integration/rpctest
+$ go get -u github.com/navcoin/navd/integration/rpctest
 ```
 
 ## License
@@ -33,11 +33,11 @@ License.
 rpctest
 =======
 
-[![Build Status](http://img.shields.io/travis/aguycalled/navd.svg)]
-(https://travis-ci.org/aguycalled/navd) [![ISC License]
+[![Build Status](http://img.shields.io/travis/navcoin/navd.svg)]
+(https://travis-ci.org/navcoin/navd) [![ISC License]
 (http://img.shields.io/badge/license-ISC-blue.svg)](http://copyfree.org)
 [![GoDoc](https://img.shields.io/badge/godoc-reference-blue.svg)]
-(http://godoc.org/github.com/aguycalled/navd/rpctest)
+(http://godoc.org/github.com/navcoin/navd/rpctest)
 
 Package rpctest provides a navd-specific RPC testing harness crafting and
 executing integration tests by driving a `navd` instance via the `RPC`
@@ -54,7 +54,7 @@ systems/integration tests.
 ## Installation and Updating
 
 ```bash
-$ go get -u github.com/aguycalled/navd/rpctest
+$ go get -u github.com/navcoin/navd/rpctest
 ```
 
 ## License
@@ -63,4 +63,4 @@ $ go get -u github.com/aguycalled/navd/rpctest
 Package rpctest is licensed under the [copyfree](http://copyfree.org) ISC
 License.
 
->>>>>>> c7d17841... multi: update imports to aguycalled's:rpctest/README.md
+>>>>>>> c7d17841... multi: update imports to navcoin's:rpctest/README.md

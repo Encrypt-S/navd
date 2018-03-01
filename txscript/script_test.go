@@ -9,7 +9,7 @@ import (
 	"reflect"
 	"testing"
 
-	"github.com/aguycalled/navd/wire"
+	"github.com/navcoin/navd/wire"
 )
 
 // TestParseOpcode tests for opcode parsing with bad data templates.

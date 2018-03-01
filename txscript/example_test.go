@@ -8,12 +8,12 @@ import (
 	"encoding/hex"
 	"fmt"
 
-	"github.com/aguycalled/navd/btcec"
-	"github.com/aguycalled/navd/chaincfg"
-	"github.com/aguycalled/navd/chaincfg/chainhash"
-	"github.com/aguycalled/navd/txscript"
-	"github.com/aguycalled/navd/wire"
-	"github.com/aguycalled/navutil"
+	"github.com/navcoin/navd/btcec"
+	"github.com/navcoin/navd/chaincfg"
+	"github.com/navcoin/navd/chaincfg/chainhash"
+	"github.com/navcoin/navd/txscript"
+	"github.com/navcoin/navd/wire"
+	"github.com/navcoin/navutil"
 )
 
 // This example demonstrates creating a script which pays to a navcoin address.

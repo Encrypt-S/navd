@@ -1,8 +1,8 @@
 treap
 =====
 
-[![Build Status](https://travis-ci.org/aguycalled/navd.png?branch=master)]
-(https://travis-ci.org/aguycalled/navd)
+[![Build Status](https://travis-ci.org/navcoin/navd.png?branch=master)]
+(https://travis-ci.org/navcoin/navd)
 
 Package treap implements a treap data structure that is used to hold ordered
 key/value pairs using a combination of binary search tree and heap semantics.

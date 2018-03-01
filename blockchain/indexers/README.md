@@ -1,7 +1,7 @@
 indexers
 ========
 
-[![Build Status](https://travis-ci.org/aguycalled/navd.png?branch=master)](https://travis-ci.org/aguycalled/navd)
+[![Build Status](https://travis-ci.org/navcoin/navd.png?branch=master)](https://travis-ci.org/navcoin/navd)
 
 Package indexers implements optional block chain indexes.
 
@@ -21,7 +21,7 @@ via an RPC interface.
 ## Installation
 
 ```bash
-$ go get -u github.com/aguycalled/navd/blockchain/indexers
+$ go get -u github.com/navcoin/navd/blockchain/indexers
 ```
 
 ## License

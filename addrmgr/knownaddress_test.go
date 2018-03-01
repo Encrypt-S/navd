@@ -9,8 +9,8 @@ import (
 	"testing"
 	"time"
 
-	"github.com/aguycalled/navd/addrmgr"
-	"github.com/aguycalled/navd/wire"
+	"github.com/navcoin/navd/addrmgr"
+	"github.com/navcoin/navd/wire"
 )
 
 func TestChance(t *testing.T) {

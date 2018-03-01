@@ -9,9 +9,9 @@ import (
 	"encoding/json"
 	"errors"
 
-	"github.com/aguycalled/navd/btcjson"
-	"github.com/aguycalled/navd/chaincfg/chainhash"
-	"github.com/aguycalled/navutil"
+	"github.com/navcoin/navd/btcjson"
+	"github.com/navcoin/navd/chaincfg/chainhash"
+	"github.com/navcoin/navutil"
 )
 
 // FutureGenerateResult is a future promise to deliver the result of a

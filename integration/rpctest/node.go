@@ -14,8 +14,8 @@ import (
 	"runtime"
 	"time"
 
-	rpc "github.com/aguycalled/navd/rpcclient"
-	"github.com/aguycalled/navutil"
+	rpc "github.com/navcoin/navd/rpcclient"
+	"github.com/navcoin/navutil"
 )
 
 // nodeConfig contains all the args, and data required to launch a navd process

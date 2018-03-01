@@ -10,8 +10,8 @@ import (
 	"runtime"
 	"strings"
 
-	"github.com/aguycalled/navd/database"
-	"github.com/aguycalled/navlog"
+	"github.com/navcoin/navd/database"
+	"github.com/navcoin/navlog"
 	flags "github.com/jessevdk/go-flags"
 )
 

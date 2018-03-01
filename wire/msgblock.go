@@ -9,7 +9,7 @@ import (
 	"fmt"
 	"io"
 
-	"github.com/aguycalled/navd/chaincfg/chainhash"
+	"github.com/navcoin/navd/chaincfg/chainhash"
 )
 
 // defaultTransactionAlloc is the default size used for the backing array

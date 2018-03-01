@@ -10,11 +10,11 @@ import (
 	"os"
 	"path/filepath"
 
-	"github.com/aguycalled/navd/chaincfg"
-	"github.com/aguycalled/navd/database"
-	_ "github.com/aguycalled/navd/database/ffldb"
-	"github.com/aguycalled/navd/wire"
-	"github.com/aguycalled/navutil"
+	"github.com/navcoin/navd/chaincfg"
+	"github.com/navcoin/navd/database"
+	_ "github.com/navcoin/navd/database/ffldb"
+	"github.com/navcoin/navd/wire"
+	"github.com/navcoin/navutil"
 )
 
 // This example demonstrates creating a new database.
@@ -22,8 +22,8 @@ func ExampleCreate() {
 	// This example assumes the ffldb driver is imported.
 	//
 	// import (
-	// 	"github.com/aguycalled/navd/database"
-	// 	_ "github.com/aguycalled/navd/database/ffldb"
+	// 	"github.com/navcoin/navd/database"
+	// 	_ "github.com/navcoin/navd/database/ffldb"
 	// )
 
 	// Create a database and schedule it to be closed and removed on exit.
@@ -48,8 +48,8 @@ func Example_basicUsage() {
 	// This example assumes the ffldb driver is imported.
 	//
 	// import (
-	// 	"github.com/aguycalled/navd/database"
-	// 	_ "github.com/aguycalled/navd/database/ffldb"
+	// 	"github.com/navcoin/navd/database"
+	// 	_ "github.com/navcoin/navd/database/ffldb"
 	// )
 
 	// Create a database and schedule it to be closed and removed on exit.
@@ -114,8 +114,8 @@ func Example_blockStorageAndRetrieval() {
 	// This example assumes the ffldb driver is imported.
 	//
 	// import (
-	// 	"github.com/aguycalled/navd/database"
-	// 	_ "github.com/aguycalled/navd/database/ffldb"
+	// 	"github.com/navcoin/navd/database"
+	// 	_ "github.com/navcoin/navd/database/ffldb"
 	// )
 
 	// Create a database and schedule it to be closed and removed on exit.

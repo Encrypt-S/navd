@@ -1,9 +1,9 @@
 netsync
 =======
 
-[![Build Status](http://img.shields.io/travis/aguycalled/navd.svg)](https://travis-ci.org/aguycalled/navd)
+[![Build Status](http://img.shields.io/travis/navcoin/navd.svg)](https://travis-ci.org/navcoin/navd)
 [![ISC License](http://img.shields.io/badge/license-ISC-blue.svg)](http://copyfree.org)
-[![GoDoc](https://img.shields.io/badge/godoc-reference-blue.svg)](http://godoc.org/github.com/aguycalled/navd/netsync)
+[![GoDoc](https://img.shields.io/badge/godoc-reference-blue.svg)](http://godoc.org/github.com/navcoin/navd/netsync)
 
 ## Overview
 
@@ -17,7 +17,7 @@ longest chain the sync peer is aware of.
 ## Installation and Updating
 
 ```bash
-$ go get -u github.com/aguycalled/navd/netsync
+$ go get -u github.com/navcoin/navd/netsync
 ```
 
 ## License

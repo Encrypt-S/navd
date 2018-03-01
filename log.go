@@ -10,20 +10,20 @@ import (
 	"os"
 	"path/filepath"
 
-	"github.com/aguycalled/navd/netsync"
+	"github.com/navcoin/navd/netsync"
 
-	"github.com/aguycalled/navd/addrmgr"
-	"github.com/aguycalled/navd/blockchain"
-	"github.com/aguycalled/navd/blockchain/indexers"
-	"github.com/aguycalled/navd/connmgr"
-	"github.com/aguycalled/navd/database"
-	"github.com/aguycalled/navd/mempool"
-	"github.com/aguycalled/navd/mining"
-	"github.com/aguycalled/navd/mining/cpuminer"
-	"github.com/aguycalled/navd/peer"
-	"github.com/aguycalled/navd/txscript"
+	"github.com/navcoin/navd/addrmgr"
+	"github.com/navcoin/navd/blockchain"
+	"github.com/navcoin/navd/blockchain/indexers"
+	"github.com/navcoin/navd/connmgr"
+	"github.com/navcoin/navd/database"
+	"github.com/navcoin/navd/mempool"
+	"github.com/navcoin/navd/mining"
+	"github.com/navcoin/navd/mining/cpuminer"
+	"github.com/navcoin/navd/peer"
+	"github.com/navcoin/navd/txscript"
 
-	"github.com/aguycalled/navlog"
+	"github.com/navcoin/navlog"
 	"github.com/jrick/logrotate/rotator"
 )
 

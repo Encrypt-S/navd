@@ -5,8 +5,8 @@
 package mempool
 
 import (
-	"github.com/aguycalled/navd/blockchain"
-	"github.com/aguycalled/navd/wire"
+	"github.com/navcoin/navd/blockchain"
+	"github.com/navcoin/navd/wire"
 )
 
 // RuleError identifies a rule violation.  It is used to indicate that

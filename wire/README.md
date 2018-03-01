@@ -2,16 +2,16 @@ wire
 ====
 
 <<<<<<< HEAD
-[![Build Status](http://img.shields.io/travis/aguycalled/navd.svg)](https://travis-ci.org/aguycalled/navd)
+[![Build Status](http://img.shields.io/travis/navcoin/navd.svg)](https://travis-ci.org/navcoin/navd)
 [![ISC License](http://img.shields.io/badge/license-ISC-blue.svg)](http://copyfree.org)
-[![GoDoc](https://img.shields.io/badge/godoc-reference-blue.svg)](http://godoc.org/github.com/aguycalled/navd/wire)
+[![GoDoc](https://img.shields.io/badge/godoc-reference-blue.svg)](http://godoc.org/github.com/navcoin/navd/wire)
 =======
-[![Build Status](http://img.shields.io/travis/aguycalled/navd.svg)]
-(https://travis-ci.org/aguycalled/navd) [![ISC License]
+[![Build Status](http://img.shields.io/travis/navcoin/navd.svg)]
+(https://travis-ci.org/navcoin/navd) [![ISC License]
 (http://img.shields.io/badge/license-ISC-blue.svg)](http://copyfree.org)
 [![GoDoc](https://img.shields.io/badge/godoc-reference-blue.svg)]
-(http://godoc.org/github.com/aguycalled/navd/wire)
->>>>>>> c7d17841... multi: update imports to aguycalled's
+(http://godoc.org/github.com/navcoin/navd/wire)
+>>>>>>> c7d17841... multi: update imports to navcoin's
 
 Package wire implements the navcoin wire protocol.  A comprehensive suite of
 tests with 100% test coverage is provided to ensure proper functionality.
@@ -26,7 +26,7 @@ protocol level.
 ## Installation and Updating
 
 ```bash
-$ go get -u github.com/aguycalled/navd/wire
+$ go get -u github.com/navcoin/navd/wire
 ```
 
 ## Navcoin Message Overview

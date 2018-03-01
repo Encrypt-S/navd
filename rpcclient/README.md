@@ -1,9 +1,9 @@
 rpcclient
 =========
 
-[![Build Status](http://img.shields.io/travis/aguycalled/navd.svg)](https://travis-ci.org/aguycalled/navd)
+[![Build Status](http://img.shields.io/travis/navcoin/navd.svg)](https://travis-ci.org/navcoin/navd)
 [![ISC License](http://img.shields.io/badge/license-ISC-blue.svg)](http://copyfree.org)
-[![GoDoc](https://img.shields.io/badge/godoc-reference-blue.svg)](http://godoc.org/github.com/aguycalled/navd/rpcclient)
+[![GoDoc](https://img.shields.io/badge/godoc-reference-blue.svg)](http://godoc.org/github.com/navcoin/navd/rpcclient)
 
 rpcclient implements a Websocket-enabled Navcoin JSON-RPC client package written
 in [Go](http://golang.org/).  It provides a robust and easy to use client for
@@ -18,16 +18,16 @@ implement and the API is not stable yet.
 
 ## Documentation
 
-* [API Reference](http://godoc.org/github.com/aguycalled/navd/rpcclient)
-* [navd Websockets Example](https://github.com/aguycalled/navd/rpcclient/blob/master/examples/navdwebsockets)  
+* [API Reference](http://godoc.org/github.com/navcoin/navd/rpcclient)
+* [navd Websockets Example](https://github.com/navcoin/navd/rpcclient/blob/master/examples/navdwebsockets)  
   Connects to a navd RPC server using TLS-secured websockets, registers for
   block connected and block disconnected notifications, and gets the current
   block count
-* [navwallet Websockets Example](https://github.com/aguycalled/navd/rpcclient/blob/master/examples/navwalletwebsockets)  
+* [navwallet Websockets Example](https://github.com/navcoin/navd/rpcclient/blob/master/examples/navwalletwebsockets)  
   Connects to a navwallet RPC server using TLS-secured websockets, registers for
   notifications about changes to account balances, and gets a list of unspent
   transaction outputs (utxos) the wallet can sign
-* [Navcoin Core HTTP POST Example](https://github.com/aguycalled/navd/rpcclient/blob/master/examples/navcoincorehttp)  
+* [Navcoin Core HTTP POST Example](https://github.com/navcoin/navd/rpcclient/blob/master/examples/navcoincorehttp)  
   Connects to a navcoin core RPC server using HTTP POST mode with TLS disabled
   and gets the current block count
 
@@ -47,7 +47,7 @@ implement and the API is not stable yet.
 ## Installation
 
 ```bash
-$ go get -u github.com/aguycalled/navd/rpcclient
+$ go get -u github.com/navcoin/navd/rpcclient
 ```
 
 ## License

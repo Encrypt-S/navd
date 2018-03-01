@@ -36,7 +36,7 @@ differences between navd and navcoind as far as how RPCs are serviced:
   further details on why they were separated.  This means that if you are
   talking directly to navd, only chain-related RPCs are available.  However both
   chain-related and wallet-related RPCs are available via
-  [navwallet](https://github.com/aguycalled/navwallet).
+  [navwallet](https://github.com/navcoin/navwallet).
 * navd is secure by default which means that the RPC connection is TLS-enabled
   by default
 * navd provides access to the API through both
@@ -44,7 +44,7 @@ differences between navd and navcoind as far as how RPCs are serviced:
   [Websockets](http://en.wikipedia.org/wiki/WebSocket)
 
 Websockets are the preferred transport for navd RPC and are used by applications
-such as [navwallet](https://github.com/aguycalled/navwallet) for inter-process
+such as [navwallet](https://github.com/navcoin/navwallet) for inter-process
 communication with navd.  The websocket connection endpoint for navd is
 `wss://your_ip_or_domain:8334/ws`.
 
@@ -1095,7 +1095,7 @@ package main
 
 import (
 	"github.com/btcsuite/navrpcclient"
-	"github.com/aguycalled/navutil"
+	"github.com/navcoin/navutil"
 	"io/ioutil"
 	"log"
 	"path/filepath"
@@ -1156,9 +1156,9 @@ package main
 
 import (
 	"github.com/btcsuite/navrpcclient"
-	"github.com/aguycalled/navutil"
-	"github.com/aguycalled/navd/chaincfg/chainhash"
-	"github.com/aguycalled/navd/wire"
+	"github.com/navcoin/navutil"
+	"github.com/navcoin/navd/chaincfg/chainhash"
+	"github.com/navcoin/navd/wire"
 	"io/ioutil"
 	"log"
 	"path/filepath"
@@ -1248,9 +1248,9 @@ package main
 
 import (
 	"github.com/btcsuite/navrpcclient"
-	"github.com/aguycalled/navutil"
-	"github.com/aguycalled/navd/chaincfg/chainhash"
-	"github.com/aguycalled/navd/wire"
+	"github.com/navcoin/navutil"
+	"github.com/navcoin/navd/chaincfg/chainhash"
+	"github.com/navcoin/navd/wire"
 	"io/ioutil"
 	"log"
 	"path/filepath"

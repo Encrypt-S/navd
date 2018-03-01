@@ -10,8 +10,8 @@ import (
 	"path/filepath"
 	"time"
 
-	"github.com/aguycalled/navd/rpcclient"
-	"github.com/aguycalled/navutil"
+	"github.com/navcoin/navd/rpcclient"
+	"github.com/navcoin/navutil"
 	"github.com/davecgh/go-spew/spew"
 )
 

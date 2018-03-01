@@ -11,9 +11,9 @@ import (
 	"reflect"
 	"testing"
 
-	"github.com/aguycalled/navd/chaincfg/chainhash"
-	"github.com/aguycalled/navd/database"
-	"github.com/aguycalled/navd/wire"
+	"github.com/navcoin/navd/chaincfg/chainhash"
+	"github.com/navcoin/navd/database"
+	"github.com/navcoin/navd/wire"
 )
 
 // TestErrNotInMainChain ensures the functions related to errNotInMainChain work

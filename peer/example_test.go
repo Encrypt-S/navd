@@ -9,9 +9,9 @@ import (
 	"net"
 	"time"
 
-	"github.com/aguycalled/navd/chaincfg"
-	"github.com/aguycalled/navd/peer"
-	"github.com/aguycalled/navd/wire"
+	"github.com/navcoin/navd/chaincfg"
+	"github.com/navcoin/navd/peer"
+	"github.com/navcoin/navd/wire"
 )
 
 // mockRemotePeer creates a basic inbound peer listening on the simnet port for

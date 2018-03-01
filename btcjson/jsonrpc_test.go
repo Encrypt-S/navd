@@ -9,7 +9,7 @@ import (
 	"reflect"
 	"testing"
 
-	"github.com/aguycalled/navd/btcjson"
+	"github.com/navcoin/navd/btcjson"
 )
 
 // TestIsValidIDType ensures the IsValidIDType function behaves as expected.

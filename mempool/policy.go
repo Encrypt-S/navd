@@ -8,10 +8,10 @@ import (
 	"fmt"
 	"time"
 
-	"github.com/aguycalled/navd/blockchain"
-	"github.com/aguycalled/navd/txscript"
-	"github.com/aguycalled/navd/wire"
-	"github.com/aguycalled/navutil"
+	"github.com/navcoin/navd/blockchain"
+	"github.com/navcoin/navd/txscript"
+	"github.com/navcoin/navd/wire"
+	"github.com/navcoin/navutil"
 )
 
 const (

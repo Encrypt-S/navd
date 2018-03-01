@@ -5,7 +5,7 @@
 package addrmgr
 
 import (
-	"github.com/aguycalled/navlog"
+	"github.com/navcoin/navlog"
 )
 
 // log is a logger that is initialized with no output filters.  This

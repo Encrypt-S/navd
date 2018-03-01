@@ -7,7 +7,7 @@ package blockchain
 import (
 	"testing"
 
-	"github.com/aguycalled/navd/chaincfg"
+	"github.com/navcoin/navd/chaincfg"
 )
 
 // TestNotifications ensures that notification callbacks are fired on events.

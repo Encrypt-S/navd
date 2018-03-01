@@ -16,9 +16,9 @@ import (
 	"strings"
 	"sync"
 
-	"github.com/aguycalled/navd/chaincfg/chainhash"
-	"github.com/aguycalled/navd/mining"
-	"github.com/aguycalled/navutil"
+	"github.com/navcoin/navd/chaincfg/chainhash"
+	"github.com/navcoin/navd/mining"
+	"github.com/navcoin/navutil"
 )
 
 // TODO incorporate Alex Morcos' modifications to Gavin's initial model

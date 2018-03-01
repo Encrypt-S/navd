@@ -3,9 +3,9 @@ updated: 2018-03-01T13:01:35.88450526+01:00
 imports:
 - name: github.com/aead/siphash
   version: e404fcfc888570cadd1610538e2dbc89f66af814
-- name: github.com/aguycalled/navlog
+- name: github.com/navcoin/navlog
   version: cfa49852bf48bce91103ce544067e17c9d3d381e
-- name: github.com/aguycalled/navutil
+- name: github.com/navcoin/navutil
   version: 3f728ebff8a5c6d8b26007774d036ca125776a5d
   subpackages:
   - base58

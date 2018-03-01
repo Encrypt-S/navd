@@ -17,10 +17,10 @@ import (
 	"path/filepath"
 	"testing"
 
-	"github.com/aguycalled/navd/chaincfg"
-	"github.com/aguycalled/navd/database"
-	"github.com/aguycalled/navd/wire"
-	"github.com/aguycalled/navutil"
+	"github.com/navcoin/navd/chaincfg"
+	"github.com/navcoin/navd/database"
+	"github.com/navcoin/navd/wire"
+	"github.com/navcoin/navutil"
 	"github.com/btcsuite/goleveldb/leveldb"
 	ldberrors "github.com/btcsuite/goleveldb/leveldb/errors"
 )

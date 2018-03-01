@@ -7,7 +7,7 @@ package blockchain
 import (
 	"math"
 
-	"github.com/aguycalled/navd/chaincfg"
+	"github.com/navcoin/navd/chaincfg"
 )
 
 const (

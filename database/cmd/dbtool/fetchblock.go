@@ -9,8 +9,8 @@ import (
 	"errors"
 	"time"
 
-	"github.com/aguycalled/navd/chaincfg/chainhash"
-	"github.com/aguycalled/navd/database"
+	"github.com/navcoin/navd/chaincfg/chainhash"
+	"github.com/navcoin/navd/database"
 )
 
 // fetchBlockCmd defines the configuration options for the fetchblock command.

@@ -8,7 +8,7 @@ import (
 	"fmt"
 	"hash/crc32"
 
-	"github.com/aguycalled/navd/database"
+	"github.com/navcoin/navd/database"
 )
 
 // The serialized write cursor location format is:

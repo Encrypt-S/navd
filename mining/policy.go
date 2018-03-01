@@ -5,9 +5,9 @@
 package mining
 
 import (
-	"github.com/aguycalled/navd/blockchain"
-	"github.com/aguycalled/navd/wire"
-	"github.com/aguycalled/navutil"
+	"github.com/navcoin/navd/blockchain"
+	"github.com/navcoin/navd/wire"
+	"github.com/navcoin/navutil"
 )
 
 const (

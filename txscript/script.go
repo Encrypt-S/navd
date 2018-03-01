@@ -10,8 +10,8 @@ import (
 	"fmt"
 	"time"
 
-	"github.com/aguycalled/navd/chaincfg/chainhash"
-	"github.com/aguycalled/navd/wire"
+	"github.com/navcoin/navd/chaincfg/chainhash"
+	"github.com/navcoin/navd/wire"
 )
 
 // Bip16Activation is the timestamp where BIP0016 is valid to use in the

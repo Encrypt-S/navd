@@ -9,9 +9,9 @@ import (
 	"path/filepath"
 	"testing"
 
-	"github.com/aguycalled/navd/chaincfg"
-	"github.com/aguycalled/navd/database"
-	"github.com/aguycalled/navutil"
+	"github.com/navcoin/navd/chaincfg"
+	"github.com/navcoin/navd/database"
+	"github.com/navcoin/navutil"
 )
 
 // BenchmarkBlockHeader benchmarks how long it takes to load the mainnet genesis

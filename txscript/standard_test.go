@@ -10,9 +10,9 @@ import (
 	"reflect"
 	"testing"
 
-	"github.com/aguycalled/navd/chaincfg"
-	"github.com/aguycalled/navd/wire"
-	"github.com/aguycalled/navutil"
+	"github.com/navcoin/navd/chaincfg"
+	"github.com/navcoin/navd/wire"
+	"github.com/navcoin/navutil"
 )
 
 // mustParseShortForm parses the passed short form script and returns the

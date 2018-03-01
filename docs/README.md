@@ -50,7 +50,7 @@ wallet functionality and this was a very intentional design decision.  See the
 blog entry [here](https://blog.conformal.com/navd-not-your-moms-navcoin-daemon)
 for more details.  This means you can't actually make or receive payments
 directly with navd.  That functionality is provided by the
-[navwallet](https://github.com/aguycalled/navwallet) and
+[navwallet](https://github.com/navcoin/navwallet) and
 [Paymetheus](https://github.com/btcsuite/Paymetheus) (Windows-only) projects
 which are both under active development.
 
@@ -69,7 +69,7 @@ details on how to install on the supported operating systems.
 
 **2.1.1 Windows Installation**<br />
 
-* Install the MSI available at: https://github.com/aguycalled/navd/releases
+* Install the MSI available at: https://github.com/navcoin/navd/releases
 * Launch navd from the Start Menu
 
 <a name="PosixInstallation" />
@@ -96,8 +96,8 @@ recommended that `GOPATH` is set to a directory in your home directory such as
 
 ```bash
 $ go get -u github.com/Masterminds/glide
-$ git clone https://github.com/aguycalled/navd $GOPATH/src/github.com/aguycalled/navd
-$ cd $GOPATH/src/github.com/aguycalled/navd
+$ git clone https://github.com/navcoin/navd $GOPATH/src/github.com/navcoin/navd
+$ cd $GOPATH/src/github.com/navcoin/navd
 $ glide install
 $ go install . ./cmd/...
 ```
@@ -111,7 +111,7 @@ $ go install . ./cmd/...
 - Run the following commands to update navd, all dependencies, and install it:
 
 ```bash
-$ cd $GOPATH/src/github.com/aguycalled/navd
+$ cd $GOPATH/src/github.com/navcoin/navd
 $ git pull && glide install
 $ go install . ./cmd/...
 ```
@@ -129,7 +129,7 @@ $ go install . ./cmd/...
 
 **2.2 Configuration**
 
-navd has a number of [configuration](http://godoc.org/github.com/aguycalled/navd)
+navd has a number of [configuration](http://godoc.org/github.com/navcoin/navd)
 options, which can be viewed by running: `$ navd --help`.
 
 <a name="BtcctlConfig" />
@@ -213,23 +213,23 @@ configuration necessary, however, there is an optional method to use a
 
 **3.1.1 bootstrap.dat**
 
-* [Using bootstrap.dat](https://github.com/aguycalled/navd/tree/master/docs/using_bootstrap_dat.md)
+* [Using bootstrap.dat](https://github.com/navcoin/navd/tree/master/docs/using_bootstrap_dat.md)
 
 <a name="NetworkConfig" />
 
 **3.1.2 Network Configuration**
 
-* [What Ports Are Used by Default?](https://github.com/aguycalled/navd/tree/master/docs/default_ports.md)
-* [How To Listen on Specific Interfaces](https://github.com/aguycalled/navd/tree/master/docs/configure_peer_server_listen_interfaces.md)
-* [How To Configure RPC Server to Listen on Specific Interfaces](https://github.com/aguycalled/navd/tree/master/docs/configure_rpc_server_listen_interfaces.md)
-* [Configuring navd with Tor](https://github.com/aguycalled/navd/tree/master/docs/configuring_tor.md)
+* [What Ports Are Used by Default?](https://github.com/navcoin/navd/tree/master/docs/default_ports.md)
+* [How To Listen on Specific Interfaces](https://github.com/navcoin/navd/tree/master/docs/configure_peer_server_listen_interfaces.md)
+* [How To Configure RPC Server to Listen on Specific Interfaces](https://github.com/navcoin/navd/tree/master/docs/configure_rpc_server_listen_interfaces.md)
+* [Configuring navd with Tor](https://github.com/navcoin/navd/tree/master/docs/configuring_tor.md)
 
 <a name="Wallet" />
 
 **3.1 Wallet**
 
 navd was intentionally developed without an integrated wallet for security
-reasons.  Please see [navwallet](https://github.com/aguycalled/navwallet) for more
+reasons.  Please see [navwallet](https://github.com/navcoin/navwallet) for more
 information.
 
 
@@ -258,12 +258,12 @@ information.
 
 <a name="ContributionGuidelines" />
 
-* [Code Contribution Guidelines](https://github.com/aguycalled/navd/tree/master/docs/code_contribution_guidelines.md)
+* [Code Contribution Guidelines](https://github.com/navcoin/navd/tree/master/docs/code_contribution_guidelines.md)
 
 <a name="JSONRPCReference" />
 
-* [JSON-RPC Reference](https://github.com/aguycalled/navd/tree/master/docs/json_rpc_api.md)
-    * [RPC Examples](https://github.com/aguycalled/navd/tree/master/docs/json_rpc_api.md#ExampleCode)
+* [JSON-RPC Reference](https://github.com/navcoin/navd/tree/master/docs/json_rpc_api.md)
+    * [RPC Examples](https://github.com/navcoin/navd/tree/master/docs/json_rpc_api.md#ExampleCode)
 
 <a name="GoPackages" />
 
@@ -272,28 +272,28 @@ information.
       robust and easy to use Websocket-enabled Navcoin JSON-RPC client
     * [btcjson](https://github.com/btcsuite/btcjson) - Provides an extensive API
       for the underlying JSON-RPC command and return values
-    * [wire](https://github.com/aguycalled/navd/tree/master/wire) - Implements the
+    * [wire](https://github.com/navcoin/navd/tree/master/wire) - Implements the
       Navcoin wire protocol
-    * [peer](https://github.com/aguycalled/navd/tree/master/peer) -
+    * [peer](https://github.com/navcoin/navd/tree/master/peer) -
       Provides a common base for creating and managing Navcoin network peers.
-    * [blockchain](https://github.com/aguycalled/navd/tree/master/blockchain) -
+    * [blockchain](https://github.com/navcoin/navd/tree/master/blockchain) -
       Implements Navcoin block handling and chain selection rules
-    * [blockchain/fullblocktests](https://github.com/aguycalled/navd/tree/master/blockchain/fullblocktests) -
+    * [blockchain/fullblocktests](https://github.com/navcoin/navd/tree/master/blockchain/fullblocktests) -
       Provides a set of block tests for testing the consensus validation rules
-    * [txscript](https://github.com/aguycalled/navd/tree/master/txscript) -
+    * [txscript](https://github.com/navcoin/navd/tree/master/txscript) -
       Implements the Navcoin transaction scripting language
-    * [btcec](https://github.com/aguycalled/navd/tree/master/btcec) - Implements
+    * [btcec](https://github.com/navcoin/navd/tree/master/btcec) - Implements
       support for the elliptic curve cryptographic functions needed for the
       Navcoin scripts
-    * [database](https://github.com/aguycalled/navd/tree/master/database) -
+    * [database](https://github.com/navcoin/navd/tree/master/database) -
       Provides a database interface for the Navcoin block chain
-    * [mempool](https://github.com/aguycalled/navd/tree/master/mempool) -
+    * [mempool](https://github.com/navcoin/navd/tree/master/mempool) -
       Package mempool provides a policy-enforced pool of unmined navcoin
       transactions.
-    * [navutil](https://github.com/aguycalled/navutil) - Provides Navcoin-specific
+    * [navutil](https://github.com/navcoin/navutil) - Provides Navcoin-specific
       convenience functions and types
-    * [chainhash](https://github.com/aguycalled/navd/tree/master/chaincfg/chainhash) -
+    * [chainhash](https://github.com/navcoin/navd/tree/master/chaincfg/chainhash) -
       Provides a generic hash type and associated functions that allows the
       specific hash algorithm to be abstracted.
-    * [connmgr](https://github.com/aguycalled/navd/tree/master/connmgr) -
+    * [connmgr](https://github.com/navcoin/navd/tree/master/connmgr) -
       Package connmgr implements a generic Navcoin network connection manager.

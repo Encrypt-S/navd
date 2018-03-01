@@ -15,9 +15,9 @@ import (
 	"runtime/debug"
 	"runtime/pprof"
 
-	"github.com/aguycalled/navd/blockchain/indexers"
-	"github.com/aguycalled/navd/database"
-	"github.com/aguycalled/navd/limits"
+	"github.com/navcoin/navd/blockchain/indexers"
+	"github.com/navcoin/navd/database"
+	"github.com/navcoin/navd/limits"
 )
 
 const (

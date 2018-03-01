@@ -10,7 +10,7 @@ import (
 	"fmt"
 	"sync"
 
-	"github.com/aguycalled/navd/wire"
+	"github.com/navcoin/navd/wire"
 )
 
 // mruInventoryMap provides a concurrency safe map that is limited to a maximum

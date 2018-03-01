@@ -1,7 +1,7 @@
 navd
 ====
 
-[![Build Status](https://travis-ci.org/aguycalled/navd.png?branch=master)](https://travis-ci.org/aguycalled/navd)
+[![Build Status](https://travis-ci.org/navcoin/navd.png?branch=master)](https://travis-ci.org/navcoin/navd)
 
 navd is an alternative full node navcoin implementation written in Go (golang).
 
@@ -27,7 +27,7 @@ wallet functionality and this was a very intentional design decision.  See the
 blog entry [here](https://blog.conformal.com/navd-not-your-moms-navcoin-daemon)
 for more details.  This means you can't actually make or receive payments
 directly with navd.  That functionality is provided by the
-[navwallet](https://github.com/aguycalled/navwallet) and
+[navwallet](https://github.com/navcoin/navwallet) and
 [Paymetheus](https://github.com/btcsuite/Paymetheus) (Windows-only) projects
 which are both under active development.
 
@@ -39,7 +39,7 @@ which are both under active development.
 
 #### Windows - MSI Available
 
-https://github.com/aguycalled/navd/releases
+https://github.com/navcoin/navd/releases
 
 #### Linux/BSD/MacOSX/POSIX - Build from Source
 
@@ -62,8 +62,8 @@ recommended that `GOPATH` is set to a directory in your home directory such as
 
 ```bash
 $ go get -u github.com/Masterminds/glide
-$ git clone https://github.com/aguycalled/navd $GOPATH/src/github.com/aguycalled/navd
-$ cd $GOPATH/src/github.com/aguycalled/navd
+$ git clone https://github.com/navcoin/navd $GOPATH/src/github.com/navcoin/navd
+$ cd $GOPATH/src/github.com/navcoin/navd
 $ glide install
 $ go install . ./cmd/...
 ```
@@ -83,7 +83,7 @@ Install a newer MSI
 - Run the following commands to update navd, all dependencies, and install it:
 
 ```bash
-$ cd $GOPATH/src/github.com/aguycalled/navd
+$ cd $GOPATH/src/github.com/navcoin/navd
 $ git pull && glide install
 $ go install . ./cmd/...
 ```
@@ -112,12 +112,12 @@ $ ./navd
 
 ## Issue Tracker
 
-The [integrated github issue tracker](https://github.com/aguycalled/navd/issues)
+The [integrated github issue tracker](https://github.com/navcoin/navd/issues)
 is used for this project.
 
 ## Documentation
 
-The documentation is a work-in-progress.  It is located in the [docs](https://github.com/aguycalled/navd/tree/master/docs) folder.
+The documentation is a work-in-progress.  It is located in the [docs](https://github.com/navcoin/navd/tree/master/docs) folder.
 
 ## GPG Verification Key
 
@@ -126,7 +126,7 @@ has not been tampered with and is coming from the btcsuite developers.  To
 verify the signature perform the following:
 
 - Download the Conformal public key:
-  https://raw.githubusercontent.com/aguycalled/navd/master/release/GIT-GPG-KEY-conformal.txt
+  https://raw.githubusercontent.com/navcoin/navd/master/release/GIT-GPG-KEY-conformal.txt
 
 - Import the public key into your GPG keyring:
   ```bash

@@ -25,8 +25,8 @@
 //          "fmt"
 //          "log"
 //
-//          "github.com/aguycalled/navutil"
-//          "github.com/aguycalled/navd/chaincfg"
+//          "github.com/navcoin/navutil"
+//          "github.com/navcoin/navd/chaincfg"
 //  )
 //
 //  var testnet = flag.Bool("testnet", false, "operate on the testnet Navcoin network")

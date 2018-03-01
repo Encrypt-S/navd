@@ -14,8 +14,8 @@ import (
 	"runtime/debug"
 	"testing"
 
-	"github.com/aguycalled/navd/chaincfg"
-	"github.com/aguycalled/navd/integration/rpctest"
+	"github.com/navcoin/navd/chaincfg"
+	"github.com/navcoin/navd/integration/rpctest"
 )
 
 func testGetBestBlock(r *rpctest.Harness, t *testing.T) {

@@ -7,7 +7,7 @@ package blockchain
 import (
 	"fmt"
 
-	"github.com/aguycalled/navd/chaincfg/chainhash"
+	"github.com/navcoin/navd/chaincfg/chainhash"
 )
 
 // ThresholdState define the various threshold states used when voting on

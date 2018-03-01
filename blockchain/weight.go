@@ -7,8 +7,8 @@ package blockchain
 import (
 	"fmt"
 
-	"github.com/aguycalled/navd/txscript"
-	"github.com/aguycalled/navutil"
+	"github.com/navcoin/navd/txscript"
+	"github.com/navcoin/navutil"
 )
 
 const (

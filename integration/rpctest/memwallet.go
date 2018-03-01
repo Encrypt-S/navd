@@ -10,15 +10,15 @@ import (
 	"fmt"
 	"sync"
 
-	"github.com/aguycalled/navd/blockchain"
-	"github.com/aguycalled/navd/btcec"
-	"github.com/aguycalled/navd/chaincfg"
-	"github.com/aguycalled/navd/chaincfg/chainhash"
-	"github.com/aguycalled/navd/rpcclient"
-	"github.com/aguycalled/navd/txscript"
-	"github.com/aguycalled/navd/wire"
-	"github.com/aguycalled/navutil"
-	"github.com/aguycalled/navutil/hdkeychain"
+	"github.com/navcoin/navd/blockchain"
+	"github.com/navcoin/navd/btcec"
+	"github.com/navcoin/navd/chaincfg"
+	"github.com/navcoin/navd/chaincfg/chainhash"
+	"github.com/navcoin/navd/rpcclient"
+	"github.com/navcoin/navd/txscript"
+	"github.com/navcoin/navd/wire"
+	"github.com/navcoin/navutil"
+	"github.com/navcoin/navutil/hdkeychain"
 )
 
 var (

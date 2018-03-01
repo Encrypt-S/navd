@@ -1,11 +1,11 @@
 btcec
 =====
 
-[![Build Status](https://travis-ci.org/aguycalled/navd.png?branch=master)]
+[![Build Status](https://travis-ci.org/navcoin/navd.png?branch=master)]
 (https://travis-ci.org/btcsuite/btcec) [![ISC License]
 (http://img.shields.io/badge/license-ISC-blue.svg)](http://copyfree.org)
-[![GoDoc](https://godoc.org/github.com/aguycalled/navd/btcec?status.png)]
-(http://godoc.org/github.com/aguycalled/navd/btcec)
+[![GoDoc](https://godoc.org/github.com/navcoin/navd/btcec?status.png)]
+(http://godoc.org/github.com/navcoin/navd/btcec)
 
 Package btcec implements elliptic curve cryptography needed for working with
 Navcoin (secp256k1 only for now). It is designed so that it may be used with the
@@ -22,28 +22,28 @@ use secp256k1 elliptic curve cryptography.
 ## Installation and Updating
 
 ```bash
-$ go get -u github.com/aguycalled/navd/btcec
+$ go get -u github.com/navcoin/navd/btcec
 ```
 
 ## Examples
 
 * [Sign Message]
-  (http://godoc.org/github.com/aguycalled/navd/btcec#example-package--SignMessage)  
+  (http://godoc.org/github.com/navcoin/navd/btcec#example-package--SignMessage)  
   Demonstrates signing a message with a secp256k1 private key that is first
   parsed form raw bytes and serializing the generated signature.
 
 * [Verify Signature]
-  (http://godoc.org/github.com/aguycalled/navd/btcec#example-package--VerifySignature)  
+  (http://godoc.org/github.com/navcoin/navd/btcec#example-package--VerifySignature)  
   Demonstrates verifying a secp256k1 signature against a public key that is
   first parsed from raw bytes.  The signature is also parsed from raw bytes.
 
 * [Encryption]
-  (http://godoc.org/github.com/aguycalled/navd/btcec#example-package--EncryptMessage)
+  (http://godoc.org/github.com/navcoin/navd/btcec#example-package--EncryptMessage)
   Demonstrates encrypting a message for a public key that is first parsed from
   raw bytes, then decrypting it using the corresponding private key.
 
 * [Decryption]
-  (http://godoc.org/github.com/aguycalled/navd/btcec#example-package--DecryptMessage)
+  (http://godoc.org/github.com/navcoin/navd/btcec#example-package--DecryptMessage)
   Demonstrates decrypting a message using a private key that is first parsed
   from raw bytes.
 

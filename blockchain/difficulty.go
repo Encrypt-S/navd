@@ -8,7 +8,7 @@ import (
 	"math/big"
 	"time"
 
-	"github.com/aguycalled/navd/chaincfg/chainhash"
+	"github.com/navcoin/navd/chaincfg/chainhash"
 )
 
 var (

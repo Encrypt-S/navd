@@ -11,7 +11,7 @@ import (
 	"reflect"
 	"testing"
 
-	"github.com/aguycalled/navd/btcjson"
+	"github.com/navcoin/navd/btcjson"
 )
 
 // TestWalletSvrCmds tests all of the wallet server commands marshal and

@@ -9,7 +9,7 @@ import (
 	"sort"
 	"testing"
 
-	"github.com/aguycalled/navd/btcjson"
+	"github.com/navcoin/navd/btcjson"
 )
 
 // TestUsageFlagStringer tests the stringized output for the UsageFlag type.

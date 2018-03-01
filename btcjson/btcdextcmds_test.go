@@ -12,7 +12,7 @@ import (
 	"reflect"
 	"testing"
 
-	"github.com/aguycalled/navd/btcjson"
+	"github.com/navcoin/navd/btcjson"
 )
 
 // TestBtcdExtCmds tests all of the navd extended commands marshal and unmarshal

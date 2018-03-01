@@ -7,7 +7,7 @@ package blockchain
 import (
 	"testing"
 
-	"github.com/aguycalled/navutil"
+	"github.com/navcoin/navutil"
 )
 
 // BenchmarkIsCoinBase performs a simple benchmark against the IsCoinBase

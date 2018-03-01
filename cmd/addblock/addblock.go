@@ -9,11 +9,11 @@ import (
 	"path/filepath"
 	"runtime"
 
-	"github.com/aguycalled/navd/blockchain"
-	"github.com/aguycalled/navd/blockchain/indexers"
-	"github.com/aguycalled/navd/database"
-	"github.com/aguycalled/navd/limits"
-	"github.com/aguycalled/navlog"
+	"github.com/navcoin/navd/blockchain"
+	"github.com/navcoin/navd/blockchain/indexers"
+	"github.com/navcoin/navd/database"
+	"github.com/navcoin/navd/limits"
+	"github.com/navcoin/navlog"
 )
 
 const (

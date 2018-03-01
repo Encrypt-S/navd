@@ -14,13 +14,13 @@ import (
 	"strings"
 	"time"
 
-	"github.com/aguycalled/navd/chaincfg"
-	"github.com/aguycalled/navd/chaincfg/chainhash"
-	"github.com/aguycalled/navd/database"
-	_ "github.com/aguycalled/navd/database/ffldb"
-	"github.com/aguycalled/navd/txscript"
-	"github.com/aguycalled/navd/wire"
-	"github.com/aguycalled/navutil"
+	"github.com/navcoin/navd/chaincfg"
+	"github.com/navcoin/navd/chaincfg/chainhash"
+	"github.com/navcoin/navd/database"
+	_ "github.com/navcoin/navd/database/ffldb"
+	"github.com/navcoin/navd/txscript"
+	"github.com/navcoin/navd/wire"
+	"github.com/navcoin/navutil"
 )
 
 const (

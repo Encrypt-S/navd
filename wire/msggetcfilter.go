@@ -7,7 +7,7 @@ package wire
 import (
 	"io"
 
-	"github.com/aguycalled/navd/chaincfg/chainhash"
+	"github.com/navcoin/navd/chaincfg/chainhash"
 )
 
 // MsgGetCFilter implements the Message interface and represents a navcoin

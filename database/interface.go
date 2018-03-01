@@ -8,8 +8,8 @@
 package database
 
 import (
-	"github.com/aguycalled/navd/chaincfg/chainhash"
-	"github.com/aguycalled/navutil"
+	"github.com/navcoin/navd/chaincfg/chainhash"
+	"github.com/navcoin/navutil"
 )
 
 // Cursor represents a cursor over key/value pairs and nested buckets of a

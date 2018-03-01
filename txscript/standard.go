@@ -7,9 +7,9 @@ package txscript
 import (
 	"fmt"
 
-	"github.com/aguycalled/navd/chaincfg"
-	"github.com/aguycalled/navd/wire"
-	"github.com/aguycalled/navutil"
+	"github.com/navcoin/navd/chaincfg"
+	"github.com/navcoin/navd/wire"
+	"github.com/navcoin/navutil"
 )
 
 const (

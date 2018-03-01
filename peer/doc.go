@@ -145,6 +145,6 @@ raw message bytes using a format similar to hexdump -C.
 Navcoin Improvement Proposals
 
 This package supports all BIPS supported by the wire package.
-(https://godoc.org/github.com/aguycalled/navd/wire#hdr-Navcoin_Improvement_Proposals)
+(https://godoc.org/github.com/navcoin/navd/wire#hdr-Navcoin_Improvement_Proposals)
 */
 package peer

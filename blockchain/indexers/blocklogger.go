@@ -8,8 +8,8 @@ import (
 	"sync"
 	"time"
 
-	"github.com/aguycalled/navlog"
-	"github.com/aguycalled/navutil"
+	"github.com/navcoin/navlog"
+	"github.com/navcoin/navutil"
 )
 
 // blockProgressLogger provides periodic logging for other services in order

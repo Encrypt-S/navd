@@ -7,10 +7,10 @@ package blockchain
 import (
 	"fmt"
 
-	"github.com/aguycalled/navd/chaincfg/chainhash"
-	"github.com/aguycalled/navd/database"
-	"github.com/aguycalled/navd/txscript"
-	"github.com/aguycalled/navutil"
+	"github.com/navcoin/navd/chaincfg/chainhash"
+	"github.com/navcoin/navd/database"
+	"github.com/navcoin/navd/txscript"
+	"github.com/navcoin/navutil"
 )
 
 // utxoOutput houses details about an individual unspent transaction output such

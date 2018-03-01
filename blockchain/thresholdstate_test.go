@@ -7,7 +7,7 @@ package blockchain
 import (
 	"testing"
 
-	"github.com/aguycalled/navd/chaincfg/chainhash"
+	"github.com/navcoin/navd/chaincfg/chainhash"
 )
 
 // TestThresholdStateStringer tests the stringized output for the

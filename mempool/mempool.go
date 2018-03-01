@@ -12,15 +12,15 @@ import (
 	"sync/atomic"
 	"time"
 
-	"github.com/aguycalled/navd/blockchain"
-	"github.com/aguycalled/navd/blockchain/indexers"
-	"github.com/aguycalled/navd/btcjson"
-	"github.com/aguycalled/navd/chaincfg"
-	"github.com/aguycalled/navd/chaincfg/chainhash"
-	"github.com/aguycalled/navd/mining"
-	"github.com/aguycalled/navd/txscript"
-	"github.com/aguycalled/navd/wire"
-	"github.com/aguycalled/navutil"
+	"github.com/navcoin/navd/blockchain"
+	"github.com/navcoin/navd/blockchain/indexers"
+	"github.com/navcoin/navd/btcjson"
+	"github.com/navcoin/navd/chaincfg"
+	"github.com/navcoin/navd/chaincfg/chainhash"
+	"github.com/navcoin/navd/mining"
+	"github.com/navcoin/navd/txscript"
+	"github.com/navcoin/navd/wire"
+	"github.com/navcoin/navutil"
 )
 
 const (
@@ -804,7 +804,7 @@ func (mp *TxPool) maybeAcceptTransaction(tx *navutil.Tx, isNew, rateLimit, rejec
 	// the coinbase address itself can contain signature operations, the
 	// maximum allowed signature operations per transaction is less than
 	// the maximum allowed signature operations per block.
-	// TODO(aguycalled): last bool should be conditional on segwit activation
+	// TODO(navcoin): last bool should be conditional on segwit activation
 	sigOpCost, err := blockchain.GetSigOpCost(tx, false, utxoView, true, true)
 	if err != nil {
 		if cerr, ok := err.(blockchain.RuleError); ok {

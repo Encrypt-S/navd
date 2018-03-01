@@ -7,7 +7,7 @@ package blockchain
 import (
 	"testing"
 
-	"github.com/aguycalled/navutil"
+	"github.com/navcoin/navutil"
 )
 
 // TestMerkle tests the BuildMerkleTreeStore API.
