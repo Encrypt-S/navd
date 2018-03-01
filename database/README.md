@@ -20,7 +20,7 @@ package which makes use of the [JSON-RPC API]
 (https://github.com/navcoin/navd/tree/master/docs/json_rpc_api.md).
 
 However, this package could be extremely useful for any applications requiring
-Navcoin block storage capabilities.
+NavCoin block storage capabilities.
 
 The default backend, ffldb, has a strong focus on speed, efficiency, and
 robustness.  It makes use of leveldb for the metadata, flat files for block
@@ -29,7 +29,7 @@ storage, and strict checksums in key areas to ensure data integrity.
 ## Feature Overview
 
 - Key/value metadata store
-- Navcoin block storage
+- NavCoin block storage
 - Efficient retrieval of block headers and regions (transactions, scripts, etc)
 - Read-only and read-write transactions with both manual and managed modes
 - Nested buckets

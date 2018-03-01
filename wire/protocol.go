@@ -138,8 +138,8 @@ func (f ServiceFlag) String() string {
 	return s
 }
 
-// NavcoinNet represents which navcoin network a message belongs to.
-type NavcoinNet uint32
+// NavCoinNet represents which navcoin network a message belongs to.
+type NavCoinNet uint32
 
 // Constants used to indicate the message navcoin network.  They can also be
 // used to seek to the next message when a stream's state is unknown, but
@@ -147,32 +147,32 @@ type NavcoinNet uint32
 // better idea to simply disconnect clients that are misbehaving over TCP.
 const (
 	// MainNet represents the main navcoin network.
-	MainNet NavcoinNet = 0xf9beb4d9
+	MainNet NavCoinNet = 0xf9beb4d9
 
 	// TestNet represents the regression test network.
-	TestNet NavcoinNet = 0xdab5bffa
+	TestNet NavCoinNet = 0xdab5bffa
 
 	// TestNet3 represents the test network (version 3).
-	TestNet3 NavcoinNet = 0x2052a23f
+	TestNet3 NavCoinNet = 0x2052a23f
 
 	// SimNet represents the simulation test network.
-	SimNet NavcoinNet = 0x12141c16
+	SimNet NavCoinNet = 0x12141c16
 )
 
 // bnStrings is a map of navcoin networks back to their constant names for
 // pretty printing.
-var bnStrings = map[NavcoinNet]string{
+var bnStrings = map[NavCoinNet]string{
 	MainNet:  "MainNet",
 	TestNet:  "TestNet",
 	TestNet3: "TestNet3",
 	SimNet:   "SimNet",
 }
 
-// String returns the NavcoinNet in human-readable form.
-func (n NavcoinNet) String() string {
+// String returns the NavCoinNet in human-readable form.
+func (n NavCoinNet) String() string {
 	if s, ok := bnStrings[n]; ok {
 		return s
 	}
 
-	return fmt.Sprintf("Unknown NavcoinNet (%d)", uint32(n))
+	return fmt.Sprintf("Unknown NavCoinNet (%d)", uint32(n))
 }

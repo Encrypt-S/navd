@@ -8,7 +8,7 @@ btcec
 (http://godoc.org/github.com/navcoin/navd/btcec)
 
 Package btcec implements elliptic curve cryptography needed for working with
-Navcoin (secp256k1 only for now). It is designed so that it may be used with the
+NavCoin (secp256k1 only for now). It is designed so that it may be used with the
 standard crypto/ecdsa packages provided with go.  A comprehensive suite of test
 is provided to ensure proper functionality.  Package btcec was originally based
 on work from ThePiachu which is licensed under the same terms as Go, but it has

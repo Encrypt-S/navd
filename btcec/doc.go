@@ -5,7 +5,7 @@
 /*
 Package btcec implements support for the elliptic curves needed for navcoin.
 
-Navcoin uses elliptic curve cryptography using koblitz curves
+NavCoin uses elliptic curve cryptography using koblitz curves
 (specifically secp256k1) for cryptographic functions.  See
 http://www.secg.org/collateral/sec2_final.pdf for details on the
 standard.

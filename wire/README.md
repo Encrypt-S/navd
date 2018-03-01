@@ -29,7 +29,7 @@ protocol level.
 $ go get -u github.com/navcoin/navd/wire
 ```
 
-## Navcoin Message Overview
+## NavCoin Message Overview
 
 The navcoin protocol consists of exchanging messages between peers. Each message
 is preceded by a header which identifies information about it such as which

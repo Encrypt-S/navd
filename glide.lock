@@ -1,19 +1,12 @@
-hash: 9718d070e4efd59f71721ffe97a2dc8a23794344fae5e30c52147fb370f8cb7a
-updated: 2018-03-01T13:01:35.88450526+01:00
+hash: 4f9c3778439018782d825562aee182e0ad3c4b91dbc04ee9c720bdaae57e2b3e
+updated: 2018-03-01T21:43:08.549904374+01:00
 imports:
 - name: github.com/aead/siphash
   version: e404fcfc888570cadd1610538e2dbc89f66af814
-- name: github.com/navcoin/navlog
-  version: cfa49852bf48bce91103ce544067e17c9d3d381e
-- name: github.com/navcoin/navutil
-  version: 3f728ebff8a5c6d8b26007774d036ca125776a5d
-  subpackages:
-  - base58
-  - bech32
-  - bloom
-  - gcs
-  - gcs/builder
-  - hdkeychain
+- name: github.com/aguycalled/gox13hash
+  version: be82d90d82accfc6cad08469ba7737ba291a5310
+- name: github.com/btcsuite/btclog
+  version: 84c8d2346e9fc8c7b947e243b9c24e6df9fd206a
 - name: github.com/btcsuite/fastsha256
   version: 637e656429416087660c84436a2a035d69d54e2e
 - name: github.com/btcsuite/go-flags
@@ -65,6 +58,66 @@ imports:
   - rotator
 - name: github.com/kkdai/bstream
   version: f71540b9dfdcfe64dbf2818e9b66423c6aafcacd
+- name: github.com/navcoin/navd
+  version: 0dcaa7f9b47c3b541fa4270ad57fb3d13b518061
+  subpackages:
+  - addrmgr
+  - blockchain
+  - blockchain/fullblocktests
+  - blockchain/indexers
+  - btcec
+  - btcjson
+  - chaincfg
+  - chaincfg/chainhash
+  - connmgr
+  - database
+  - database/ffldb
+  - database/internal/treap
+  - integration/rpctest
+  - limits
+  - mempool
+  - mining
+  - mining/cpuminer
+  - netsync
+  - peer
+  - rpcclient
+  - txscript
+  - wire
+- name: github.com/navcoin/navlog
+  version: 84c8d2346e9fc8c7b947e243b9c24e6df9fd206a
+- name: github.com/navcoin/navutil
+  version: c3ff179366044979fb9856c2feb79bd4c2184c7a
+  subpackages:
+  - bloom
+  - gcs
+  - gcs/builder
+  - hdkeychain
+- name: github.com/roasbeef/btcd
+  version: 0dcaa7f9b47c3b541fa4270ad57fb3d13b518061
+  subpackages:
+  - blockchain
+  - blockchain/indexers
+  - btcec
+  - btcjson
+  - chaincfg
+  - chaincfg/chainhash
+  - database
+  - database/internal/treap
+  - mempool
+  - mining
+  - peer
+  - rpcclient
+  - txscript
+  - wire
+- name: github.com/roasbeef/btcutil
+  version: c3ff179366044979fb9856c2feb79bd4c2184c7a
+  subpackages:
+  - base58
+  - bech32
+  - bloom
+  - gcs
+  - gcs/builder
+  - hdkeychain
 - name: golang.org/x/crypto
   version: 91a49db82a88618983a78a06c1cbd4e00ab749ab
   subpackages:

@@ -1943,7 +1943,7 @@ func handleGetBlockTemplateRequest(s *rpcServer, request *btcjson.TemplateReques
 
 		return nil, &btcjson.RPCError{
 			Code:    btcjson.ErrRPCClientNotConnected,
-			Message: "Navcoin is not connected",
+			Message: "NavCoin is not connected",
 		}
 	}
 
@@ -1952,7 +1952,7 @@ func handleGetBlockTemplateRequest(s *rpcServer, request *btcjson.TemplateReques
 	if currentHeight != 0 && !s.cfg.SyncMgr.IsCurrent() {
 		return nil, &btcjson.RPCError{
 			Code:    btcjson.ErrRPCClientInInitialDownload,
-			Message: "Navcoin is downloading blocks...",
+			Message: "NavCoin is downloading blocks...",
 		}
 	}
 
@@ -3287,7 +3287,7 @@ func handleSearchRawTransactions(s *rpcServer, cmd interface{}, closeChan <-chan
 
 		// Add the block information to the result if there is any.
 		if blkHeader != nil {
-			// This is not a typo, they are identical in Navcoin
+			// This is not a typo, they are identical in NavCoin
 			// Core as well.
 			result.Time = blkHeader.Timestamp.Unix()
 			result.Blocktime = blkHeader.Timestamp.Unix()
@@ -3561,13 +3561,13 @@ func handleVerifyMessage(s *rpcServer, cmd interface{}, closeChan <-chan struct{
 	// Validate the signature - this just shows that it was valid at all.
 	// we will compare it with the key next.
 	var buf bytes.Buffer
-	wire.WriteVarString(&buf, 0, "Navcoin Signed Message:\n")
+	wire.WriteVarString(&buf, 0, "NavCoin Signed Message:\n")
 	wire.WriteVarString(&buf, 0, c.Message)
 	expectedMessageHash := chainhash.DoubleHashB(buf.Bytes())
 	pk, wasCompressed, err := btcec.RecoverCompact(btcec.S256(), sig,
 		expectedMessageHash)
 	if err != nil {
-		// Mirror Navcoin Core behavior, which treats error in
+		// Mirror NavCoin Core behavior, which treats error in
 		// RecoverCompact as invalid signature.
 		return false, nil
 	}
@@ -3581,7 +3581,7 @@ func handleVerifyMessage(s *rpcServer, cmd interface{}, closeChan <-chan struct{
 	}
 	address, err := navutil.NewAddressPubKey(serializedPK, params)
 	if err != nil {
-		// Again mirror Navcoin Core behavior, which treats error in public key
+		// Again mirror NavCoin Core behavior, which treats error in public key
 		// reconstruction as invalid signature.
 		return false, nil
 	}
@@ -3808,7 +3808,7 @@ type parsedRPCCmd struct {
 	err    *btcjson.RPCError
 }
 
-// standardCmdResult checks that a parsed command is a standard Navcoin JSON-RPC
+// standardCmdResult checks that a parsed command is a standard NavCoin JSON-RPC
 // command and runs the appropriate handler to reply to the command.  Any
 // commands which are not recognized or not implemented will return an error
 // suitable for use in replies.
@@ -3941,7 +3941,7 @@ func (s *rpcServer) jsonRPCRead(w http.ResponseWriter, r *http.Request, isAdmin 
 		// must not be responded to. JSON-RPC 2.0 permits the null value as a
 		// valid request id, therefore such requests are not notifications.
 		//
-		// Navcoin Core serves requests with "id":null or even an absent "id",
+		// NavCoin Core serves requests with "id":null or even an absent "id",
 		// and responds to such requests with "id":null in the response.
 		//
 		// Btcd does not respond to any request without and "id" or "id":null,
@@ -4008,7 +4008,7 @@ func (s *rpcServer) jsonRPCRead(w http.ResponseWriter, r *http.Request, isAdmin 
 		rpcsLog.Errorf("Failed to write marshalled reply: %v", err)
 	}
 
-	// Terminate with newline to maintain compatibility with Navcoin Core.
+	// Terminate with newline to maintain compatibility with NavCoin Core.
 	if err := buf.WriteByte('\n'); err != nil {
 		rpcsLog.Errorf("Failed to append terminating newline to reply: %v", err)
 	}

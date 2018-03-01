@@ -35,7 +35,7 @@ A quick overview of the major features peer provides are as follows:
      incoming connections so they have flexibility to establish connections as
      they see fit (proxies, etc)
    - User agent name and version
-   - Navcoin network
+   - NavCoin network
    - Service support signalling (full nodes, bloom filters, etc)
    - Maximum supported protocol version
    - Ability to register callbacks for handling navcoin protocol messages

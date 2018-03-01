@@ -21,7 +21,7 @@ import (
 const (
 	// MinHighPriority is the minimum priority value that allows a
 	// transaction to be considered high priority.
-	MinHighPriority = navutil.SatoshiPerNavcoin * 144.0 / 250
+	MinHighPriority = navutil.SatoshiPerNavCoin * 144.0 / 250
 
 	// blockHeaderOverhead is the max number of bytes it takes to serialize
 	// a block header and max possible transaction count.

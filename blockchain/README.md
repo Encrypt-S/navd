@@ -24,7 +24,7 @@ block chain.
 $ go get -u github.com/navcoin/navd/blockchain
 ```
 
-## Navcoin Chain Processing Overview
+## NavCoin Chain Processing Overview
 
 Before a block is allowed into the block chain, it must go through an intensive
 series of validation rules.  The following list serves as a general outline of

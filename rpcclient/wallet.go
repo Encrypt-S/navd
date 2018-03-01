@@ -948,7 +948,7 @@ func (c *Client) GetRawChangeAddress(account string) (navutil.Address, error) {
 type FutureGetAccountAddressResult chan *response
 
 // Receive waits for the response promised by the future and returns the current
-// Navcoin address for receiving payments to the specified account.
+// NavCoin address for receiving payments to the specified account.
 func (r FutureGetAccountAddressResult) Receive() (navutil.Address, error) {
 	res, err := receiveFuture(r)
 	if err != nil {
@@ -975,7 +975,7 @@ func (c *Client) GetAccountAddressAsync(account string) FutureGetAccountAddressR
 	return c.sendCmd(cmd)
 }
 
-// GetAccountAddress returns the current Navcoin address for receiving payments
+// GetAccountAddress returns the current NavCoin address for receiving payments
 // to the specified account.
 func (c *Client) GetAccountAddress(account string) (navutil.Address, error) {
 	return c.GetAccountAddressAsync(account).Receive()

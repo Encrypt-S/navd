@@ -39,7 +39,7 @@ var (
 
 // Serialize returns the ECDSA signature in the more strict DER format.  Note
 // that the serialized bytes returned do not include the appended hash type
-// used in Navcoin signature scripts.
+// used in NavCoin signature scripts.
 //
 // encoding/asn1 is broken so we hand roll this output:
 //

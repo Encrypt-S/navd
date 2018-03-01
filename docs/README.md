@@ -19,7 +19,7 @@
 5. [Developer Resources](#DeveloperResources)
     1. [Code Contribution Guidelines](#ContributionGuidelines)
     2. [JSON-RPC Reference](#JSONRPCReference)
-    3. [The btcsuite Navcoin-related Go Packages](#GoPackages)
+    3. [The btcsuite NavCoin-related Go Packages](#GoPackages)
 
 <a name="About" />
 
@@ -32,12 +32,12 @@ This project is currently under active development and is in a Beta state.  It
 is extremely stable and has been in production use since October 2013.
 
 It properly downloads, validates, and serves the block chain using the exact
-rules (including consensus bugs) for block acceptance as Navcoin Core.  We have
+rules (including consensus bugs) for block acceptance as NavCoin Core.  We have
 taken great care to avoid navd causing a fork to the block chain.  It includes a
 full block validation testing framework which contains all of the 'official'
 block acceptance tests (and some additional ones) that is run on every pull
 request to help ensure it properly follows consensus.  Also, it passes all of
-the JSON test data in the Navcoin Core code.
+the JSON test data in the NavCoin Core code.
 
 It also properly relays newly mined blocks, maintains a transaction pool, and
 relays individual transactions that have not yet made it into a block.  It
@@ -45,7 +45,7 @@ ensures all individual transactions admitted to the pool follow the rules
 required by the block chain and also includes more strict checks which filter
 transactions based on miner requirements ("standard" transactions).
 
-One key difference between navd and Navcoin Core is that navd does *NOT* include
+One key difference between navd and NavCoin Core is that navd does *NOT* include
 wallet functionality and this was a very intentional design decision.  See the
 blog entry [here](https://blog.conformal.com/navd-not-your-moms-navcoin-daemon)
 for more details.  This means you can't actually make or receive payments
@@ -120,7 +120,7 @@ $ go install . ./cmd/...
 
 **2.1.2.1 Gentoo Linux Installation**
 
-* Install Layman and enable the Navcoin overlay.
+* Install Layman and enable the NavCoin overlay.
   * https://gitlab.com/navcoin/gentoo
 * Copy or symlink `/var/lib/layman/navcoin/Documentation/package.keywords/navd-live` to `/etc/portage/package.keywords/`
 * Install navd: `$ emerge net-p2p/navd`
@@ -267,33 +267,33 @@ information.
 
 <a name="GoPackages" />
 
-* The btcsuite Navcoin-related Go Packages:
+* The btcsuite NavCoin-related Go Packages:
     * [navrpcclient](https://github.com/btcsuite/navrpcclient) - Implements a
-      robust and easy to use Websocket-enabled Navcoin JSON-RPC client
+      robust and easy to use Websocket-enabled NavCoin JSON-RPC client
     * [btcjson](https://github.com/btcsuite/btcjson) - Provides an extensive API
       for the underlying JSON-RPC command and return values
     * [wire](https://github.com/navcoin/navd/tree/master/wire) - Implements the
-      Navcoin wire protocol
+      NavCoin wire protocol
     * [peer](https://github.com/navcoin/navd/tree/master/peer) -
-      Provides a common base for creating and managing Navcoin network peers.
+      Provides a common base for creating and managing NavCoin network peers.
     * [blockchain](https://github.com/navcoin/navd/tree/master/blockchain) -
-      Implements Navcoin block handling and chain selection rules
+      Implements NavCoin block handling and chain selection rules
     * [blockchain/fullblocktests](https://github.com/navcoin/navd/tree/master/blockchain/fullblocktests) -
       Provides a set of block tests for testing the consensus validation rules
     * [txscript](https://github.com/navcoin/navd/tree/master/txscript) -
-      Implements the Navcoin transaction scripting language
+      Implements the NavCoin transaction scripting language
     * [btcec](https://github.com/navcoin/navd/tree/master/btcec) - Implements
       support for the elliptic curve cryptographic functions needed for the
-      Navcoin scripts
+      NavCoin scripts
     * [database](https://github.com/navcoin/navd/tree/master/database) -
-      Provides a database interface for the Navcoin block chain
+      Provides a database interface for the NavCoin block chain
     * [mempool](https://github.com/navcoin/navd/tree/master/mempool) -
       Package mempool provides a policy-enforced pool of unmined navcoin
       transactions.
-    * [navutil](https://github.com/navcoin/navutil) - Provides Navcoin-specific
+    * [navutil](https://github.com/navcoin/navutil) - Provides NavCoin-specific
       convenience functions and types
     * [chainhash](https://github.com/navcoin/navd/tree/master/chaincfg/chainhash) -
       Provides a generic hash type and associated functions that allows the
       specific hash algorithm to be abstracted.
     * [connmgr](https://github.com/navcoin/navd/tree/master/connmgr) -
-      Package connmgr implements a generic Navcoin network connection manager.
+      Package connmgr implements a generic NavCoin network connection manager.

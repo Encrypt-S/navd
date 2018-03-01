@@ -3,12 +3,12 @@
 // license that can be found in the LICENSE file.
 
 /*
-Package addrmgr implements concurrency safe Navcoin address manager.
+Package addrmgr implements concurrency safe NavCoin address manager.
 
 Address Manager Overview
 
-In order maintain the peer-to-peer Navcoin network, there needs to be a source
-of addresses to connect to as nodes come and go.  The Navcoin protocol provides
+In order maintain the peer-to-peer NavCoin network, there needs to be a source
+of addresses to connect to as nodes come and go.  The NavCoin protocol provides
 the getaddr and addr messages to allow peers to communicate known addresses with
 each other.  However, there needs to a mechanism to store those results and
 select peers from them.  It is also important to note that remote peers can't
