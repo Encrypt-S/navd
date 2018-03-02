@@ -39,6 +39,6 @@ func X13HashB(b []byte) []byte {
 }
 
 // X13HashH calculates X13Hash(b) and returns the resulting bytes as a Hash.
-func X13HashH(b []byte) []byte {
+func X13HashH(b []byte) Hash {
 	return Hash(gox13hash.Sum(b))
 }
