@@ -35,7 +35,8 @@ func DoubleHashH(b []byte) Hash {
 
 // X13HashB calculates X13Hash(b) and returns the resulting bytes.
 func X13HashB(b []byte) []byte {
-	return gox13hash.Sum(b)
+	hash := gox13hash.Sum(b)
+	return hash[:]
 }
 
 // X13HashH calculates X13Hash(b) and returns the resulting bytes as a Hash.
