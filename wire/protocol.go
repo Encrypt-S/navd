@@ -13,7 +13,7 @@ import (
 // XXX pedro: we will probably need to bump this.
 const (
 	// ProtocolVersion is the latest protocol version this package supports.
-	ProtocolVersion uint32 = 70013
+	ProtocolVersion uint32 = 70020
 
 	// MultipleAddressVersion is the protocol version which added multiple
 	// addresses per message (pver >= MultipleAddressVersion).
@@ -38,7 +38,7 @@ const (
 
 	// RejectVersion is the protocol version which added a new reject
 	// message.
-	RejectVersion uint32 = 70002
+	RejectVersion uint32 = 70016
 
 	// BIP0111Version is the protocol version which added the SFNodeBloom
 	// service flag.
@@ -50,7 +50,7 @@ const (
 
 	// FeeFilterVersion is the protocol version which added a new
 	// feefilter message.
-	FeeFilterVersion uint32 = 70013
+	FeeFilterVersion uint32 = 70020
 )
 
 // ServiceFlag identifies services supported by a navcoin peer.
@@ -147,7 +147,7 @@ type NavCoinNet uint32
 // better idea to simply disconnect clients that are misbehaving over TCP.
 const (
 	// MainNet represents the main navcoin network.
-	MainNet NavCoinNet = 0xf9beb4d9
+	MainNet NavCoinNet = 0x20345080
 
 	// TestNet represents the regression test network.
 	TestNet NavCoinNet = 0xdab5bffa
