@@ -200,7 +200,7 @@ type FutureGetCurrentNetResult chan *response
 
 // Receive waits for the response promised by the future and returns the network
 // the server is running on.
-func (r FutureGetCurrentNetResult) Receive() (wire.NavcoinNet, error) {
+func (r FutureGetCurrentNetResult) Receive() (wire.NavCoinNet, error) {
 	res, err := receiveFuture(r)
 	if err != nil {
 		return 0, err
@@ -213,7 +213,7 @@ func (r FutureGetCurrentNetResult) Receive() (wire.NavcoinNet, error) {
 		return 0, err
 	}
 
-	return wire.NavcoinNet(net), nil
+	return wire.NavCoinNet(net), nil
 }
 
 // GetCurrentNetAsync returns an instance of a type that can be used to get the
@@ -231,7 +231,7 @@ func (c *Client) GetCurrentNetAsync() FutureGetCurrentNetResult {
 // GetCurrentNet returns the network the server is running on.
 //
 // NOTE: This is a navd extension.
-func (c *Client) GetCurrentNet() (wire.NavcoinNet, error) {
+func (c *Client) GetCurrentNet() (wire.NavCoinNet, error) {
 	return c.GetCurrentNetAsync().Receive()
 }
 

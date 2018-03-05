@@ -19,7 +19,7 @@ const (
 )
 
 // parseArgs parses the arguments from the database Open/Create methods.
-func parseArgs(funcName string, args ...interface{}) (string, wire.NavcoinNet, error) {
+func parseArgs(funcName string, args ...interface{}) (string, wire.NavCoinNet, error) {
 	if len(args) != 2 {
 		return "", 0, fmt.Errorf("invalid arguments to %s.%s -- "+
 			"expected database path and block network", dbType,
@@ -32,7 +32,7 @@ func parseArgs(funcName string, args ...interface{}) (string, wire.NavcoinNet, e
 			"expected database path string", dbType, funcName)
 	}
 
-	network, ok := args[1].(wire.NavcoinNet)
+	network, ok := args[1].(wire.NavCoinNet)
 	if !ok {
 		return "", 0, fmt.Errorf("second argument to %s.%s is invalid -- "+
 			"expected block network", dbType, funcName)

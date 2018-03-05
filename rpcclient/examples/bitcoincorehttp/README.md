@@ -1,7 +1,7 @@
-Navcoin Core HTTP POST Example
+NavCoin Core HTTP POST Example
 ==============================
 
-This example shows how to use the rpcclient package to connect to a Navcoin
+This example shows how to use the rpcclient package to connect to a NavCoin
 Core RPC server using HTTP POST mode with TLS disabled and gets the current
 block count.
 

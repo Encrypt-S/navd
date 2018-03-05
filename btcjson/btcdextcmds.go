@@ -45,13 +45,13 @@ func NewNodeCmd(subCmd NodeSubCmd, target string, connectSubCmd *string) *NodeCm
 }
 
 // DebugLevelCmd defines the debuglevel JSON-RPC command.  This command is not a
-// standard Navcoin command.  It is an extension for navd.
+// standard NavCoin command.  It is an extension for navd.
 type DebugLevelCmd struct {
 	LevelSpec string
 }
 
 // NewDebugLevelCmd returns a new DebugLevelCmd which can be used to issue a
-// debuglevel JSON-RPC command.  This command is not a standard Navcoin command.
+// debuglevel JSON-RPC command.  This command is not a standard NavCoin command.
 // It is an extension for navd.
 func NewDebugLevelCmd(levelSpec string) *DebugLevelCmd {
 	return &DebugLevelCmd{

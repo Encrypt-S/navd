@@ -22,20 +22,20 @@ var (
 	// the overhead of creating it multiple times.
 	bigOne = big.NewInt(1)
 
-	// mainPowLimit is the highest proof of work value a Navcoin block can
+	// mainPowLimit is the highest proof of work value a NavCoin block can
 	// have for the main network.  It is the value 2^224 - 1.
 	mainPowLimit = new(big.Int).Sub(new(big.Int).Lsh(bigOne, 224), bigOne)
 
-	// regressionPowLimit is the highest proof of work value a Navcoin block
+	// regressionPowLimit is the highest proof of work value a NavCoin block
 	// can have for the regression test network.  It is the value 2^255 - 1.
 	regressionPowLimit = new(big.Int).Sub(new(big.Int).Lsh(bigOne, 255), bigOne)
 
-	// testNet3PowLimit is the highest proof of work value a Navcoin block
+	// testNet3PowLimit is the highest proof of work value a NavCoin block
 	// can have for the test network (version 3).  It is the value
 	// 2^224 - 1.
 	testNet3PowLimit = new(big.Int).Sub(new(big.Int).Lsh(bigOne, 224), bigOne)
 
-	// simNetPowLimit is the highest proof of work value a Navcoin block
+	// simNetPowLimit is the highest proof of work value a NavCoin block
 	// can have for the simulation test network.  It is the value 2^255 - 1.
 	simNetPowLimit = new(big.Int).Sub(new(big.Int).Lsh(bigOne, 255), bigOne)
 )
@@ -107,15 +107,15 @@ const (
 	DefinedDeployments
 )
 
-// Params defines a Navcoin network by its parameters.  These parameters may be
-// used by Navcoin applications to differentiate networks as well as addresses
+// Params defines a NavCoin network by its parameters.  These parameters may be
+// used by NavCoin applications to differentiate networks as well as addresses
 // and keys for one network from those intended for use on another network.
 type Params struct {
 	// Name defines a human-readable identifier for the network.
 	Name string
 
 	// Net defines the magic bytes used to identify the network.
-	Net wire.NavcoinNet
+	Net wire.NavCoinNet
 
 	// DefaultPort defines the default peer-to-peer port for the network.
 	DefaultPort string
@@ -225,7 +225,7 @@ type Params struct {
 	HDCoinType uint32
 }
 
-// MainNetParams defines the network parameters for the main Navcoin network.
+// MainNetParams defines the network parameters for the main NavCoin network.
 var MainNetParams = Params{
 	Name:        "mainnet",
 	Net:         wire.MainNet,
@@ -323,7 +323,7 @@ var MainNetParams = Params{
 }
 
 // RegressionNetParams defines the network parameters for the regression test
-// Navcoin network.  Not to be confused with the test Navcoin network (version
+// NavCoin network.  Not to be confused with the test NavCoin network (version
 // 3), this network is sometimes simply called "testnet".
 var RegressionNetParams = Params{
 	Name:        "regtest",
@@ -396,7 +396,7 @@ var RegressionNetParams = Params{
 	HDCoinType: 1,
 }
 
-// TestNet3Params defines the network parameters for the test Navcoin network
+// TestNet3Params defines the network parameters for the test NavCoin network
 // (version 3).  Not to be confused with the regression test network, this
 // network is sometimes simply called "testnet".
 var TestNet3Params = Params{
@@ -481,7 +481,7 @@ var TestNet3Params = Params{
 	HDCoinType: 1,
 }
 
-// SimNetParams defines the network parameters for the simulation test Navcoin
+// SimNetParams defines the network parameters for the simulation test NavCoin
 // network.  This network is similar to the normal test network except it is
 // intended for private use within a group of individuals doing simulation
 // testing.  The functionality is intended to differ in that the only nodes
@@ -562,10 +562,10 @@ var SimNetParams = Params{
 }
 
 var (
-	// ErrDuplicateNet describes an error where the parameters for a Navcoin
+	// ErrDuplicateNet describes an error where the parameters for a NavCoin
 	// network could not be set due to the network already being a standard
 	// network or previously-registered into this package.
-	ErrDuplicateNet = errors.New("duplicate Navcoin network")
+	ErrDuplicateNet = errors.New("duplicate NavCoin network")
 
 	// ErrUnknownHDKeyID describes an error where the provided id which
 	// is intended to identify the network for a hierarchical deterministic
@@ -574,7 +574,7 @@ var (
 )
 
 var (
-	registeredNets       = make(map[wire.NavcoinNet]struct{})
+	registeredNets       = make(map[wire.NavCoinNet]struct{})
 	pubKeyHashAddrIDs    = make(map[byte]struct{})
 	scriptHashAddrIDs    = make(map[byte]struct{})
 	bech32SegwitPrefixes = make(map[string]struct{})
@@ -586,7 +586,7 @@ func (d DNSSeed) String() string {
 	return d.Host
 }
 
-// Register registers the network parameters for a Navcoin network.  This may
+// Register registers the network parameters for a NavCoin network.  This may
 // error with ErrDuplicateNet if the network is already registered (either
 // due to a previous Register call, or the network being one of the default
 // networks).

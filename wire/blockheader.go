@@ -58,7 +58,6 @@ func (h *BlockHeader) BlockHash() chainhash.Hash {
 	} else {
 		return chainhash.X13HashH(buf.Bytes())
 	}
-
 }
 
 // BtcDecode decodes r using the navcoin protocol encoding into the receiver.

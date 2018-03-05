@@ -8,12 +8,12 @@ chaincfg
 (http://godoc.org/github.com/navcoin/navd/chaincfg)
 
 Package chaincfg defines chain configuration parameters for the three standard
-Navcoin networks and provides the ability for callers to define their own custom
-Navcoin networks.
+NavCoin networks and provides the ability for callers to define their own custom
+NavCoin networks.
 
 Although this package was primarily written for navd, it has intentionally been
 designed so it can be used as a standalone package for any projects needing to
-use parameters for the standard Navcoin networks or for projects needing to
+use parameters for the standard NavCoin networks or for projects needing to
 define their own network.
 
 ## Sample Use
@@ -30,7 +30,7 @@ import (
 	"github.com/navcoin/navd/chaincfg"
 )
 
-var testnet = flag.Bool("testnet", false, "operate on the testnet Navcoin network")
+var testnet = flag.Bool("testnet", false, "operate on the testnet NavCoin network")
 
 // By default (without -testnet), use mainnet.
 var chainParams = &chaincfg.MainNetParams

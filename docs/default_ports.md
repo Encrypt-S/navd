@@ -11,5 +11,5 @@ configurations.
 
 |Name|Port|
 |----|----|
-|Default Navcoin peer-to-peer port|TCP 8333|
+|Default NavCoin peer-to-peer port|TCP 8333|
 |Default RPC port|TCP 8334|

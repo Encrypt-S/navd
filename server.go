@@ -1849,7 +1849,7 @@ func (s *server) peerHandler() {
 		// Add peers discovered through DNS to the address manager.
 		connmgr.SeedFromDNS(activeNetParams.Params, defaultRequiredServices,
 			navdLookup, func(addrs []*wire.NetAddress) {
-				// Navcoind uses a lookup of the dns seeder here. This
+				// NavCoind uses a lookup of the dns seeder here. This
 				// is rather strange since the values looked up by the
 				// DNS seed lookups will vary quite a lot.
 				// to replicate this behaviour we put all addresses as

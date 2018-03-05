@@ -14,7 +14,7 @@ import (
 )
 
 // MessageHeaderSize is the number of bytes in a navcoin message header.
-// Navcoin network (magic) 4 bytes + command 12 bytes + payload length 4 bytes +
+// NavCoin network (magic) 4 bytes + command 12 bytes + payload length 4 bytes +
 // checksum 4 bytes.
 const MessageHeaderSize = 24
 
@@ -64,16 +64,16 @@ type MessageEncoding uint32
 
 const (
 	// BaseEncoding encodes all messages in the default format specified
-	// for the Navcoin wire protocol.
+	// for the NavCoin wire protocol.
 	BaseEncoding MessageEncoding = 1 << iota
 
 	// WitnessEncoding encodes all messages other than transaction messages
-	// using the default Navcoin wire protocol specification. For transaction
+	// using the default NavCoin wire protocol specification. For transaction
 	// messages, the new encoding format detailed in BIP0144 will be used.
 	WitnessEncoding
 )
 
-// LatestEncoding is the most recently specified encoding for the Navcoin wire
+// LatestEncoding is the most recently specified encoding for the NavCoin wire
 // protocol.
 var LatestEncoding = WitnessEncoding
 
@@ -188,7 +188,7 @@ func makeEmptyMessage(command string) (Message, error) {
 
 // messageHeader defines the header structure for all navcoin protocol messages.
 type messageHeader struct {
-	magic    NavcoinNet // 4 bytes
+	magic    NavCoinNet // 4 bytes
 	command  string     // 12 bytes
 	length   uint32     // 4 bytes
 	checksum [4]byte    // 4 bytes
@@ -241,7 +241,7 @@ func discardInput(r io.Reader, n uint32) {
 // WriteMessageN writes a navcoin Message to w including the necessary header
 // information and returns the number of bytes written.    This function is the
 // same as WriteMessage except it also returns the number of bytes written.
-func WriteMessageN(w io.Writer, msg Message, pver uint32, navnet NavcoinNet) (int, error) {
+func WriteMessageN(w io.Writer, msg Message, pver uint32, navnet NavCoinNet) (int, error) {
 	return WriteMessageWithEncodingN(w, msg, pver, navnet, BaseEncoding)
 }
 
@@ -250,7 +250,7 @@ func WriteMessageN(w io.Writer, msg Message, pver uint32, navnet NavcoinNet) (in
 // doesn't return the number of bytes written.  This function is mainly provided
 // for backwards compatibility with the original API, but it's also useful for
 // callers that don't care about byte counts.
-func WriteMessage(w io.Writer, msg Message, pver uint32, navnet NavcoinNet) error {
+func WriteMessage(w io.Writer, msg Message, pver uint32, navnet NavCoinNet) error {
 	_, err := WriteMessageN(w, msg, pver, navnet)
 	return err
 }
@@ -261,7 +261,7 @@ func WriteMessage(w io.Writer, msg Message, pver uint32, navnet NavcoinNet) erro
 // to specify the message encoding format to be used when serializing wire
 // messages.
 func WriteMessageWithEncodingN(w io.Writer, msg Message, pver uint32,
-	navnet NavcoinNet, encoding MessageEncoding) (int, error) {
+	navnet NavCoinNet, encoding MessageEncoding) (int, error) {
 
 	totalBytes := 0
 
@@ -333,7 +333,7 @@ func WriteMessageWithEncodingN(w io.Writer, msg Message, pver uint32,
 // comprise the message.  This function is the same as ReadMessageN except it
 // allows the caller to specify which message encoding is to to consult when
 // decoding wire messages.
-func ReadMessageWithEncodingN(r io.Reader, pver uint32, navnet NavcoinNet,
+func ReadMessageWithEncodingN(r io.Reader, pver uint32, navnet NavCoinNet,
 	enc MessageEncoding) (int, Message, []byte, error) {
 
 	totalBytes := 0
@@ -420,7 +420,7 @@ func ReadMessageWithEncodingN(r io.Reader, pver uint32, navnet NavcoinNet,
 // bytes read in addition to the parsed Message and raw bytes which comprise the
 // message.  This function is the same as ReadMessage except it also returns the
 // number of bytes read.
-func ReadMessageN(r io.Reader, pver uint32, navnet NavcoinNet) (int, Message, []byte, error) {
+func ReadMessageN(r io.Reader, pver uint32, navnet NavCoinNet) (int, Message, []byte, error) {
 	return ReadMessageWithEncodingN(r, pver, navnet, BaseEncoding)
 }
 
@@ -430,7 +430,7 @@ func ReadMessageN(r io.Reader, pver uint32, navnet NavcoinNet) (int, Message, []
 // from ReadMessageN in that it doesn't return the number of bytes read.  This
 // function is mainly provided for backwards compatibility with the original
 // API, but it's also useful for callers that don't care about byte counts.
-func ReadMessage(r io.Reader, pver uint32, navnet NavcoinNet) (Message, []byte, error) {
+func ReadMessage(r io.Reader, pver uint32, navnet NavCoinNet) (Message, []byte, error) {
 	_, msg, buf, err := ReadMessageN(r, pver, navnet)
 	return msg, buf, err
 }

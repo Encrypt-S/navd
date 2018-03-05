@@ -238,7 +238,7 @@ func (a *AddrManager) updateAddress(netAddr, srcAddr *wire.NetAddress) {
 func (a *AddrManager) expireNew(bucket int) {
 	// First see if there are any entries that are so bad we can just throw
 	// them away. otherwise we throw away the oldest entry in the cache.
-	// Navcoind here chooses four random and just throws the oldest of
+	// NavCoind here chooses four random and just throws the oldest of
 	// those away, but we keep track of oldest in the initial traversal and
 	// use that information instead.
 	var oldest *KnownAddress
@@ -274,7 +274,7 @@ func (a *AddrManager) expireNew(bucket int) {
 }
 
 // pickTried selects an address from the tried bucket to be evicted.
-// We just choose the eldest. Navcoind selects 4 random entries and throws away
+// We just choose the eldest. NavCoind selects 4 random entries and throws away
 // the older of them.
 func (a *AddrManager) pickTried(bucket int) *list.Element {
 	var oldest *KnownAddress

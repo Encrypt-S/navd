@@ -103,8 +103,8 @@ type jsonRequest struct {
 	responseChan   chan *response
 }
 
-// Client represents a Navcoin RPC client which allows easy access to the
-// various RPC methods available on a Navcoin RPC server.  Each of the wrapper
+// Client represents a NavCoin RPC client which allows easy access to the
+// various RPC methods available on a NavCoin RPC server.  Each of the wrapper
 // functions handle the details of converting the passed and return types to and
 // from the underlying JSON types which are required for the JSON-RPC
 // invocations

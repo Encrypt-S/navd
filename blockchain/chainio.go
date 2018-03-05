@@ -459,7 +459,7 @@ func dbRemoveSpendJournalEntry(dbTx database.Tx, blockHash *chainhash.Hash) erro
 // The unspent transaction output (utxo) set consists of an entry for each
 // transaction which contains a utxo serialized using a format that is highly
 // optimized to reduce space using domain specific compression algorithms.  This
-// format is a slightly modified version of the format used in Navcoin Core.
+// format is a slightly modified version of the format used in NavCoin Core.
 //
 // The serialized format is:
 //
@@ -779,7 +779,7 @@ func deserializeUtxoEntry(serialized []byte) (*UtxoEntry, error) {
 }
 
 // dbFetchUtxoEntry uses an existing database transaction to fetch all unspent
-// outputs for the provided Navcoin transaction hash from the utxo set.
+// outputs for the provided NavCoin transaction hash from the utxo set.
 //
 // When there is no entry for the provided hash, nil will be returned for the
 // both the entry and the error.

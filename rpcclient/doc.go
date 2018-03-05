@@ -3,12 +3,12 @@
 // license that can be found in the LICENSE file.
 
 /*
-Package rpcclient implements a websocket-enabled Navcoin JSON-RPC client.
+Package rpcclient implements a websocket-enabled NavCoin JSON-RPC client.
 
 Overview
 
 This client provides a robust and easy to use client for interfacing with a
-Navcoin RPC server that uses a navd/navcoin core compatible Navcoin JSON-RPC
+NavCoin RPC server that uses a navd/navcoin core compatible NavCoin JSON-RPC
 API.  This client has been tested with navd (https://github.com/navcoin/navd),
 navwallet (https://github.com/navcoin/navwallet), and
 navcoin core (https://github.com/navcoin).

@@ -52,7 +52,7 @@ Application Options:
       --rpcmaxclients=      Max number of RPC clients for standard connections
                             (10)
       --rpcmaxwebsockets=   Max number of RPC websocket connections (25)
-      --rpcquirks           Mirror some JSON-RPC quirks of Navcoin Core -- NOTE:
+      --rpcquirks           Mirror some JSON-RPC quirks of NavCoin Core -- NOTE:
                             Discouraged unless interoperability issues need to
                             be worked around
       --norpc               Disable built-in RPC server -- NOTE: The RPC server
