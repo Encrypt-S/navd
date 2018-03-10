@@ -102,6 +102,51 @@ func IsCoinBaseTx(msgTx *wire.MsgTx) bool {
 	return true
 }
 
+// IsCoinStake determines whether or not a transaction is a coinstake.  A coinbase
+// is a special transaction created by stakers which selects a set of inputs whose
+// kernel hash must follow the proof of stake algorithm. This is represented in
+// the block chain by a transaction with the first output destination and value
+// nullified.
+//
+// This function only differs from IsCoinStakeTx in that it works with a higher
+// level util transaction as opposed to a raw wire transaction.
+func IsCoinStake(tx *navutil.Tx) bool {
+	return IsCoinStakeTx(tx.MsgTx())
+}
+
+// IsCoinStake determines whether or not a transaction is a coinstake.  A coinbase
+// is a special transaction created by stakers which selects a set of inputs whose
+// kernel hash must follow the proof of stake algorithm. This is represented in
+// the block chain by a transaction with the first output destination and value
+// nullified.
+//
+// This function only differs from IsCoinStake in that it works with a raw wire
+// transaction as opposed to a higher level util transaction.
+func IsCoinStakeTx(msgTx *wire.MsgTx) bool {
+	// A coin stake must have at least one transaction input.
+	if len(msgTx.TxIn) == 0 {
+		return false
+	}
+
+	// The previous output of a coin stake can't have a zero hash
+	prevOut := &msgTx.TxIn[0].PreviousOutPoint
+	if prevOut.Hash.IsEqual(zeroHash) {
+		return false
+	}
+
+	// A coin stake must have at least two transaction outputs.
+	if len(msgTx.TxOut) < 2 {
+		return false
+	}
+
+	// First output of a coin stake must be nullified.
+	if msgTx.TxOut[0].PkScript == nil && msgTx.TxOut[0].Value == 0 {
+		return true
+	}
+
+	return false
+}
+
 // IsCoinBase determines whether or not a transaction is a coinbase.  A coinbase
 // is a special transaction created by miners that has no inputs.  This is
 // represented in the block chain by a transaction with a single input that has
