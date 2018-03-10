@@ -23,8 +23,8 @@ var (
 	bigOne = big.NewInt(1)
 
 	// mainPowLimit is the highest proof of work value a NavCoin block can
-	// have for the main network.  It is the value 2^224 - 1.
-	mainPowLimit = new(big.Int).Sub(new(big.Int).Lsh(bigOne, 224), bigOne)
+	// have for the main network.  It is the value 2^255 - 1.
+	mainPowLimit = new(big.Int).Sub(new(big.Int).Lsh(bigOne, 255), bigOne)
 
 	// regressionPowLimit is the highest proof of work value a NavCoin block
 	// can have for the regression test network.  It is the value 2^255 - 1.
