@@ -587,20 +587,18 @@ func (msg *MsgTx) BtcDecode(r io.Reader, pver uint32, enc MessageEncoding) error
 		return err
 	}
 	
-	count_str, err := ReadVarInt(r, pver)
-	if err != nil {
-		return err
-	}
-
-	// Prevent byte array larger than the max message size.  It would
-	// be possible to cause memory exhaustion and panics without a sane
-	// upper bound on this count.
-	if count_str > 0 || msg.Version > 1 {
-		var string []byte
-		if _, err = io.ReadFull(r, string[:]); err != nil {
-                        return err
-                }
-		msg.Strdzeel = string
+	if msg.Version >= 2 {
+		strcount, err := ReadVarInt(r, pver)
+		if err != nil {
+			return err
+		}
+		if strcount > 0{
+			strbuf := make([]byte, strcount)
+			if _, err = r.Read(strbuf); err != nil {
+                return err
+		    }
+			msg.Strdzeel = strbuf
+		}
 	}
 
 	// Create a single allocation to house all of the scripts and set each
@@ -774,8 +772,14 @@ func (msg *MsgTx) BtcEncode(w io.Writer, pver uint32, enc MessageEncoding) error
 	if err != nil {
 		return err
 	}
-	
-	return WriteVarBytes(w, pver, msg.Strdzeel)
+
+	if msg.Version >= 2 {
+		err = WriteVarBytes(w, pver, msg.Strdzeel)
+		if err != nil {
+			return err
+		}
+	}
+	return nil
 }
 
 // HasWitness returns false if none of the inputs within the transaction
@@ -826,8 +830,11 @@ func (msg *MsgTx) baseSize() int {
 	// size for the number of transaction inputs and outputs + Serialized
 	// varint size of strdzeel.
 	n := 8 + VarIntSerializeSize(uint64(len(msg.TxIn))) +
-		VarIntSerializeSize(uint64(len(msg.TxOut))) +
-		VarIntSerializeSize(uint64(len(msg.Strdzeel))) 
+		VarIntSerializeSize(uint64(len(msg.TxOut)))
+
+	if (msg.Version >= 2) {
+		n += VarIntSerializeSize(uint64(len(msg.Strdzeel)))
+	} 
 
 	for _, txIn := range msg.TxIn {
 		n += txIn.SerializeSize()
