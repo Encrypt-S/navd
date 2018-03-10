@@ -1,3 +1,4 @@
+package: github.com/navcoin/navd
 import:
 - package: github.com/navcoin/navlog
 - package: github.com/navcoin/navutil
