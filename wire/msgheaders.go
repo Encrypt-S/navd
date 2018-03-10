@@ -71,6 +71,11 @@ func (msg *MsgHeaders) BtcDecode(r io.Reader, pver uint32, enc MessageEncoding) 
 				"transactions [count %v]", txCount)
 			return messageError("MsgHeaders.BtcDecode", str)
 		}
+
+		_, err = ReadVarInt(r, pver)
+		if err != nil {
+			return err
+		}
 		msg.AddBlockHeader(bh)
 	}
 
@@ -123,7 +128,7 @@ func (msg *MsgHeaders) Command() string {
 func (msg *MsgHeaders) MaxPayloadLength(pver uint32) uint32 {
 	// Num headers (varInt) + max allowed headers (header length + 1 byte
 	// for the number of transactions which is always 0).
-	return MaxVarIntPayload + ((MaxBlockHeaderPayload + 1) *
+	return MaxVarIntPayload + ((MaxBlockHeaderPayload + 2) *
 		MaxBlockHeadersPerMsg)
 }
 
