@@ -164,6 +164,9 @@ func (b *BlockChain) ProcessBlock(block *navutil.Block, flags BehaviorFlags) (bo
 		return false, false, ruleError(ErrDuplicateBlock, str)
 	}
 
+	// No PoW blocks in NavCoin
+	flags |= BFNoPoWCheck
+
 	// Perform preliminary sanity checks on the block and its transactions.
 	err = checkBlockSanity(block, b.chainParams.PowLimit, b.timeSource, flags)
 	if err != nil {
