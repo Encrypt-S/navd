@@ -8,7 +8,7 @@ import (
 	"fmt"
 	"io"
 
-	"github.com/navcoin/navd/chaincfg/chainhash"
+	"github.com/encrypt-s/navd/chaincfg/chainhash"
 )
 
 const (
