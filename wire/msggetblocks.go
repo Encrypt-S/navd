@@ -8,7 +8,7 @@ import (
 	"fmt"
 	"io"
 
-	"github.com/navcoin/navd/chaincfg/chainhash"
+	"github.com/encrypt-s/navd/chaincfg/chainhash"
 )
 
 // MaxBlockLocatorsPerMsg is the maximum number of block locator hashes allowed
