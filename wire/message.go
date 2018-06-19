@@ -10,7 +10,7 @@ import (
 	"io"
 	"unicode/utf8"
 
-	"github.com/navcoin/navd/chaincfg/chainhash"
+	"github.com/encrypt-s/navd/chaincfg/chainhash"
 )
 
 // MessageHeaderSize is the number of bytes in a navcoin message header.
