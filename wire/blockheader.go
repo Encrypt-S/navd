@@ -9,7 +9,7 @@ import (
 	"io"
 	"time"
 
-	"github.com/navcoin/navd/chaincfg/chainhash"
+	"github.com/encrypt-s/navd/chaincfg/chainhash"
 )
 
 // MaxBlockHeaderPayload is the maximum number of bytes a block header can be.
