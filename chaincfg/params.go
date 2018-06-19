@@ -11,8 +11,8 @@ import (
 	"strings"
 	"time"
 
-	"github.com/navcoin/navd/chaincfg/chainhash"
-	"github.com/navcoin/navd/wire"
+	"github.com/encrypt-s/navd/chaincfg/chainhash"
+	"github.com/encrypt-s/navd/wire"
 )
 
 // These variables are the chain proof-of-work limit parameters for each default
