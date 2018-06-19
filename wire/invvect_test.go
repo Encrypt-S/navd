@@ -9,7 +9,7 @@ import (
 	"reflect"
 	"testing"
 
-	"github.com/navcoin/navd/chaincfg/chainhash"
+	"github.com/encrypt-s/navd/chaincfg/chainhash"
 	"github.com/davecgh/go-spew/spew"
 )
 
