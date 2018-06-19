@@ -16,8 +16,8 @@ import (
 	"strings"
 	"sync"
 
-	"github.com/navcoin/navd/chaincfg/chainhash"
-	"github.com/navcoin/navd/mining"
+	"github.com/encrypt-s/navd/chaincfg/chainhash"
+	"github.com/encrypt-s/navd/mining"
 	"github.com/navcoin/navutil"
 )
 

@@ -20,7 +20,7 @@ of blocks that excerise the consensus validation rules.
 ## Installation and Updating
 
 ```bash
-$ go get -u github.com/navcoin/navd/blockchain/fullblocktests
+$ go get -u github.com/encrypt-s/navd/blockchain/fullblocktests
 ```
 
 ## License

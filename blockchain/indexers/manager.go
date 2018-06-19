@@ -8,10 +8,10 @@ import (
 	"bytes"
 	"fmt"
 
-	"github.com/navcoin/navd/blockchain"
-	"github.com/navcoin/navd/chaincfg/chainhash"
-	"github.com/navcoin/navd/database"
-	"github.com/navcoin/navd/wire"
+	"github.com/encrypt-s/navd/blockchain"
+	"github.com/encrypt-s/navd/chaincfg/chainhash"
+	"github.com/encrypt-s/navd/database"
+	"github.com/encrypt-s/navd/wire"
 	"github.com/navcoin/navutil"
 )
 

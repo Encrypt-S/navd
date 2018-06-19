@@ -8,9 +8,9 @@ import (
 	"fmt"
 	"time"
 
-	"github.com/navcoin/navd/blockchain"
-	"github.com/navcoin/navd/txscript"
-	"github.com/navcoin/navd/wire"
+	"github.com/encrypt-s/navd/blockchain"
+	"github.com/encrypt-s/navd/txscript"
+	"github.com/encrypt-s/navd/wire"
 	"github.com/navcoin/navutil"
 )
 

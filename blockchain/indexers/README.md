@@ -21,7 +21,7 @@ via an RPC interface.
 ## Installation
 
 ```bash
-$ go get -u github.com/navcoin/navd/blockchain/indexers
+$ go get -u github.com/encrypt-s/navd/blockchain/indexers
 ```
 
 ## License

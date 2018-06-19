@@ -15,10 +15,10 @@ import (
 	"testing"
 	"time"
 
-	"github.com/navcoin/navd/chaincfg"
-	"github.com/navcoin/navd/chaincfg/chainhash"
-	"github.com/navcoin/navd/rpcclient"
-	"github.com/navcoin/navd/wire"
+	"github.com/encrypt-s/navd/chaincfg"
+	"github.com/encrypt-s/navd/chaincfg/chainhash"
+	"github.com/encrypt-s/navd/rpcclient"
+	"github.com/encrypt-s/navd/wire"
 	"github.com/navcoin/navutil"
 )
 

@@ -13,10 +13,10 @@ import (
 	"testing"
 	"time"
 
-	"github.com/navcoin/navd/blockchain"
-	"github.com/navcoin/navd/chaincfg"
-	"github.com/navcoin/navd/chaincfg/chainhash"
-	"github.com/navcoin/navd/integration/rpctest"
+	"github.com/encrypt-s/navd/blockchain"
+	"github.com/encrypt-s/navd/chaincfg"
+	"github.com/encrypt-s/navd/chaincfg/chainhash"
+	"github.com/encrypt-s/navd/integration/rpctest"
 )
 
 const (

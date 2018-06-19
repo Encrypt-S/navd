@@ -5,7 +5,7 @@ mempool
 (https://travis-ci.org/navcoin/navd) [![ISC License]
 (http://img.shields.io/badge/license-ISC-blue.svg)](http://copyfree.org)
 [![GoDoc](https://img.shields.io/badge/godoc-reference-blue.svg)]
-(http://godoc.org/github.com/navcoin/navd/mempool)
+(http://godoc.org/github.com/encrypt-s/navd/mempool)
 
 Package mempool provides a policy-enforced pool of unmined navcoin transactions.
 
@@ -76,7 +76,7 @@ be an exhaustive list.
 ## Installation and Updating
 
 ```bash
-$ go get -u github.com/navcoin/navd/mempool
+$ go get -u github.com/encrypt-s/navd/mempool
 ```
 
 ## License

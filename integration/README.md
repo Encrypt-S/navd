@@ -6,7 +6,7 @@ integration
 (http://img.shields.io/badge/license-ISC-blue.svg)](http://copyfree.org)
 
 This contains integration tests which make use of the
-[rpctest](https://github.com/navcoin/navd/tree/master/rpctest) package to
+[rpctest](https://github.com/encrypt-s/navd/tree/master/rpctest) package to
 programmatically drive nodes via RPC.
 
 ## License

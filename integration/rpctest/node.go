@@ -14,7 +14,7 @@ import (
 	"runtime"
 	"time"
 
-	rpc "github.com/navcoin/navd/rpcclient"
+	rpc "github.com/encrypt-s/navd/rpcclient"
 	"github.com/navcoin/navutil"
 )
 

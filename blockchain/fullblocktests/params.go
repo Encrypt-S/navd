@@ -9,9 +9,9 @@ import (
 	"math/big"
 	"time"
 
-	"github.com/navcoin/navd/chaincfg"
-	"github.com/navcoin/navd/chaincfg/chainhash"
-	"github.com/navcoin/navd/wire"
+	"github.com/encrypt-s/navd/chaincfg"
+	"github.com/encrypt-s/navd/chaincfg/chainhash"
+	"github.com/encrypt-s/navd/wire"
 )
 
 // newHashFromStr converts the passed big-endian hex string into a

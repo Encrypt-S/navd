@@ -8,8 +8,8 @@ import (
 	"reflect"
 	"time"
 
-	"github.com/navcoin/navd/chaincfg/chainhash"
-	"github.com/navcoin/navd/rpcclient"
+	"github.com/encrypt-s/navd/chaincfg/chainhash"
+	"github.com/encrypt-s/navd/rpcclient"
 )
 
 // JoinType is an enum representing a particular type of "node join". A node

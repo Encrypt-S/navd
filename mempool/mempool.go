@@ -12,14 +12,14 @@ import (
 	"sync/atomic"
 	"time"
 
-	"github.com/navcoin/navd/blockchain"
-	"github.com/navcoin/navd/blockchain/indexers"
-	"github.com/navcoin/navd/btcjson"
-	"github.com/navcoin/navd/chaincfg"
-	"github.com/navcoin/navd/chaincfg/chainhash"
-	"github.com/navcoin/navd/mining"
-	"github.com/navcoin/navd/txscript"
-	"github.com/navcoin/navd/wire"
+	"github.com/encrypt-s/navd/blockchain"
+	"github.com/encrypt-s/navd/blockchain/indexers"
+	"github.com/encrypt-s/navd/btcjson"
+	"github.com/encrypt-s/navd/chaincfg"
+	"github.com/encrypt-s/navd/chaincfg/chainhash"
+	"github.com/encrypt-s/navd/mining"
+	"github.com/encrypt-s/navd/txscript"
+	"github.com/encrypt-s/navd/wire"
 	"github.com/navcoin/navutil"
 )
 

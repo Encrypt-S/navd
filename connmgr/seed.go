@@ -11,7 +11,7 @@ import (
 	"strconv"
 	"time"
 
-	"github.com/navcoin/navd/chaincfg"
+	"github.com/encrypt-s/navd/chaincfg"
 	"github.com/navcoin/navd/wire"
 )
 

@@ -4,7 +4,7 @@ rpctest
 
 [![Build Status](http://img.shields.io/travis/navcoin/navd.svg)](https://travis-ci.org/navcoin/navd)
 [![ISC License](http://img.shields.io/badge/license-ISC-blue.svg)](http://copyfree.org)
-[![GoDoc](https://img.shields.io/badge/godoc-reference-blue.svg)](http://godoc.org/github.com/navcoin/navd/integration/rpctest)
+[![GoDoc](https://img.shields.io/badge/godoc-reference-blue.svg)](http://godoc.org/github.com/encrypt-s/navd/integration/rpctest)
 
 Package rpctest provides a navd-specific RPC testing harness crafting and
 executing integration tests by driving a `navd` instance via the `RPC`
@@ -21,7 +21,7 @@ systems/integration tests.
 ## Installation and Updating
 
 ```bash
-$ go get -u github.com/navcoin/navd/integration/rpctest
+$ go get -u github.com/encrypt-s/navd/integration/rpctest
 ```
 
 ## License
@@ -37,7 +37,7 @@ rpctest
 (https://travis-ci.org/navcoin/navd) [![ISC License]
 (http://img.shields.io/badge/license-ISC-blue.svg)](http://copyfree.org)
 [![GoDoc](https://img.shields.io/badge/godoc-reference-blue.svg)]
-(http://godoc.org/github.com/navcoin/navd/rpctest)
+(http://godoc.org/github.com/encrypt-s/navd/rpctest)
 
 Package rpctest provides a navd-specific RPC testing harness crafting and
 executing integration tests by driving a `navd` instance via the `RPC`
@@ -54,7 +54,7 @@ systems/integration tests.
 ## Installation and Updating
 
 ```bash
-$ go get -u github.com/navcoin/navd/rpctest
+$ go get -u github.com/encrypt-s/navd/rpctest
 ```
 
 ## License

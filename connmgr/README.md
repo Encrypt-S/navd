@@ -5,7 +5,7 @@ connmgr
 (https://travis-ci.org/navcoin/navd) [![ISC License]
 (http://img.shields.io/badge/license-ISC-blue.svg)](http://copyfree.org)
 [![GoDoc](https://img.shields.io/badge/godoc-reference-blue.svg)]
-(http://godoc.org/github.com/navcoin/navd/connmgr)
+(http://godoc.org/github.com/encrypt-s/navd/connmgr)
 
 Package connmgr implements a generic NavCoin network connection manager.
 
@@ -31,7 +31,7 @@ In addition the connection manager provides the following utilities:
 ## Installation and Updating
 
 ```bash
-$ go get -u github.com/navcoin/navd/connmgr
+$ go get -u github.com/encrypt-s/navd/connmgr
 ```
 
 ## License

@@ -11,7 +11,7 @@ import (
 	"encoding/binary"
 	"errors"
 
-	"github.com/navcoin/navd/blockchain"
+	"github.com/encrypt-s/navd/blockchain"
 	"github.com/navcoin/navd/database"
 	"github.com/navcoin/navutil"
 )
