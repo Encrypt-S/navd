@@ -7,8 +7,8 @@ package chaincfg
 import (
 	"time"
 
-	"github.com/navcoin/navd/chaincfg/chainhash"
-	"github.com/navcoin/navd/wire"
+	"github.com/encrypt-s/navd/chaincfg/chainhash"
+	"github.com/encrypt-s/navd/wire"
 )
 
 // genesisCoinbaseTx is the coinbase transaction for the genesis blocks for
